@@ -36,4 +36,8 @@ export const routes: Routes = [
       import('./loginotp/loginotp.page').then((m) => m.LoginotpPage),
     canActivate: [NoAuthGuard],
   },
+  {
+    path: 'dashboard/history',
+    loadComponent: () => import('./history/history.page').then( m => m.HistoryPage)
+  },
 ];

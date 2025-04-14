@@ -4,14 +4,15 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <div class="header-logo"> <img
-        src="../../assets/logo-tresorpay.png"
-        alt="TresorPay Logo"
-        class="toolbar-logo"
-      /></div>
+      <div class="header-logo">
+        <img
+          src="../../assets/logo-tresorpay.png"
+          alt="TresorPay Logo"
+          class="toolbar-logo"
+        />
+      </div>
     </ion-toolbar>
   </ion-header>
-  
 
   <div class="ion-padding">
     <img
@@ -106,4 +107,30 @@
       </ion-label>
     </ion-item>
   </div>
+  <ion-tabs>
+    <ion-tab-bar
+      slot="bottom"
+      color="light"
+      style="background-color: #234477; color: white"
+    >
+      <ion-tab-button
+        tab="favorites"
+        routerLink="/tabs/favorites"
+        routerDirection="root"
+        style="background-color: #234477; color: white"
+      >
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Accueil</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button
+        tab="history"
+        routerLink="/history"
+        style="background-color: #234477; color: white"
+      >
+        <ion-icon name="alarm-outline"></ion-icon>
+        <ion-label>Historique</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
