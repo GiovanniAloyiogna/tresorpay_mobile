@@ -105,3 +105,23 @@
 ion-content {
   scroll-padding-bottom: 50px; /* adjust based on your keyboard size */
 }
+.header-logo {
+  width: 100%;
+  text-align: center;
+}
+.toolbar-logo {
+  height: 32px;
+  max-width: 120px;
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-breadcrumb{
+  display: flex;
+  background-color: #ededed;
+  margin: 1rem;
+}
+.header-title h3{
+   font-size: 1.1rem;
+   padding-left: 0.5rem;
+}
