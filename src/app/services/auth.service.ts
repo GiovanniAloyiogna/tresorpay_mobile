@@ -2,37 +2,50 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticated = new BehaviorSubject<boolean>(this.checkAuthentication());  // Start with value from localStorage
-  private currentUser = new BehaviorSubject<any>(this.getCurrentUserFromStorage());  // Get user from localStorage
+  private isAuthenticated = new BehaviorSubject<boolean>(
+    this.checkAuthentication()
+  );
+  private currentUser = new BehaviorSubject<any>(
+    this.getCurrentUserFromStorage()
+  );
 
-  constructor() { }
+  constructor() {}
 
-  
-  login(userData: { email: string, password: string }) {
-    const fakeUser = { email: 'test@example.com', password: 'password123' };  
+  checkUserAndSendOtp(userData: { email: string; password: string }): boolean {
+    const fakeUser = { email: 'test@example.com', password: 'password123' };
 
-    if (userData.email === fakeUser.email && userData.password === fakeUser.password) {
-     
-      this.isAuthenticated.next(true);
-      this.currentUser.next(fakeUser); 
-
-   
-      localStorage.setItem('isAuthenticated', 'true');
-      localStorage.setItem('currentUser', JSON.stringify(fakeUser));
+    if (
+      userData.email === fakeUser.email &&
+      userData.password === fakeUser.password
+    ) {
+      localStorage.setItem('pendingOtpUser', JSON.stringify(fakeUser));
+      return true;
     } else {
-    
-      this.isAuthenticated.next(false);
-      this.currentUser.next(null);
-
-     
-      localStorage.removeItem('isAuthenticated');
-      localStorage.removeItem('currentUser');
+      return false;
     }
   }
 
+  validateOtpAndLogin(code: string): boolean {
+    const correctCode = '123456';
+    const storedUser = localStorage.getItem('pendingOtpUser');
+
+    if (code === correctCode && storedUser) {
+      const user = JSON.parse(storedUser);
+      this.isAuthenticated.next(true);
+      this.currentUser.next(user);
+
+      localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      localStorage.removeItem('pendingOtpUser');
+
+      return true;
+    }
+
+    return false;
+  }
 
   isLoggedIn() {
     return this.isAuthenticated.asObservable();
@@ -42,12 +55,10 @@ export class AuthService {
     return this.currentUser.asObservable();
   }
 
- 
   logout() {
     this.isAuthenticated.next(false);
     this.currentUser.next(null);
 
-    
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('currentUser');
   }

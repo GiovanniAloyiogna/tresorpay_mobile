@@ -8,6 +8,10 @@
   }
   
   .connexion-text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 2rem;
   }
   .form-container {
@@ -62,5 +66,18 @@
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 10px;
+    margin: 0.3rem;
+    background-color:  #ededed;
   }
-  
+  #otp-time{
+      color: #234477;
+      font-size: 1.2rem;
+      font-size: bold;
+      
+  }
+  .otp-content{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+   
+  }

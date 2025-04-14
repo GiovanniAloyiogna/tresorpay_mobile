@@ -55,15 +55,14 @@ export class LoginPage implements OnInit {
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
 
-      this.authService.login(formData);
-
-      this.authService.isLoggedIn().subscribe((isAuthenticated) => {
-        if (isAuthenticated) {
-          this.router.navigate(['/dashboard']);
-        } else {
-          console.log('Invalid credentials');
-        }
-      });
+      // this.authService.checkUserAndSendOtp(formData);
+      if(this.authService.checkUserAndSendOtp(formData)){
+        this.router.navigate(['/loginotp']);
+      }
+      else {
+        console.log('Invalid credentials');
+      }
+     
     } else {
       console.log('Form is invalid');
       this.loginForm.markAllAsTouched();
