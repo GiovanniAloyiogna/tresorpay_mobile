@@ -1,5 +1,14 @@
 <ion-content class="login-background" fullscreen>
-  <div class="connexion-container">
+  <!-- Overlay du spinner -->
+  <!-- Overlay du spinner -->
+  <div class="loading-overlay" *ngIf="loading">
+    <div class="spinner-container">
+      <img src="../../assets/logo_tresor.png" alt="Logo" class="loading-logo" />
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  </div>
+
+  <div class="connexion-container" [class.blur]="loading">
     <img src="../../assets/logo-tresorpay.png" alt="TresorPay Logo" class="tresor-pay-logo" />
 
     <h2 class="title">Connexion</h2>
@@ -21,7 +30,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group"> 
           <ion-label position="stacked" class="label">Mot de passe</ion-label>
           <ion-input 
             type="password" 
@@ -42,9 +51,7 @@
 
       <div class="text connexion-text">
         Vous n'avez pas de compte ?<br />
-        <p style="text-align: center; color: #f2d52a;">
-          Créer
-        </p>
+        <p style="text-align: center; color: #f2d52a;">Créer</p>
       </div>
     </form>
   </div>
