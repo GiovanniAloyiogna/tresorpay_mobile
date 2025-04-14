@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   IonButton,
   IonLabel,
@@ -13,16 +8,15 @@ import {
   IonContent,
   IonHeader,
   IonTitle,
-  IonToolbar,   // Optionnel : à retirer si non utilisé dans le template
-  IonText,
-  IonSpinner  // Ajouté pour que <ion-spinner> soit reconnu
+  IonToolbar, 
+  IonSpinner
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.page.html', // Le template doit inclure votre overlay avec <ion-spinner>
+  templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
   imports: [
@@ -32,15 +26,15 @@ import { AuthService } from '../services/auth.service';
     IonButton,
     IonHeader,
     IonTitle,
-    IonToolbar,  // Si vous n'en avez pas besoin, vous pouvez le retirer
-    IonSpinner,  // Pour l'affichage du spinner dans le template
+    IonToolbar,  
+    IonSpinner,  
     CommonModule,
     ReactiveFormsModule,
   ],
 })
 export class LoginPage implements OnInit {
   loginForm!: FormGroup;
-  loading: boolean = false;  // Variable pour contrôler l'affichage du spinner
+  loading: boolean = false;  // Contrôle l'affichage du spinner
 
   constructor(
     private fb: FormBuilder,
@@ -49,7 +43,6 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Initialisation du formulaire avec deux champs : email et password
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -59,18 +52,16 @@ export class LoginPage implements OnInit {
   onLogin() {
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
-  
-      // Active l'état de chargement (spinner visible)
+      
+      // Active le spinner
       this.loading = true;
-  
-      // Simuler un délai asynchrone (par exemple 2 secondes)
+
+      // Simule une action asynchrone de 1000 ms (1 seconde)
       setTimeout(() => {
         try {
-          // On appelle ici la méthode qui retourne un boolean.
-          // Dans un vrai scénario, cette méthode devrait être asynchrone (retourner une promesse ou un observable).
+          // Appel de la méthode qui vérifie les données utilisateur
           const isValid = this.authService.checkUserAndSendOtp(formData);
-          // Désactive le spinner après le traitement simulé
-          this.loading = true;
+          
           if (isValid) {
             // Redirige vers la page loginotp en cas de succès
             this.router.navigate(['/loginotp']);
@@ -78,17 +69,19 @@ export class LoginPage implements OnInit {
             console.log('Invalid credentials');
           }
         } catch (error: any) {
-          // En cas d'erreur, désactive le spinner et affiche l'erreur
-          this.loading = true;
+          // Si erreur, on désactive le spinner et on log l'erreur
           console.error('Error during login', error);
         }
-      }, 1000);  // Délai de 2000 ms pour la simulation
-      
+      }, 1000);  // Délai de 1000 ms
+
+      // Désactive le spinner après 1000 ms
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);  // Délai de 1000 ms pour arrêter le spinner après l'opération
     } else {
       console.log('Form is invalid');
       // Marque tous les champs comme touchés pour déclencher les messages d'erreur
       this.loginForm.markAllAsTouched();
     }
   }
-  
 }
