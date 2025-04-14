@@ -1,0 +1,37 @@
+.ion-padding {
+  background-color: #234477;
+  height: 5rem;
+  display: flex;
+  margin-top: 2rem;
+  align-items: center;
+
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  justify-content: space-around;
+}
+.dashboard-profile-text {
+  color: white;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+#filterBtn {
+  border-radius: 10px;
+
+  padding-left: 10px;
+}
+
+#filterBtn ion-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+.toolbar-logo {
+  height: 32px;
+  max-width: 120px;
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header-logo {
+  width: 100%;
+  text-align: center;
+}

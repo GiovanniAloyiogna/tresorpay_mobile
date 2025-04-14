@@ -1,33 +1,42 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
+    <!-- Menu latéral -->
     <ion-menu contentId="main-content" type="overlay">
+      <ion-header style="display: flex; margin-left: 1rem; margin-top: 1rem;">
+        <ion-avatar>
+          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+      </ion-header>
+
       <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi&#64;ionicframework.com</ion-note>
+        <ion-list>
+          <ion-item lines="none">
+            <ion-label>
+              <h2>John Doe</h2>
+              <p>+123 456 789</p>
+            </ion-label>
+          </ion-item>
 
-          @for (p of appPages; track p; let i = $index) {
-            <ion-menu-toggle auto-hide="false">
-              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-          }
-        </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          @for (label of labels; track label) {
-            <ion-item lines="none">
-              <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-              <ion-label>{{ label }}</ion-label>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="/dashboard">
+              <ion-icon slot="start" name="grid-outline"></ion-icon>
+              <ion-label>Menu</ion-label>
             </ion-item>
-          }
+            <ion-item routerLink="/settings">
+              <ion-icon slot="start" name="settings-outline"></ion-icon>
+              <ion-label>Paramètres</ion-label>
+            </ion-item>
+            <ion-item routerLink="/logout">
+              <ion-icon slot="start" name="log-out-outline"></ion-icon>
+              <ion-label>Déconnexion</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
         </ion-list>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+    <div class="ion-page" id="main-content">
+      <ion-router-outlet></ion-router-outlet>
+    </div>
   </ion-split-pane>
 </ion-app>

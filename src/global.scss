@@ -1,37 +1,107 @@
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * Styles globaux pour toute l'application.
+ * Plus d'infos : https://ionicframework.com/docs/layout/global-stylesheets
  */
 
-/* Core CSS required for Ionic components to work properly */
+/* Core CSS requis pour Ionic */
 @import "@ionic/angular/css/core.css";
 
-/* Basic CSS for apps built with Ionic */
+/* CSS de base */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
+/* CSS utilitaires optionnels */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* Mode sombre système */
+@import "@ionic/angular/css/palettes/dark.system.css";
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* Styles personnalisés */
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 1rem;
+}
+.tresor-pay-logo {
+  width: 15rem;
+}
+
+.continue-button {
+  --background: #234477;
+  --color: white;
+
+  font-weight: 600;
+}
+
+.login-background {
+  --background: url("./assets/tresorpaybg.jpg") no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+.profile-img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+}
+.profile-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.list-btn-bg {
+  background-color: #234477;
+  border-radius: 8px;
+}
+
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.custom-widget {
+  display: flex;
+  flex-direction: column;
+  background-color: #ededed;
+
+  --background: #ededed;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 100%;
+  height: auto;
+  align-items: center;
+}
+.custom-widget p {
+  font-size: 0.7rem;
+  color: black;
+}
+.custom-widget ion-icon {
+  font-size: 2rem;
+  margin-top: 1rem;
+  text-align: center;
+  color: #F2D52A;
+  margin-left: 0.5rem;
+}
+ion-content {
+  scroll-padding-bottom: 50px; /* adjust based on your keyboard size */
+}

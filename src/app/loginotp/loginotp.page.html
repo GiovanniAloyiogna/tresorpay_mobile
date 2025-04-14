@@ -1,0 +1,55 @@
+<ion-content class="login-background" fullscreen>
+  <div class="connexion-container">
+    <img
+      src="../../assets/logo-tresorpay.png"
+      alt="TresorPay Logo"
+      class="tresor-pay-logo"
+    />
+
+    <h2 class="title">Code de confirmation</h2>
+    <div class="text otp-text">
+      Un SMS et un e-mail vous ont été envoyés. Merci de consulter votre
+      messagerie et de saisir le code OTP reçu. 00:00:59
+    </div>
+    <!-- Formulaire Connexion -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="form-container">
+        <div class="form-group">
+          <ion-label position="stacked" class="label-text">Email</ion-label>
+          <ion-input
+            type="email"
+            placeholder="Entrez votre email"
+            formControlName="email"
+            class="custom-input"
+          ></ion-input>
+          <!-- Error messages -->
+          <div
+            *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+            class="error-message"
+          >
+            <p *ngIf="loginForm.get('email')?.hasError('required')">
+              Email is required
+            </p>
+            <p *ngIf="loginForm.get('email')?.hasError('email')">
+              Invalid email format
+            </p>
+          </div>
+        </div>
+
+        <ion-button
+          expand="block"
+          shape="round"
+          class="continue-button"
+          type="submit"
+        >
+          Confirmer
+        </ion-button>
+      </div>
+
+      <div class="text connexion-text">
+        Vous n'avez pas de compte ?<br />
+        <p style="text-align: center; color: #f2d52a">Créer</p>
+      </div>
+    </form>
+  </div>
+</ion-content>
