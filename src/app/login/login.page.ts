@@ -79,7 +79,7 @@ export class LoginPage implements OnInit {
           }
         } catch (error: any) {
           // En cas d'erreur, désactive le spinner et affiche l'erreur
-          this.loading = true;
+          this.loading = false;
           console.error('Error during login', error);
         }
       }, 1000);  // Délai de 2000 ms pour la simulation
