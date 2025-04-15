@@ -25,3 +25,8 @@
   margin-right: 8px;
 }
 
+ion-content.scrollable-content {
+  --overflow: auto;
+  height: 100%;
+  overflow-y: auto !important;
+}
