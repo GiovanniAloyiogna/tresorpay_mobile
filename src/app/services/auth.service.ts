@@ -15,7 +15,7 @@ export class AuthService {
   constructor() {}
 
   checkUserAndSendOtp(userData: { email: string; password: string }): boolean {
-    const fakeUser = { email: 'test@example.com', password: 'password123' };
+    const fakeUser = { email: 'test@test.com', password: '123456' };
 
     if (
       userData.email === fakeUser.email &&
