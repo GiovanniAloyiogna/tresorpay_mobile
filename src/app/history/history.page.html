@@ -1,23 +1,90 @@
 <ion-header >
   <ion-toolbar>
+    <!-- Bouton de menu -->
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+
+    <!-- Logo -->
     <div class="header-logo">
-      <img
-        src="../../assets/logo-tresorpay.png"
-        alt="TresorPay Logo"
-        class="toolbar-logo"
-      />
+      <img src="../../assets/logo-tresorpay.png" alt="TresorPay Logo" class="toolbar-logo" />
     </div>
+
+    <!-- Bouton de filtre (optionnel) -->
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="openFilter()">
+        <ion-icon slot="icon-only" name="options-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- En-tête de la page, titre "Transactions" -->
   <div class="page-breadcrumb">
-    <div class="header-title"><h3>Transactions</h3></div>
-    <div >
-      <!-- <button ><ion-icon name="arrow-back"></ion-icon></button> -->
+    <div class="header-title">
+      <h3>Transactions</h3>
     </div>
   </div>
+
+  <!-- Barre de recherche -->
+  <ion-searchbar placeholder="Recherche..." (ionInput)="onSearchChange($event)"></ion-searchbar>
+
+  <!-- Segment pour filtrer entre "Tous" et "Inscriptions" -->
+  <ion-segment value="tous" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="tous">
+      <ion-label>Tous</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="inscriptions">
+      <ion-label>Inscriptions</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Liste des transactions -->
+  <ion-list>
+    <ion-item *ngFor="let transaction of filteredTransactions">
+      <ion-label>
+        <ion-row>
+          <ion-col size="6">
+            <h2>{{ transaction.date }}</h2>
+            <p>{{ transaction.description }}</p>
+          </ion-col>
+          <ion-col size="3" class="ion-text-end">
+            <strong>{{ transaction.amount }}F</strong>
+          </ion-col>
+          <ion-col size="3" class="ion-text-end"
+            [ngClass]="{'positive-text': transaction.variation > 0, 'negative-text': transaction.variation < 0}">
+            <span>{{ transaction.variation > 0 ? '+' : '' }}{{ transaction.variation }}</span>
+          </ion-col>
+        </ion-row>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
+
+<!-- Footer avec la couleur bleue et les icônes mises à jour -->
+<ion-footer>
+  <ion-toolbar style="color: white;">
+    <ion-grid>
+      <ion-row class="ion-justify-content-around">
+        <!-- Bouton Accueil -->
+        <ion-col size="6" class="ion-text-center">
+          <ion-button fill="clear">
+            <ion-icon name="home-outline"></ion-icon>
+          </ion-button>
+          <div style="color: rgb(19, 77, 185);">Accueil</div>
+        </ion-col>
+        <!-- Bouton Historique -->
+        <ion-col size="6" class="ion-text-center">
+          <ion-button fill="clear">
+            <ion-icon name="alarm-outline"></ion-icon>
+          </ion-button>
+          <div style="color: rgb(13, 56, 197);">Historique</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   IonButton,
@@ -8,12 +9,13 @@ import {
   IonContent,
   IonHeader,
   IonTitle,
-  IonToolbar, 
+  IonToolbar,
   IonSpinner
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-
+import { ButtonModule } from 'primeng/button'; 
+import { DrawerModule } from 'primeng/drawer';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -23,18 +25,21 @@ import { AuthService } from '../services/auth.service';
     IonContent,
     IonLabel,
     IonInput,
-    IonButton,
     IonHeader,
     IonTitle,
-    IonToolbar,  
-    IonSpinner,  
+    IonToolbar,
+    IonSpinner,
     CommonModule,
     ReactiveFormsModule,
+    ButtonModule,
+    DrawerModule
+
   ],
 })
 export class LoginPage implements OnInit {
   loginForm!: FormGroup;
-  loading: boolean = false;  // Contrôle l'affichage du spinner
+  loading: boolean = false;
+  visible=true;
 
   constructor(
     private fb: FormBuilder,
@@ -52,35 +57,26 @@ export class LoginPage implements OnInit {
   onLogin() {
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
-      
-      // Active le spinner
       this.loading = true;
 
-      // Simule une action asynchrone de 1000 ms (1 seconde)
       setTimeout(() => {
         try {
-          // Appel de la méthode qui vérifie les données utilisateur
           const isValid = this.authService.checkUserAndSendOtp(formData);
-          
           if (isValid) {
-            // Redirige vers la page loginotp en cas de succès
             this.router.navigate(['/loginotp']);
           } else {
             console.log('Invalid credentials');
           }
         } catch (error: any) {
-          // Si erreur, on désactive le spinner et on log l'erreur
           console.error('Error during login', error);
         }
-      }, 1000);  // Délai de 1000 ms
+      }, 1000);
 
-      // Désactive le spinner après 1000 ms
       setTimeout(() => {
         this.loading = false;
-      }, 1000);  // Délai de 1000 ms pour arrêter le spinner après l'opération
+      }, 1000);
     } else {
       console.log('Form is invalid');
-      // Marque tous les champs comme touchés pour déclencher les messages d'erreur
       this.loginForm.markAllAsTouched();
     }
   }
