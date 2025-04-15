@@ -92,14 +92,18 @@
         <ion-icon name="school-outline"></ion-icon>
       </ion-label>
     </ion-item>
-
     <ion-item lines="none" class="custom-widget">
       <ion-label>
         <p>EDUCATION</p>
         <ion-icon name="school-outline"></ion-icon>
       </ion-label>
     </ion-item>
-
+    <ion-item lines="none" class="custom-widget">
+      <ion-label>
+        <p>EDUCATION</p>
+        <ion-icon name="school-outline"></ion-icon>
+      </ion-label>
+    </ion-item>
     <ion-item lines="none" class="custom-widget">
       <ion-label>
         <p>EDUCATION</p>
@@ -108,30 +112,27 @@
     </ion-item>
     
   </div>
-  <ion-tabs>
-    <ion-tab-bar
-      slot="bottom"
-      color="light"
-      style="background-color: #234477; color: white"
-    >
-      <ion-tab-button
-        tab="favorites"
-        routerLink="/tabs/favorites"
-        routerDirection="root"
-        style="background-color: #234477; color: white"
-      >
-        <ion-icon name="home-outline"></ion-icon>
-        <ion-label>Accueil</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button
-        tab="history"
-        routerLink="/history"
-        style="background-color: #234477; color: white"
-      >
-        <ion-icon name="alarm-outline"></ion-icon>
-        <ion-label>Historique</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar style="color: white;">
+    <ion-grid>
+      <ion-row class="ion-justify-content-around">
+        <!-- Bouton Accueil -->
+        <ion-col size="6" class="ion-text-center">
+          <ion-button fill="clear">
+            <ion-icon name="home-outline"></ion-icon>
+          </ion-button>
+          <div style="color: rgb(19, 77, 185);">Accueil</div>
+        </ion-col>
+        <!-- Bouton Historique -->
+        <ion-col size="6" class="ion-text-center">
+          <ion-button fill="clear">
+            <ion-icon name="alarm-outline"></ion-icon>
+          </ion-button>
+          <div style="color: rgb(13, 56, 197);">Historique</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
