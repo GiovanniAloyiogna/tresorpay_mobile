@@ -6,22 +6,29 @@
     </div>
   </div>
 
+  <div class="col-span-12 md:col-span-6 lg:col-span-3">
+    <div
+      class="p-4 text-white h-24 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400"
+      style="background-image: url('/demo/images/dashboard/effect-1.svg')"
+    >
+      <div class="font-bold w-full mb-2">
+        <span>Sales</span>
+      </div>
+      <div class="text-white text-2xl font-bold w-full flex items-center py-1">
+        150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+      </div>
+    </div>
+  </div>
+
   <div class="connexion-container" [class.blur]="loading">
     <img
       src="../../assets/logo-tresorpay.png"
       alt="TresorPay Logo"
       class="tresor-pay-logo"
     />
-    <div class="card flex justify-center">
-      <p-button label="Check" />
-  </div>
-  
+
     <h2 class="title">Connexion</h2>
-    <div class="flex flex-col items-start text-surface-900 dark:text-surface-0">
-      <span class="block h-auto font-bold">Make</span>
-      <span class="block h-auto">Swift Transfer</span>
-  </div>
-  
+
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="form-container">
         <div class="form-group">
@@ -71,13 +78,14 @@
         </div>
 
         <!-- PrimeNG Button -->
-        <button
+
+        <p-button
           pButton
           type="submit"
           label="Se connecter"
-          class="p-button-rounded p-button-warning p-button-lg continue-button"
+          class="p-button-rounded p-button-warning p-button-sm"
           [disabled]="loading"
-        ></button>
+        />
       </div>
 
       <div class="text connexion-text">
