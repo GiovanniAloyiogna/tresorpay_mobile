@@ -25,7 +25,7 @@ import {
   IonList,
   IonItem,
   IonFooter,
-  IonGrid
+  IonGrid, IonMenu, IonAccordionGroup, IonAccordion, IonBadge
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -35,6 +35,9 @@ import {
   homeOutline,
   alarmOutline,
 } from 'ionicons/icons';
+import { ButtonModule } from 'primeng/button';
+import {Drawer} from "primeng/drawer";
+import {Avatar} from "primeng/avatar";
 
 @Component({
   selector: 'app-dashboard',
@@ -65,32 +68,44 @@ import {
     IonFooter,
     IonGrid,
     IonContent,
-  IonHeader,
-  IonTitle,
-  IonIcon,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonButton,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  IonRow,
-  IonCol,
-  IonSegment,
-  IonSegmentButton,
-  IonLabel,
-  IonSearchbar,
-  IonList,
-  IonItem,
-  IonFooter,
-  IonGrid
+    IonHeader,
+    IonTitle,
+    IonIcon,
+    IonToolbar,
+    IonButtons,
+    IonMenuButton,
+    IonButton,
+    IonTabBar,
+    IonTabButton,
+    IonTabs,
+    IonRow,
+    IonCol,
+    IonSegment,
+    IonSegmentButton,
+    IonLabel,
+    IonSearchbar,
+    IonList,
+    IonItem,
+    IonFooter,
+    IonGrid,
+    ButtonModule,
+    Drawer,
+    Avatar,
+    IonMenu,
+    IonAccordionGroup,
+    IonAccordion,
+    IonBadge
   ],
 })
 export class DashboardPage implements OnInit {
+  visible = false
   constructor() {
     addIcons({ add, funnelOutline, schoolOutline, homeOutline, alarmOutline });
   }
 
   ngOnInit() {}
+
+  closeCallback($event: MouseEvent) {
+
+  }
 }
