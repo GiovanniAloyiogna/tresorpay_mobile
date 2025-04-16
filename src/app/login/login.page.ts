@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import {
   IonButton,
   IonLabel,
@@ -10,11 +15,18 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
-  IonSpinner
+  IonSpinner,
 } from '@ionic/angular/standalone';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { FluidModule } from 'primeng/fluid';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { ButtonModule } from 'primeng/button'; 
+import { ButtonModule } from 'primeng/button';
 import { DrawerModule } from 'primeng/drawer';
 @Component({
   selector: 'app-login',
@@ -32,14 +44,22 @@ import { DrawerModule } from 'primeng/drawer';
     CommonModule,
     ReactiveFormsModule,
     ButtonModule,
-    DrawerModule
-
+    DrawerModule,
+    CheckboxModule,
+    InputTextModule,
+    FormsModule,
+    RouterModule,
+    IconFieldModule,
+    InputIconModule,
+  
+    FluidModule,
+   
   ],
 })
 export class LoginPage implements OnInit {
   loginForm!: FormGroup;
   loading: boolean = false;
-  visible=true;
+  visible = true;
 
   constructor(
     private fb: FormBuilder,

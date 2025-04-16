@@ -1,12 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,ts}'],
+  content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "blue-color": "var(--blue-color)",
+      },
+    },
   },
-  plugins: [require('@tailwindcss/aspect-ratio')
-,require('@tailwindcss/forms')
-,require('@tailwindcss/line-clamp')
-,require('@tailwindcss/typography')
-],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
+  ],
 };

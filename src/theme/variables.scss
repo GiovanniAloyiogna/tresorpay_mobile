@@ -1,20 +1,18 @@
-
 :root {
-    /** Ionic Colors **/
-    --ion-color-primary: #3880ff;
-    --ion-color-secondary: #3dc2ff;
-    --ion-color-tertiary: #5260ff;
-    --ion-color-success: #2dd36f;
-    --ion-color-warning: #ffc409;
-    --ion-color-danger: #eb445a;
-    --ion-color-dark: #222428;
-    --ion-color-medium: #92949c;
-    --ion-color-light: #f4f5f8;
-  
-    /** Safe Area Padding **/
-    --safe-area-top: env(safe-area-inset-top);
-    --safe-area-bottom: env(safe-area-inset-bottom);
-    --safe-area-left: env(safe-area-inset-left);
-    --safe-area-right: env(safe-area-inset-right);
-  }
-  
+  /** Ionic Colors **/
+  --ion-color-primary: #234477;
+  --ion-color-secondary: #3dc2ff;
+  --ion-color-tertiary: #5260ff;
+  --ion-color-success: #2dd36f;
+  --ion-color-warning: #ffc409;
+  --ion-color-danger: #eb445a;
+  --ion-color-dark: #222428;
+  --ion-color-medium: #92949c;
+  --ion-color-light: #f4f5f8;
+  --blue-color: #234477;
+  /** Safe Area Padding **/
+  --safe-area-top: env(safe-area-inset-top);
+  --safe-area-bottom: env(safe-area-inset-bottom);
+  --safe-area-left: env(safe-area-inset-left);
+  --safe-area-right: env(safe-area-inset-right);
+}
