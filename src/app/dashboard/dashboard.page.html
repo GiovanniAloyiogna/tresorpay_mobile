@@ -217,21 +217,33 @@
     </div>
   </div>
 
-  <!-- Filtres et bouton de continuation -->
-  <div class="profile-filters">
-    <ion-list style="margin-top: 1rem" lines="none" class="list-btn-bg">
-      <ion-item>
-        <ion-select placeholder="Secteurs">
-          <ion-select-option value="apple">Apple</ion-select-option>
-          <ion-select-option value="banana">Banana</ion-select-option>
-          <ion-select-option value="orange">Orange</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
-    <ion-button expand="block" class="continue-button" routerLink="/home">
-      <ion-icon name="funnel-outline"></ion-icon>
-    </ion-button>
+
+  <!-- ******************************************************-->
+  <!-- Input multi -->
+  <div class="card flex flex-col gap-4 ">
+
+    <div class="font-semibold text-xl text-red-50">------------------------------------------------</div>
+    <p-multiselect [options]="" placeholder="Rechercher..." optionLabel="name" display="chip" [filter]="true">
+      <ng-template #selecteditems let-countries>
+        @for (country of countries; track country.code) {
+          <div class="inline-flex items-center py-1 px-2 bg-primary text-primary-contrast rounded-border mr-2">
+            <span [class]="'mr-2 flag flag-' + country.code.toLowerCase()" style="width: 18px; height: 12px"></span>
+            <div>{{ country.name }}</div>
+          </div>
+        }
+      </ng-template>
+      <ng-template #item let-country>
+        <div class="flex items-center">
+          <span [class]="'mr-2 flag flag-' + country.code.toLowerCase()" style="width: 18px; height: 12px"></span>
+          <div>{{ country.name }}</div>
+        </div>
+      </ng-template>
+    </p-multiselect>
+    <div class="font-semibold text-xl text-red-50">------------------------------------------------</div>
+
   </div>
+  <!-- ******************************************************-->
+  <!-- End input multi -->
 
 
 
@@ -243,101 +255,101 @@
       <!-- =======================Contenu general des card =============================-->
       <!-- ============================================================================= -->
       <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400 rounded-lg"
-             style="background-image: url('../../assets/images/dashboard/effect-1.svg')">
+        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
+             >
           <div class="font-bold w-full mb-2">
             <span>EDUCATION</span>
           </div>
           <div class="text-white text-2xl font-bold w-full flex items-center py-1">
-            150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+            150 <i class="pi pi-graduation-cap ml-2 p-1 w-12 font-bold"></i>
           </div>
         </div>
       </div>
       <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400 rounded-lg"
-             style="background-image: url('../../assets/images/dashboard/effect-1.svg')">
+        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
+             >
           <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
+            <span>SANTE</span>
           </div>
           <div class="text-white text-2xl font-bold w-full flex items-center py-1">
-            150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+            150 <i class="pi pi-headphones ml-2 p-1 w-12 font-bold"></i>
           </div>
         </div>
       </div>
       <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400 rounded-lg"
-             style="background-image: url('../../assets/images/dashboard/effect-1.svg')">
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
+        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
+             >
+          <div class="font-bold text-surface-900 w-full mb-2">
+            <span>FINANCE</span>
           </div>
           <div class="text-white text-2xl font-bold w-full flex items-center py-1">
-            150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+            150 <i class="pi pi-euro ml-2 p-1 w-12 font-bold"></i>
           </div>
         </div>
       </div>
       <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400 rounded-lg"
-             style="background-image: url('../../assets/images/dashboard/effect-1.svg')">
+        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
+             >
           <div class="font-bold w-full mb-2">
             <span>EDUCATION</span>
           </div>
           <div class="text-white text-2xl font-bold w-full flex items-center py-1">
-            150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
           </div>
         </div>
       </div>
       <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400 rounded-lg"
-             style="background-image: url('../../assets/images/dashboard/effect-1.svg')">
+        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
+             >
           <div class="font-bold w-full mb-2">
             <span>EDUCATION</span>
           </div>
           <div class="text-white text-2xl font-bold w-full flex items-center py-1">
-            150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
           </div>
         </div>
       </div>
       <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400 rounded-lg"
-             style="background-image: url('../../assets/images/dashboard/effect-1.svg')">
+        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
+             >
           <div class="font-bold w-full mb-2">
             <span>EDUCATION</span>
           </div>
           <div class="text-white text-2xl font-bold w-full flex items-center py-1">
-            150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
           </div>
         </div>
       </div>
       <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400 rounded-lg"
-             style="background-image: url('../../assets/images/dashboard/effect-1.svg')">
+        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
+             >
           <div class="font-bold w-full mb-2">
             <span>EDUCATION</span>
           </div>
           <div class="text-white text-2xl font-bold w-full flex items-center py-1">
-            150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
           </div>
         </div>
       </div>
       <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400 rounded-lg"
-             style="background-image: url('../../assets/images/dashboard/effect-1.svg')">
+        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
+             >
           <div class="font-bold w-full mb-2">
             <span>EDUCATION</span>
           </div>
           <div class="text-white text-2xl font-bold w-full flex items-center py-1">
-            150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
           </div>
         </div>
       </div>
       <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-cyan-400 rounded-lg"
-             style="background-image: url('../../assets/images/dashboard/effect-1.svg')">
+        <div class="p-1  text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
+             >
           <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
+            <span>SECTEUR</span>
           </div>
           <div class="text-white text-2xl font-bold w-full flex items-center py-1">
-            150 <i class="pi pi-arrow-up ml-2 font-bold"></i>
+            150 <i class="pi pi-building-columns ml-2 p-1 w-12 font-bold"></i>
           </div>
         </div>
       </div>
