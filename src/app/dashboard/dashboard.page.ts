@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -38,6 +38,12 @@ import {
 import { ButtonModule } from 'primeng/button';
 import {Drawer} from "primeng/drawer";
 import {Avatar} from "primeng/avatar";
+import {Listbox} from "primeng/listbox";
+import {Select} from "primeng/select";
+import {TreeSelect} from "primeng/treeselect";
+import {MultiSelect} from "primeng/multiselect";
+import {TreeNode} from "primeng/api";
+import {AutoCompleteCompleteEvent} from "primeng/autocomplete";
 
 @Component({
   selector: 'app-dashboard',
@@ -94,11 +100,82 @@ import {Avatar} from "primeng/avatar";
     IonMenu,
     IonAccordionGroup,
     IonAccordion,
-    IonBadge
+    IonBadge,
+    Listbox,
+    Select,
+    TreeSelect,
+    MultiSelect
   ],
 })
 export class DashboardPage implements OnInit {
   visible = false
+
+  floatValue: any = null;
+
+  iftaValue: any = null;
+
+  inputOtpValue: any = null;
+
+  autoValue: any[] | undefined;
+
+  autoFilteredValue: any[] = [];
+
+  selectedAutoValue: any = null;
+
+  calendarValue: any = null;
+
+  inputNumberValue: any = null;
+
+  sliderValue: number = 50;
+
+  ratingValue: any = null;
+
+  colorValue: string = '#1976D2';
+
+  radioValue: any = null;
+
+  checkboxValue: any[] = [];
+
+  switchValue: boolean = false;
+
+  listboxValues: any[] = [
+    { name: 'New York', code: 'NY' },
+    { name: 'Rome', code: 'RM' },
+    { name: 'London', code: 'LDN' },
+    { name: 'Istanbul', code: 'IST' },
+    { name: 'Paris', code: 'PRS' }
+  ];
+
+  listboxValue: any = null;
+
+  dropdownValues = [
+    { name: 'New York', code: 'NY' },
+    { name: 'Rome', code: 'RM' },
+    { name: 'London', code: 'LDN' },
+    { name: 'Istanbul', code: 'IST' },
+    { name: 'Paris', code: 'PRS' }
+  ];
+
+  dropdownValue: any = null;
+
+
+
+  toggleValue: boolean = false;
+
+  selectButtonValue: any = null;
+
+  selectButtonValues: any = [{ name: 'Option 1' }, { name: 'Option 2' }, { name: 'Option 3' }];
+
+  knobValue: number = 50;
+
+  inputGroupValue: boolean = false;
+
+  treeSelectNodes!: TreeNode[];
+
+  selectedNode: any = null;
+
+
+
   constructor() {
     addIcons({ add, funnelOutline, schoolOutline, homeOutline, alarmOutline });
   }
@@ -109,3 +186,4 @@ export class DashboardPage implements OnInit {
 
   }
 }
+
