@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
-  FormControl,
   Validators,
   ReactiveFormsModule,
+  FormsModule,
 } from '@angular/forms';
 import {
   IonButton,
@@ -18,6 +18,7 @@ import {
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { InputOtpModule } from 'primeng/inputotp';
 
 @Component({
   selector: 'app-loginotp',
@@ -34,12 +35,17 @@ import { AuthService } from '../services/auth.service';
     IonToolbar,
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
+    InputOtpModule,
   ],
 })
-export class LoginotpPage implements OnInit {
+export class LoginotpPage implements OnInit, AfterViewInit {
   otpForm!: FormGroup;
+  inputOtpValue: string = '';
   remainingTime: string = '00:00:59';
   private countdownInterval: any;
+
+  @ViewChild('otpInput') otpInputRef!: ElementRef;
 
   constructor(
     private fb: FormBuilder,
@@ -59,38 +65,62 @@ export class LoginotpPage implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+       setTimeout(() => {
+      const firstInput: HTMLElement | null =
+        this.otpInputRef?.nativeElement?.querySelector('input');
+        console.log("inputs",this.otpInputRef?.nativeElement, this.otpInputRef?.nativeElement?.querySelector('input'))
+
+      if (firstInput) {
+        firstInput.focus();
+      }
+    }, 300);
+  }
+
+  onOtpChange(value: string) {
+    this.inputOtpValue = value;
+
+    if (value.length === 6) {
+      this.onConfirmOtp();
+    }
+  }
+
   onConfirmOtp() {
-    if (this.otpForm.valid) {
-      const code = Object.values(this.otpForm.value).join('');
+    const code = this.inputOtpValue;
+
+    if (code && code.length === 6) {
       const isSuccess = this.authService.validateOtpAndLogin(code);
 
       if (isSuccess) {
-        this.router.navigate(['/dashboard']);
+        // Reset OTP fields before redirection
+        this.inputOtpValue = '';  // Clear OTP value
+        this.otpForm.reset(); // Reset the form controls
+
+        this.router.navigate(['/dashboard']);  // Redirect to dashboard
       } else {
         console.log('Code OTP invalide');
       }
-    } else {
-      this.otpForm.markAllAsTouched();
     }
   }
+
   startCountdown(duration: number) {
     let timeLeft = duration;
-  
+
     this.countdownInterval = setInterval(() => {
       const minutes = Math.floor(timeLeft / 60);
       const seconds = timeLeft % 60;
-  
+
       this.remainingTime = `00:${this.pad(minutes)}:${this.pad(seconds)}`;
-  
+
       if (timeLeft <= 0) {
         clearInterval(this.countdownInterval);
         this.remainingTime = '00:00:00';
       }
-  
+
       timeLeft--;
     }, 1000);
   }
-  
+
   pad(n: number): string {
     return n < 10 ? '0' + n : n.toString();
   }

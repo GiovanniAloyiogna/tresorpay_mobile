@@ -1,76 +1,62 @@
-<ion-content class="login-background" fullscreen>
-  <div class="connexion-container">
-    <img
-      src="../../assets/logo-tresorpay.png"
-      alt="TresorPay Logo"
-      class="tresor-pay-logo"
-    />
-
-    <h2 class="title">Code de confirmation</h2>
-    <div class="text otp-text">
-      Un SMS et un e-mail vous ont été envoyés. Merci de consulter votre
-      messagerie et de saisir le code OTP reçu.
-    </div>
-
-    <ion-label id="otp-time">{{ remainingTime }}</ion-label>
-
-    <form [formGroup]="otpForm" (ngSubmit)="onConfirmOtp()">
-      <div class="form-container">
-        <div class="form-group">
-          <div class="otp-content">
-            <ion-input
-              type="number"
-              maxlength="1"
-              formControlName="digit1"
-              class="otp-input"
-            ></ion-input>
-            <ion-input
-              type="number"
-              maxlength="1"
-              formControlName="digit2"
-              class="otp-input"
-            ></ion-input>
-            <ion-input
-              type="number"
-              maxlength="1"
-              formControlName="digit3"
-              class="otp-input"
-            ></ion-input>
-            <ion-input
-              type="number"
-              maxlength="1"
-              formControlName="digit4"
-              class="otp-input"
-            ></ion-input>
-            <ion-input
-              type="number"
-              maxlength="1"
-              formControlName="digit5"
-              class="otp-input"
-            ></ion-input>
-            <ion-input
-              type="number"
-              maxlength="1"
-              formControlName="digit6"
-              class="otp-input"
-            ></ion-input>
-          </div>
+<ion-content
+  class="bg-primary-contrast text-primary login-background"
+  fullscreen
+>
+  <div class="relative flex justify-center items-center h-full px-4">
+    <div class="w-full lg:w-5/12 text-center flex justify-center items-center">
+      <div class="z-50 w-full lg:w-8/12 px-6" style="max-width: 400px">
+        <div class="w-full flex items-center justify-center mb-6">
+          <img src="../../assets/logo-tresorpay.png" alt="Logo" class="w-40" />
         </div>
 
-        <ion-button
-          expand="block"
-          shape="round"
-          class="continue-button"
-          type="submit"
-        >
-          Confirmer
-        </ion-button>
-      </div>
+        <div class="text-2xl font-light mb-2 text-primary-500">
+          Code de confirmation
+        </div>
+        <p class="text-surface-600 dark:text-surface-400 mb-6 text-sm">
+          Un SMS et un e-mail vous ont été envoyés. Merci de consulter votre
+          messagerie et de saisir le code OTP reçu.
+        </p>
 
-      <div class="text connexion-text">
-        Vous n'avez pas reçu de code ?<br />
-        <p style="text-align: center; color: #f2d52a">Renvoyer</p>
+        <div class="text-sm text-center text-yellow-500 font-medium mb-4">
+          {{ remainingTime }}
+        </div>
+
+        <form (ngSubmit)="onConfirmOtp()" class="text-center">
+          <div class="flex justify-center mb-4">
+            <p-inputotp
+              #otpInput
+              [(ngModel)]="inputOtpValue"
+              (ngModelChange)="onOtpChange($event)"
+              [length]="6"
+              styleClass="h-[3rem] gap-2 text-center border border-gray-300 rounded-md w-full max-w-[280px]"
+              inputStyleClass="text-center w-10 h-12 border border-gray-300 rounded-md"
+              name="otp"
+              required
+            ></p-inputotp>
+          </div>
+
+          <button
+            pButton
+            type="submit"
+            label="Confirmer"
+            style="
+              background-color: var(--blue-color);
+              color: white;
+              border: none;
+            "
+            class="w-full p-button-rounded p-button-warning p-button-sm bg-blue-color mb-4"
+            [disabled]="!inputOtpValue || inputOtpValue.length < 6"
+          ></button>
+        </form>
+
+        <div class="mt-4 text-sm text-center text-gray-500">
+          Vous n'avez pas reçu de code ?<br />
+          <span
+            class="text-yellow-400 font-semibold cursor-pointer hover:underline"
+            >Renvoyer</span
+          >
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 </ion-content>
