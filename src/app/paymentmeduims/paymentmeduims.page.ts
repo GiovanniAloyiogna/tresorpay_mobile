@@ -17,7 +17,7 @@ import {
   IonSearchbar,
   IonItem,
   IonList,
-  IonGrid, IonFooter, IonIcon, IonCardTitle, IonCardSubtitle, IonCard, IonCardHeader, IonCardContent, IonImg
+  IonGrid, IonFooter, IonIcon
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
@@ -42,9 +42,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Dropdown} from "primeng/dropdown";
 
 @Component({
-  selector: 'app-sectorform',
-  templateUrl: './sectorform.page.html',
-  styleUrls: ['./sectorform.page.scss'],
+  selector: 'app-paymentmeduims',
+  templateUrl: './paymentmeduims.page.html',
+  styleUrls: ['./paymentmeduims.page.scss'],
   standalone: true,
   imports: [
     IonContent,
@@ -76,22 +76,16 @@ import {Dropdown} from "primeng/dropdown";
     FormsModule,
     NgIf,
 
-    ReactiveFormsModule,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCard,
-    IonCardHeader,
-    IonCardContent,
-    IonImg
+    ReactiveFormsModule
   ]
 })
-export class SectorformPage implements OnInit {
+export class PaymentmeduimsPage implements OnInit {
   floatValue: any = null;
   selectButtonValue: any = null;
   dropdownValue: any = null;
   listboxValue: any = null;
   autoValue: any[] | undefined;
- showForm: boolean=true;
+
   visible: boolean = false;
 
 
@@ -137,12 +131,5 @@ export class SectorformPage implements OnInit {
 
   openDrawer() {
     this.visible = true;
-  }
-  goToPaymentMethods() {
-    this.showForm = false;
-  }
-
-  goBackToForm() {
-    this.showForm = true;
   }
 }

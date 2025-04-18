@@ -1,6 +1,4 @@
-
-
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="!p-0 !m-0">
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -19,109 +17,79 @@
     </ion-toolbar>
   </ion-header>
 
-
-
   <!-- FORM SECTION -->
-  <form class="text-left mt-5 p-4 space-y-4">
+  <div class="flex items-center justify-center min-h-screen px-2" *ngIf="showForm">
+    <form class="w-full max-w-md bg-white rounded-lg p-6 space-y-4">
+      <!-- Établissement -->
+      <div class="form-group">
+        <label for="etablissement" class="block text-sm font-medium text-gray-700">Etablissement</label>
+        <input type="number" id="etablissement" name="etablissement" placeholder="Etablissement" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
 
-    <!-- Établissement Dropdown -->
+      <!-- Motif de paiement -->
+      <div class="form-group">
+        <label for="motif" class="block text-sm font-medium text-gray-700">Motif de paiement</label>
+        <p-select name="motif" [(ngModel)]="dropdownValue" [options]="dropdownValues" optionLabel="name" placeholder="Mode de paiement" class="w-full mt-1"></p-select>
+      </div>
 
-    <div class="form-group">
-      <label for="etablissement" class="block text-sm font-medium text-gray-700">Etablissement</label>
-      <input
-        type="number"
-        id="Etablissement"
-        name="etablissement"
-        placeholder="Etablissement"
-        class="block w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-      />
+      <!-- Montant -->
+      <div class="form-group">
+        <label for="montant" class="block text-sm font-medium text-gray-700">Montant</label>
+        <input type="number" id="montant" name="montant" placeholder="Montant à payer" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
+
+      <!-- Initiateur -->
+      <div class="form-group">
+        <label for="initiateur" class="block text-sm font-medium text-gray-700">Initiateur</label>
+        <input type="text" id="initiateur" name="initiateur" placeholder="Nom de l'initiateur" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
+
+      <!-- Bénéficiaire -->
+      <div class="form-group">
+        <label for="beneficiaire" class="block text-sm font-medium text-gray-700">Bénéficiaire</label>
+        <input type="text" id="beneficiaire" name="beneficiaire" placeholder="Nom du bénéficiaire" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
+
+      <!-- Boutons -->
+      <div class="flex items-center justify-between pt-4">
+        <button pButton type="button" style="background-color: #222428; border: none; color: white" class="w-36 p-button-rounded text-white px-4 py-2 rounded-md text-sm" (click)="goBackToForm()">Précédent</button>
+        <button pButton type="button" style="background-color: #234477; border: none; color: white" class="w-36 p-button-rounded bg-blue-600 text-white px-4 py-2 rounded-md text-sm" (click)="goToPaymentMethods()">Suivant</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- PAYMENT METHOD SECTION -->
+  <div class="grid grid-cols-12 gap-8" *ngIf="!showForm">
+
+    <ion-card color="primary" class="col-span-12">
+      <ion-card-header>
+        <ion-card-title>Méthodes de paiement</ion-card-title>
+        <ion-card-subtitle>Sélectionnez une méthode</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Replace with real payment options -->
+        <p>Carte bancaire, Mobile Money, Virement bancaire...</p>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <div class="col-span-12 flex justify-center items-center  py-4">
+      <div class="grid grid-cols-4 md:grid-cols-4 gap-1 w-full">
+        <ion-img
+          src="assets/airtelmoney.png"
+          alt="Airtel"
+          class="w-30 h-30 object-contain"
+        ></ion-img>
+        <ion-img
+          src="assets/mobilemoney.jpg"
+          alt="Moov"
+          class="w-30 h-30 object-contain"
+        ></ion-img>
+        <!-- Ajoute plus d'images ici si besoin -->
+      </div>
     </div>
-    <!-- Motif de Paiement Dropdown -->
-    <div class="form-group">
-      <label for="motif" class="block text-sm font-medium text-gray-700">Motif de paiement</label>
-      <p-select name="motif" [(ngModel)]="dropdownValue" [options]="dropdownValues" optionLabel="name" placeholder="Mode de paiement" class="w-full" />
-    </div>
+  </div>
 
-    <!-- Montant -->
-    <div class="form-group">
-      <label for="montant" class="block text-sm font-medium text-gray-700">Montant</label>
-      <input
-        type="number"
-        id="montant"
-        name="montant"
-        placeholder="Montant à payer"
-        class="block w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-      />
-    </div>
-
-    <!-- Initiateur -->
-    <div class="form-group">
-      <label for="initiateur" class="block text-sm font-medium text-gray-700">Initiateur</label>
-      <input
-        type="text"
-        id="initiateur"
-        name="initiateur"
-        placeholder="Nom de l'initiateur"
-        class="block w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-      />
-    </div>
-
-    <!-- Bénéficiaire -->
-    <div class="form-group">
-      <label for="beneficiaire" class="block text-sm font-medium text-gray-700">Bénéficiaire</label>
-      <input
-        type="text"
-        id="beneficiaire"
-        name="beneficiaire"
-        placeholder="Nom du bénéficiaire"
-        class="block w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-      />
-    </div>
-
-    <div class="flex items-center justify-around mt-10 ">
-      <button
-        pButton
-        type="submit"
-        label="Annuler"
-         style="background-color: var(--ion-color-danger)"
-        class="w-40 p-button-rounded p-button-danger p-button-sm bg-color-danger"
-
-      ></button>
-      <button
-        pButton
-        type="submit"
-        label="Valider"
-        style="background-color: var(--blue-color); color: white; border: none;"
-        class="w-40 p-button-rounded p-button-warning p-button-sm bg-blue-color"
-
-      ></button>
-    </div>
-
-    <!-- Submit Button -->
-
-  </form>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar style="color: white">
-    <ion-grid>
-      <ion-row class="ion-justify-content-around">
-        <!-- Bouton Accueil -->
-        <ion-col size="6" class="ion-text-center">
-          <ion-button fill="clear">
-            <ion-icon name="home-outline"></ion-icon>
-          </ion-button>
-          <div style="color: rgb(19, 77, 185)">Accueil</div>
-        </ion-col>
-        <!-- Bouton Historique -->
-        <ion-col size="6" class="ion-text-center">
-          <ion-button fill="clear">
-            <ion-icon name="alarm-outline"></ion-icon>
-          </ion-button>
-          <div style="color: rgb(13, 56, 197)">Historique</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-footer>
 

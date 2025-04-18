@@ -56,6 +56,10 @@ export const routes: Routes = [
     path: 'outbox',
     loadComponent: () => import('./pages/outbox/outbox.page').then( m => m.OutboxPage)
   },
+  {
+    path: 'paymentmeduims',
+    loadComponent: () => import('./paymentmeduims/paymentmeduims.page').then( m => m.PaymentmeduimsPage)
+  },
 
 
 ];
