@@ -51,6 +51,7 @@ import { MultiSelect } from 'primeng/multiselect';
 import { TreeNode } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { Router } from '@angular/router';
+import {Divider} from "primeng/divider";
 
 @Component({
   selector: 'app-sector',
@@ -112,6 +113,7 @@ import { Router } from '@angular/router';
     Select,
     TreeSelect,
     MultiSelect,
+    Divider,
   ],
 })
 export class SectorPage implements OnInit {
