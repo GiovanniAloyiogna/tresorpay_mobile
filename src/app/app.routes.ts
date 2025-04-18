@@ -48,6 +48,14 @@ export const routes: Routes = [
   {
     path: 'sectorform',
     loadComponent: () => import('./sectorform/sectorform.page').then( m => m.SectorformPage)
+  },  {
+    path: 'inbox',
+    loadComponent: () => import('./pages/inbox/inbox.page').then( m => m.InboxPage)
   },
+  {
+    path: 'outbox',
+    loadComponent: () => import('./pages/outbox/outbox.page').then( m => m.OutboxPage)
+  },
+
 
 ];

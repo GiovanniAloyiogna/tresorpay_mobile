@@ -3,13 +3,28 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IonApp, IonSplitPane, IonMenu,IonHeader,IonTab, IonTabButton,  IonContent, IonToolbar, IonTabBar, IonTitle,IonTabs, IonAvatar,IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { mailOutline, mailSharp, settingsOutline, gridOutline,homeOutline,logOutOutline, swapHorizontalOutline, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, alarmOutline } from 'ionicons/icons';
+import {
+  mailOutline,
+  mailSharp, settingsOutline, gridOutline,homeOutline,logOutOutline,
+  swapHorizontalOutline, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp,
+  archiveOutline, archiveSharp, trashOutline,
+  trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, alarmOutline,
+  personOutline, notificationsOutline, callOutline,
+  logOutSharp, documentOutline, informationCircleOutline, helpOutline
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  imports: [RouterLink, RouterLinkActive, IonTab,IonTabButton,IonApp,IonHeader,IonToolbar, IonTabBar, IonTabs,IonAvatar,IonTitle, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    IonTab,
+    IonTabButton,
+    IonApp,
+    IonHeader,IonToolbar, IonTabBar, IonTabs,IonAvatar,IonTitle, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet
+  ],
 })
 export class AppComponent {
   public appPages = [
@@ -22,6 +37,11 @@ export class AppComponent {
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {
-    addIcons({ mailOutline,logOutOutline,settingsOutline, gridOutline,mailSharp,swapHorizontalOutline, homeOutline, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, alarmOutline });
+    addIcons({ mailOutline,logOutOutline,settingsOutline,
+      gridOutline,mailSharp,swapHorizontalOutline, homeOutline, paperPlaneOutline,
+      paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline,
+      trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, alarmOutline,
+      personOutline, notificationsOutline, callOutline,
+      logOutSharp, documentOutline, informationCircleOutline, helpOutline});
   }
 }

@@ -1,50 +1,77 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <!-- Menu latéral -->
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-header style="display: flex; margin-left: 1rem; margin-top: 1rem">
-        <ion-avatar>
-          <img
-            alt="Silhouette of a person's head"
-            src="https://ionicframework.com/docs/img/demos/avatar.svg"
-          />
-        </ion-avatar>
-      </ion-header>
-
-      <ion-content>
-        <ion-list>
-          <ion-item lines="none">
-            <ion-label>
-              <h2>John Doe</h2>
-              <p>+123 456 789</p>
-            </ion-label>
+  <ion-menu menuId="main-menu" content-id="main" class="menuform">
+    <ion-header>
+      <ion-title>Menu</ion-title>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="/dashboard">
+            <ion-icon name="home-outline" slot="start"></ion-icon>
+            <ion-label>Accueil</ion-label>
           </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/inbox">
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-label>Profil</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
 
-          <ion-menu-toggle auto-hide="false">
-            <ion-item routerLink="/dashboard">
-              <ion-icon slot="start" name="grid-outline"></ion-icon>
-              <ion-label>Menu</ion-label>
-            </ion-item>
-            <ion-item routerLink="/settings">
-              <ion-icon slot="start" name="settings-outline"></ion-icon>
-              <ion-label>Paramètres</ion-label>
-            </ion-item>
-            <ion-item routerLink="/dashboard/history">
-              <ion-icon  slot="start" name="alarm-outline"></ion-icon>
-              <ion-label>Historique</ion-label>
-            </ion-item>
-            <ion-item routerLink="/logout">
-              <ion-icon slot="start" name="log-out-outline"></ion-icon>
-              <ion-label>Déconnexion</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    
-    <div class="ion-page" id="main-content">
-      <ion-router-outlet></ion-router-outlet>
-    </div>
-  </ion-split-pane>
-  
+        <ion-menu-toggle>
+          <ion-item routerLink="/outbox">
+            <ion-icon name="settings-outline" slot="start"></ion-icon>
+            <ion-label>Paramètres</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/settings">
+            <ion-icon name="notifications-outline" slot="start"></ion-icon>
+            <ion-label>Notifications</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/favorites">
+            <ion-icon name="archive-outline" slot="start"></ion-icon>
+            <ion-label>Archive</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/profile">
+            <ion-icon name="trash-outline" slot="start"></ion-icon>
+            <ion-label>Corbeille</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/contact">
+            <ion-icon name="call-outline" slot="start"></ion-icon>
+            <ion-label>Contact</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/about">
+            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+            <ion-label>À propos</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/help">
+            <ion-icon name="help-outline" slot="start"></ion-icon>
+            <ion-label>Aide</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/logout">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Déconnexion</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>
