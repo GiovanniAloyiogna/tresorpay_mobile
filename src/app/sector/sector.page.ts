@@ -38,6 +38,8 @@ import {
   schoolOutline,
   homeOutline,
   alarmOutline,
+  mapOutline,
+  locateOutline,
 } from 'ionicons/icons';
 import { ButtonModule } from 'primeng/button';
 import { Drawer } from 'primeng/drawer';
@@ -51,9 +53,9 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.page.html',
-  styleUrls: ['./dashboard.page.scss'],
+  selector: 'app-sector',
+  templateUrl: './sector.page.html',
+  styleUrls: ['./sector.page.scss'],
   standalone: true,
   imports: [
     IonContent,
@@ -112,7 +114,7 @@ import { Router } from '@angular/router';
     MultiSelect,
   ],
 })
-export class DashboardPage implements OnInit {
+export class SectorPage implements OnInit {
   visible = false;
 
   floatValue: any = null;
@@ -182,7 +184,7 @@ export class DashboardPage implements OnInit {
   selectedNode: any = null;
 
   constructor(private router: Router) {
-    addIcons({ add, funnelOutline, schoolOutline, homeOutline, alarmOutline });
+    addIcons({ add, funnelOutline, locateOutline, schoolOutline, homeOutline, alarmOutline });
   }
 
   ngOnInit() {}

@@ -1,0 +1,39 @@
+/* Positionnement du logo dans le toolbar */
+.header-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .toolbar-logo {
+    height: 35px;
+  }
+  
+  /* Style de la searchbar et autres contenus */
+  .ion-padding {
+    background-color: #234477;
+    height: auto;  /* Laissez la hauteur s'ajuster au contenu */
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    justify-content: space-around;
+  }
+  
+  .dashboard-profile-text {
+    color: white;
+    font-size: 0.9rem;
+  }
+  
+  /* Styles pour les boutons de filtre */
+  #filterBtn {
+    border-radius: 10px;
+    padding-left: 10px;
+  }
+  
+  #filterBtn ion-icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+  

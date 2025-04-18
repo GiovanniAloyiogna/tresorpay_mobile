@@ -294,6 +294,7 @@
       optionLabel="name"
       display="chip"
       [filter]="true"
+      class="multi-search-dropdown"
     >
       <ng-template #selecteditems let-countries>
         @for (country of countries; track country.code) {
@@ -326,136 +327,43 @@
   <!-- End input multi -->
 
   <!-- WIDGET GRID -->
-  <div class="scrollable-content mx-auto p-3">
-    <div class="grid grid-cols-12 gap-4">
-      <!-- ==============================================================================-->
-      <!-- =======================Contenu general des card =============================-->
-      <!-- ============================================================================= -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4"  (click)="redirectTo('sector', 'education')">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
+  <div class="scrollable-content mx-auto p-3 d-flex flex-column">
+    <div class="flex items-center justify-between w-full p-4 flex-column">
+      <div class="flex items-center gap-4 w-full">
+        <!-- Image -->
+        <img src="../../assets/uob.jpeg" alt="avalon-layout" width="52" />
+
+        <!-- First block -->
+        <div class="flex flex-col">
+          <span class="text-sm font-medium">UNIVERSITE OMAR BONGO ONDIMBA</span>
+
+          <span class="text-gray-500 text-sm"
+            ><ion-icon name="locate-outline"></ion-icon> Libreville</span
           >
-            150 <i class="pi pi-graduation-cap ml-2 p-1 w-12 font-bold"></i>
-          </div>
         </div>
+
+        <!-- Spacer -->
+        <div class="flex-grow"></div>
       </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>SANTE</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
+    </div>
+    <div class="flex items-center justify-between w-full p-4 flex-column">
+      <div class="flex items-center gap-4 w-full">
+        <!-- Image -->
+        <img src="../../assets/uss.jpeg" alt="avalon-layout" width="52" />
+
+        <!-- First block -->
+        <div class="flex flex-col">
+          <span class="text-sm font-medium"
+            >UNIVERSITE SCIENCES DE LA SANTE</span
           >
-            150 <i class="pi pi-headphones ml-2 p-1 w-12 font-bold"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold text-surface-900 w-full mb-2">
-            <span>FINANCE</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
+
+          <span class="text-gray-500 text-sm">
+            <ion-icon name="locate-outline"></ion-icon> Owendo</span
           >
-            150 <i class="pi pi-euro ml-2 p-1 w-12 font-bold"></i>
-          </div>
         </div>
-      </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>SECTEUR</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-building-columns ml-2 p-1 w-12 font-bold"></i>
-          </div>
-        </div>
+
+        <!-- Spacer -->
+        <div class="flex-grow"></div>
       </div>
     </div>
   </div>

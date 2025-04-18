@@ -40,4 +40,14 @@ export const routes: Routes = [
     path: 'dashboard/history',
     loadComponent: () => import('./history/history.page').then( m => m.HistoryPage)
   },
+  {
+    path: 'sector',
+    loadComponent: () => import('./sector/sector.page').then( m => m.SectorPage)
+  },
+  
+  {
+    path: 'sectorform',
+    loadComponent: () => import('./sectorform/sectorform.page').then( m => m.SectorformPage)
+  },
+
 ];
