@@ -190,7 +190,8 @@ export class SectorPage implements OnInit {
   ngOnInit() {}
 
   closeCallback($event: MouseEvent) {}
-  redirectTo(url: string, sector: string): void {
-    this.router.navigate([url]);
+  redirectTo(url: string): void {
+    this.router.navigate([url]).then(r => console.log("navigation has finishe"));
   }
+
 }

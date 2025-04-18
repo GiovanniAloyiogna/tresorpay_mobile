@@ -189,6 +189,6 @@ export class DashboardPage implements OnInit {
 
   closeCallback($event: MouseEvent) {}
   redirectTo(url: string, sector: string): void {
-    this.router.navigate([url]);
+    this.router.navigate([url]).then(r => console.log("navigation has finished"));
   }
 }

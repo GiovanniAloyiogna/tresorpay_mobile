@@ -1,5 +1,6 @@
+
+
 <ion-content [fullscreen]="true">
-  <!-- HEADER -->
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -24,7 +25,7 @@
                     <path d="..." />
                   </svg>
                   <span class="font-semibold text-2xl text-primary"
-                    >Your Logo</span
+                  >Your Logo</span
                   >
                 </span>
                 <span>
@@ -159,7 +160,7 @@
                           <span
                             class="inline-flex items-center justify-center ml-auto bg-primary text-primary-contrast rounded-full"
                             style="min-width: 1.5rem; height: 1.5rem"
-                            >3</span
+                          >3</span
                           >
                         </a>
                       </li>
@@ -267,60 +268,89 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- CONTENU PRINCIPAL -->
-  
 
-  <!-- ******************************************************-->
-  <!-- Input multi -->
-  <div class="card flex flex-col gap-4">
-    
-  </div>
-  <!-- ******************************************************-->
-  <!-- End input multi -->
 
-  <!-- WIDGET GRID -->
-  <div class="scrollable-content mx-auto p-3 d-flex flex-column">
-    <div class="p-6 max-w-lg mx-auto">
-      <h2 class="text-2xl font-bold mb-6">Formulaire de Demande</h2>
-      
-      <div class="mb-4">
-        <label class="block mb-1 font-medium">Etablissement</label>
-        <input pInputText type="text" [(ngModel)]="formData.etablissement" placeholder="Entrez l'établissement"
-          class="w-full p-inputtext-sm" />
-      </div>
-    
-      <div class="mb-4">
-        <label class="block mb-1 font-medium">Motif</label>
-        <p-dropdown 
-          [options]="motifs" 
-          [(ngModel)]="formData.motif"
-          placeholder="Sélectionnez un motif"
-          class="w-full p-inputtext-sm">
-        </p-dropdown>
-      </div>
-    
-      <div class="mb-4">
-        <label class="block mb-1 font-medium">Initiateur</label>
-        <input pInputText type="text" [(ngModel)]="formData.initiateur" placeholder="Nom de l'initiateur"
-          class="w-full p-inputtext-sm" />
-      </div>
-    
-      <div class="mb-4">
-        <label class="block mb-1 font-medium">Bénéficiaire</label>
-        <input pInputText type="text" [(ngModel)]="formData.beneficiaire" placeholder="Nom du bénéficiaire"
-          class="w-full p-inputtext-sm" />
-      </div>
-    
-      <div class="flex justify-end space-x-3">
-        <button pButton type="button" label="Annuler" class="p-button-secondary" (click)="onCancel()"></button>
-        <button pButton type="button" label="Envoyer" class="p-button-success" (click)="onSubmit()"></button>
-      </div>
+  <!-- FORM SECTION -->
+  <form class="text-left mt-5 p-4 space-y-4">
+
+    <!-- Établissement Dropdown -->
+
+    <div class="form-group">
+      <label for="etablissement" class="block text-sm font-medium text-gray-700">Etablissement</label>
+      <input
+        type="number"
+        id="Etablissement"
+        name="etablissement"
+        placeholder="Etablissement"
+        class="block w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+      />
     </div>
-    
-  </div>
+    <!-- Motif de Paiement Dropdown -->
+    <div class="form-group">
+      <label for="motif" class="block text-sm font-medium text-gray-700">Motif de paiement</label>
+      <p-select name="motif" [(ngModel)]="dropdownValue" [options]="dropdownValues" optionLabel="name" placeholder="Mode de paiement" class="w-full" />
+    </div>
+
+    <!-- Montant -->
+    <div class="form-group">
+      <label for="montant" class="block text-sm font-medium text-gray-700">Montant</label>
+      <input
+        type="number"
+        id="montant"
+        name="montant"
+        placeholder="Montant à payer"
+        class="block w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+      />
+    </div>
+
+    <!-- Initiateur -->
+    <div class="form-group">
+      <label for="initiateur" class="block text-sm font-medium text-gray-700">Initiateur</label>
+      <input
+        type="text"
+        id="initiateur"
+        name="initiateur"
+        placeholder="Nom de l'initiateur"
+        class="block w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+      />
+    </div>
+
+    <!-- Bénéficiaire -->
+    <div class="form-group">
+      <label for="beneficiaire" class="block text-sm font-medium text-gray-700">Bénéficiaire</label>
+      <input
+        type="text"
+        id="beneficiaire"
+        name="beneficiaire"
+        placeholder="Nom du bénéficiaire"
+        class="block w-full px-3 py-2 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+      />
+    </div>
+
+    <div class="flex items-center justify-around mt-10 ">
+      <button
+        pButton
+        type="submit"
+        label="Annuler"
+         style="background-color: var(--ion-color-danger)"
+        class="w-40 p-button-rounded p-button-danger p-button-sm bg-color-danger"
+
+      ></button>
+      <button
+        pButton
+        type="submit"
+        label="Valider"
+        style="background-color: var(--blue-color); color: white; border: none;"
+        class="w-40 p-button-rounded p-button-warning p-button-sm bg-blue-color"
+
+      ></button>
+    </div>
+
+    <!-- Submit Button -->
+
+  </form>
 </ion-content>
 
-<!-- FOOTER -->
 <ion-footer>
   <ion-toolbar style="color: white">
     <ion-grid>
@@ -343,3 +373,4 @@
     </ion-grid>
   </ion-toolbar>
 </ion-footer>
+

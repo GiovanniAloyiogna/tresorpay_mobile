@@ -51,9 +51,9 @@ import { DrawerModule } from 'primeng/drawer';
     RouterModule,
     IconFieldModule,
     InputIconModule,
-  
+
     FluidModule,
-   
+
   ],
 })
 export class LoginPage implements OnInit {
@@ -100,4 +100,6 @@ export class LoginPage implements OnInit {
       this.loginForm.markAllAsTouched();
     }
   }
+
+
 }
