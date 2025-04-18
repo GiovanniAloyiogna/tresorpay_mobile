@@ -1,36 +1,31 @@
 <ion-content [fullscreen]="true">
   <!-- HEADER -->
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-buttons slot="start">
         <!-- Bouton du menu -->
         <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
       <!-- Logo dans la toolbar -->
-      <div class="header-logo">
-        <img
-          src="../../assets/logo-tresorpay.png"
-          alt="TresorPay Logo"
-          class="toolbar-logo"
-        />
+      <div class="text-center">
+        <span>TABLEAU DE BORD</span>
       </div>
     </ion-toolbar>
   </ion-header>
 
   <!-- CONTENU PRINCIPAL -->
-  <div class="ion-padding">
-    <img
-      ngSrc="../../assets/icons/user.jpeg"
-      alt="TresorPay Logo"
-      class="profile-img"
-      height="581"
-      width="810"
-    />
-    <div class="dashboard-profile-text">
-      BIENVENU SUR <span style="color: #f2d52a">TRESORPAY!</span> <br />
-      Alain KASSA-BAYONNE
+  <div class="welcome-row">
+    <div class="welcome-text">
+      BIENVENU SUR <span class="highlight">TRESORPAY!</span><br />
+      <strong>Alain KASSA-BAYONNE</strong>
     </div>
+    <img
+      src="../../assets/logo-tresorpay.png"
+      alt="Logo TresorPay"
+      class="welcome-logo"
+    />
   </div>
+
 
   <!-- ******************************************************-->
   <!-- Input multi -->
@@ -76,161 +71,111 @@
   <!-- End input multi -->
 
   <!-- WIDGET GRID -->
+  <!-- WIDGET GRID -->
   <div class="scrollable-content mx-auto p-3">
     <div class="grid grid-cols-12 gap-4">
-      <!-- ==============================================================================-->
-      <!-- =======================Contenu general des card =============================-->
-      <!-- ============================================================================= -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4"  (click)="redirectTo('sector', 'education')">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-graduation-cap ml-2 p-1 w-12 font-bold"></i>
+
+      <!-- ÉDUCATION -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4" (click)="redirectTo('sector', 'education')">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">EDUCATION</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <i class="pi pi-graduation-cap"></i>
           </div>
         </div>
       </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>SANTE</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-headphones ml-2 p-1 w-12 font-bold"></i>
+
+      <!-- SANTÉ -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">SANTÉ</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <i class="pi pi-headphones"></i>
           </div>
         </div>
       </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold text-surface-900 w-full mb-2">
-            <span>FINANCE</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-euro ml-2 p-1 w-12 font-bold"></i>
+
+      <!-- FINANCE -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">FINANCE</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <i class="pi pi-euro"></i>
           </div>
         </div>
       </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
+
+      <!-- EDUCATION (2) -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">EDUCATION</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <i class="pi pi-arrow-up"></i>
           </div>
         </div>
       </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
+
+      <!-- EDUCATION (3) -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">EDUCATION</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <i class="pi pi-arrow-up"></i>
           </div>
         </div>
       </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
+
+      <!-- EDUCATION (4) -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">EDUCATION</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <i class="pi pi-arrow-up"></i>
           </div>
         </div>
       </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
+
+      <!-- EDUCATION (5) -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">EDUCATION</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <i class="pi pi-arrow-up"></i>
           </div>
         </div>
       </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>EDUCATION</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-arrow-up ml-2 p-1 w-12 font-bold"></i>
+
+      <!-- EDUCATION (6) -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">EDUCATION</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <i class="pi pi-arrow-up"></i>
           </div>
         </div>
       </div>
-      <div class="col-span-4 md:col-span-4 lg:col-span-4 mr-0">
-        <div
-          class="p-1 text-white h-13 rounded-border m-0 bg-center bg-cover bg-no-repeat bg-blue-900 rounded-lg"
-        >
-          <div class="font-bold w-full mb-2">
-            <span>SECTEUR</span>
-          </div>
-          <div
-            class="text-white text-2xl font-bold w-full flex items-center py-1"
-          >
-            150 <i class="pi pi-building-columns ml-2 p-1 w-12 font-bold"></i>
+
+      <!-- SECTEUR -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">SECTEUR</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <i class="pi pi-building-columns"></i>
           </div>
         </div>
       </div>
+
     </div>
   </div>
+
 </ion-content>
 
-<!-- FOOTER -->
-<ion-footer>
-  <ion-toolbar style="color: white">
-    <ion-grid>
-      <ion-row class="ion-justify-content-around">
-        <!-- Bouton Accueil -->
-        <ion-col size="6" class="ion-text-center">
-          <ion-button fill="clear">
-            <ion-icon name="home-outline"></ion-icon>
-          </ion-button>
-          <div style="color: rgb(19, 77, 185)">Accueil</div>
-        </ion-col>
-        <!-- Bouton Historique -->
-        <ion-col size="6" class="ion-text-center">
-          <ion-button fill="clear">
-            <ion-icon name="alarm-outline"></ion-icon>
-          </ion-button>
-          <div style="color: rgb(13, 56, 197)">Historique</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-footer>
