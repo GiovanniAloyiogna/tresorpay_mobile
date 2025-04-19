@@ -17,7 +17,8 @@ export const routes: Routes = [
     path: 'firstscreen',
     loadComponent: () =>
       import('./firstscreen/firstscreen.page').then((m) => m.FirstscreenPage),
-    canActivate: [NoAuthGuard],
+    canActivate: [AuthGuard],
+
   },
   {
     path: 'login',
@@ -44,11 +45,12 @@ export const routes: Routes = [
     path: 'sector',
     loadComponent: () => import('./sector/sector.page').then( m => m.SectorPage)
   },
-  
+
   {
     path: 'sectorform',
     loadComponent: () => import('./sectorform/sectorform.page').then( m => m.SectorformPage)
-  },  {
+  },
+  {
     path: 'inbox',
     loadComponent: () => import('./pages/inbox/inbox.page').then( m => m.InboxPage)
   },

@@ -1,36 +1,29 @@
 <ion-content [fullscreen]="true">
   <!-- HEADER -->
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-buttons slot="start">
         <!-- Bouton du menu -->
         <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
-
       <!-- Logo dans la toolbar -->
-      <div class="header-logo">
-        <img
-          src="../../assets/logo-tresorpay.png"
-          alt="TresorPay Logo"
-          class="toolbar-logo"
-        />
+      <div class="text-center">
+        <span>EDUCATION</span>
       </div>
     </ion-toolbar>
   </ion-header>
 
   <!-- CONTENU PRINCIPAL -->
-  <div class="ion-padding">
-    <img
-      ngSrc="../../assets/icons/user.jpeg"
-      alt="TresorPay Logo"
-      class="profile-img"
-      height="581"
-      width="810"
-    />
-    <div class="dashboard-profile-text">
-      BIENVENU SUR <span style="color: #f2d52a">TRESORPAY!</span> <br />
-      Alain KASSA-BAYONNE
+  <!-- CONTENU PRINCIPAL -->
+  <div class="welcome-row">
+    <div class="welcome-text">
+      <strong>EDUCATION</strong>
     </div>
+    <img
+      src="../../assets/logo-tresorpay.png"
+      alt="Logo TresorPay"
+      class="welcome-logo"
+    />
   </div>
 
   <!-- ******************************************************-->
@@ -121,25 +114,3 @@
 </ion-content>
 
 <!-- FOOTER -->
-<ion-footer>
-  <ion-toolbar style="color: white">
-    <ion-grid>
-      <ion-row class="ion-justify-content-around">
-        <!-- Bouton Accueil -->
-        <ion-col size="6" class="ion-text-center">
-          <ion-button fill="clear">
-            <ion-icon name="home-outline"></ion-icon>
-          </ion-button>
-          <div style="color: rgb(19, 77, 185)">Accueil</div>
-        </ion-col>
-        <!-- Bouton Historique -->
-        <ion-col size="6" class="ion-text-center">
-          <ion-button fill="clear">
-            <ion-icon name="alarm-outline"></ion-icon>
-          </ion-button>
-          <div style="color: rgb(13, 56, 197)">Historique</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-footer>

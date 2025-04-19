@@ -14,13 +14,11 @@ export class AuthService {
 
   constructor() {}
 
-  checkUserAndSendOtp(userData: { email: string; password: string }): boolean {
-    const fakeUser = { email: 'test@test.com', password: '123456' };
+  checkUserAndSendOtp(userData: { phoneNumber: string; password: string }): boolean {
+    const fakeUser = { phone: '123456', mdp: 'azerty' };
 
-    if (
-      userData.email === fakeUser.email &&
-      userData.password === fakeUser.password
-    ) {
+    if (userData.phoneNumber === fakeUser.phone && userData.password === fakeUser.mdp) {
+      console.log('COMPARAISON = TRUE');
       localStorage.setItem('pendingOtpUser', JSON.stringify(fakeUser));
       return true;
     } else {

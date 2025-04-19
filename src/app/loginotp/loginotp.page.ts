@@ -19,6 +19,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { InputOtpModule } from 'primeng/inputotp';
+import {ButtonDirective} from "primeng/button";
 
 @Component({
   selector: 'app-loginotp',
@@ -37,6 +38,7 @@ import { InputOtpModule } from 'primeng/inputotp';
     ReactiveFormsModule,
     FormsModule,
     InputOtpModule,
+    ButtonDirective,
   ],
 })
 export class LoginotpPage implements OnInit, AfterViewInit {
@@ -89,6 +91,7 @@ export class LoginotpPage implements OnInit, AfterViewInit {
     const code = this.inputOtpValue;
 
     if (code && code.length === 6) {
+
       const isSuccess = this.authService.validateOtpAndLogin(code);
 
       if (isSuccess) {
@@ -96,7 +99,7 @@ export class LoginotpPage implements OnInit, AfterViewInit {
         this.inputOtpValue = '';  // Clear OTP value
         this.otpForm.reset(); // Reset the form controls
 
-        this.router.navigate(['/dashboard']);  // Redirect to dashboard
+        this.router.navigate(['/firstscreen']);  // Redirect to dashboard
       } else {
         console.log('Code OTP invalide');
       }

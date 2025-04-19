@@ -8,7 +8,7 @@
       </ion-buttons>
       <!-- Logo dans la toolbar -->
       <div class="text-center">
-        <span>TABLEAU DE BORD</span>
+        <span>PRINCIPAL</span>
       </div>
     </ion-toolbar>
   </ion-header>
@@ -16,8 +16,7 @@
   <!-- CONTENU PRINCIPAL -->
   <div class="welcome-row">
     <div class="welcome-text">
-      BIENVENU SUR <span class="highlight">TRESORPAY!</span><br />
-      <strong>Alain KASSA-BAYONNE</strong>
+      <strong>BIENVENUE SUR</strong>
     </div>
     <img
       src="../../assets/logo-tresorpay.png"
@@ -35,10 +34,11 @@
     </div>
     <p-multiselect
       [options]=""
-      placeholder="Rechercher..."
+      placeholder="Rechercher un secteur..."
       optionLabel="name"
       display="chip"
       [filter]="true"
+      class="ml-5 mr-5"
     >
       <ng-template #selecteditems let-countries>
         @for (country of countries; track country.code) {
@@ -76,12 +76,12 @@
     <div class="grid grid-cols-12 gap-4">
 
       <!-- ÉDUCATION -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4" (click)="redirectTo('sector', 'education')">
+      <div class="col-span-4 text-2xl" (click)="redirectTo('sector', 'education')">
         <div class="dashboard-card">
-          <div class="dashboard-card-title">EDUCATION</div>
+          <div class="dashboard-card-title font-bold">EDUCATION</div>
           <div class="dashboard-card-value">
             <span>150</span>
-            <i class="pi pi-graduation-cap"></i>
+            <ion-icon name="school-outline" size="large"></ion-icon>
           </div>
         </div>
       </div>
@@ -89,10 +89,10 @@
       <!-- SANTÉ -->
       <div class="col-span-4 md:col-span-4 lg:col-span-4">
         <div class="dashboard-card">
-          <div class="dashboard-card-title">SANTÉ</div>
+          <div class="dashboard-card-title font-bold">SANTÉ</div>
           <div class="dashboard-card-value">
             <span>150</span>
-            <i class="pi pi-headphones"></i>
+            <ion-icon name="medkit-outline" size="large"></ion-icon>
           </div>
         </div>
       </div>
@@ -100,79 +100,128 @@
       <!-- FINANCE -->
       <div class="col-span-4 md:col-span-4 lg:col-span-4">
         <div class="dashboard-card">
-          <div class="dashboard-card-title">FINANCE</div>
+          <div class="dashboard-card-title">JUSTICE</div>
           <div class="dashboard-card-value">
             <span>150</span>
-            <i class="pi pi-euro"></i>
+             <ion-icon name="hammer-outline" size="large"></ion-icon>
           </div>
         </div>
       </div>
+
+
+      <!-- FONCIER (5) -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">FONCIER</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+             <ion-icon name="earth-outline" size="large"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOURISME (6) -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">TOURISME</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+             <ion-icon name="airplane-outline" size="large"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAXES -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">INDISTRIE</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <ion-icon name="bulb-outline" size="large"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAXES -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">CULTURE</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <ion-icon name="bonfire-outline" size="large"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- TAXES -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">ARTISANAT</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <ion-icon name="flower-outline" size="large"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <!-- AMANDES (3) -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">AMENDES</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <ion-icon name="reader-outline" size="large"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- TAXES -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">ALIMENTATION</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <ion-icon name="fish-outline" size="large"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- TAXES -->
+      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">AUTRES TAXES...</div>
+          <div class="dashboard-card-value">
+            <span>150</span>
+            <ion-icon name="card-outline" size="large"></ion-icon>
+          </div>
+        </div>
+      </div>
+
 
       <!-- EDUCATION (2) -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
+      <!--<div class="col-span-4 md:col-span-4 lg:col-span-4">
         <div class="dashboard-card">
-          <div class="dashboard-card-title">EDUCATION</div>
+          <div class="dashboard-card-title">DOUANES</div>
           <div class="dashboard-card-value">
             <span>150</span>
-            <i class="pi pi-arrow-up"></i>
+             <ion-icon name="school-outline" size="large"></ion-icon>
           </div>
         </div>
       </div>
 
-      <!-- EDUCATION (3) -->
+      &lt;!&ndash; IMPOTS (4) &ndash;&gt;
       <div class="col-span-4 md:col-span-4 lg:col-span-4">
         <div class="dashboard-card">
-          <div class="dashboard-card-title">EDUCATION</div>
+          <div class="dashboard-card-title">IMPOTS</div>
           <div class="dashboard-card-value">
             <span>150</span>
-            <i class="pi pi-arrow-up"></i>
+             <ion-icon name="school-outline" size="large"></ion-icon>
           </div>
         </div>
-      </div>
-
-      <!-- EDUCATION (4) -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">EDUCATION</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <i class="pi pi-arrow-up"></i>
-          </div>
-        </div>
-      </div>
-
-      <!-- EDUCATION (5) -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">EDUCATION</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <i class="pi pi-arrow-up"></i>
-          </div>
-        </div>
-      </div>
-
-      <!-- EDUCATION (6) -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">EDUCATION</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <i class="pi pi-arrow-up"></i>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTEUR -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">SECTEUR</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <i class="pi pi-building-columns"></i>
-          </div>
-        </div>
-      </div>
+      </div>-->
 
     </div>
   </div>

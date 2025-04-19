@@ -1,24 +1,31 @@
 <ion-content [fullscreen]="true" class="!p-0 !m-0">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-buttons slot="start">
         <!-- Bouton du menu -->
         <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
-
       <!-- Logo dans la toolbar -->
-      <div class="header-logo">
-        <img
-          src="../../assets/logo-tresorpay.png"
-          alt="TresorPay Logo"
-          class="toolbar-logo"
-        />
+      <div class="text-center">
+        <span>EDUCATION</span>
       </div>
     </ion-toolbar>
   </ion-header>
 
+  <!-- CONTENU PRINCIPAL -->
+  <div class="welcome-row">
+    <div class="welcome-text">
+      <strong>EDUCATION</strong>
+    </div>
+    <img
+      src="../../assets/logo-tresorpay.png"
+      alt="Logo TresorPay"
+      class="welcome-logo"
+    />
+  </div>
+
   <!-- FORM SECTION -->
-  <div class="flex items-center justify-center min-h-screen px-2" *ngIf="showForm">
+  <div class="flex items-center justify-center px-2" *ngIf="showForm">
     <form class="w-full max-w-md bg-white rounded-lg p-6 space-y-4">
       <!-- Établissement -->
       <div class="form-group">
@@ -29,7 +36,7 @@
       <!-- Motif de paiement -->
       <div class="form-group">
         <label for="motif" class="block text-sm font-medium text-gray-700">Motif de paiement</label>
-        <p-select name="motif" [(ngModel)]="dropdownValue" [options]="dropdownValues" optionLabel="name" placeholder="Mode de paiement" class="w-full mt-1"></p-select>
+        <p-select name="motif" [(ngModel)]="dropdownValue" [options]="dropdownValues" optionLabel="name" placeholder="Motif de paiement" class="w-full mt-1"></p-select>
       </div>
 
       <!-- Montant -->
@@ -52,44 +59,45 @@
 
       <!-- Boutons -->
       <div class="flex items-center justify-between pt-4">
-        <button pButton type="button" style="background-color: #222428; border: none; color: white" class="w-36 p-button-rounded text-white px-4 py-2 rounded-md text-sm" (click)="goBackToForm()">Précédent</button>
+        <button pButton type="button" style="background-color: #a8aaaa; border: none; color: white" class="w-36 p-button-rounded text-white px-4 py-2 rounded-md text-sm" (click)="goBackToForm()">Précédent</button>
         <button pButton type="button" style="background-color: #234477; border: none; color: white" class="w-36 p-button-rounded bg-blue-600 text-white px-4 py-2 rounded-md text-sm" (click)="goToPaymentMethods()">Suivant</button>
       </div>
     </form>
   </div>
 
   <!-- PAYMENT METHOD SECTION -->
+  <!-- PAYMENT METHOD SECTION -->
   <div class="grid grid-cols-12 gap-8" *ngIf="!showForm">
 
-    <ion-card color="primary" class="col-span-12">
-      <ion-card-header>
-        <ion-card-title>Méthodes de paiement</ion-card-title>
-        <ion-card-subtitle>Sélectionnez une méthode</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <!-- Replace with real payment options -->
-        <p>Carte bancaire, Mobile Money, Virement bancaire...</p>
-
+    <ion-card color="primary" class="col-span-12 h-12.5">
+      <ion-card-content class="text-center">
+        <ion-label class="text-lg font-bold">MOYENS DE PAIEMENTS</ion-label>
       </ion-card-content>
-
     </ion-card>
 
-    <div class="col-span-12 flex justify-center items-center  py-4">
-      <div class="grid grid-cols-4 md:grid-cols-4 gap-1 w-full">
-        <ion-img
-          src="assets/airtelmoney.png"
-          alt="Airtel"
-          class="w-30 h-30 object-contain"
-        ></ion-img>
-        <ion-img
-          src="assets/mobilemoney.jpg"
-          alt="Moov"
-          class="w-30 h-30 object-contain"
-        ></ion-img>
-        <!-- Ajoute plus d'images ici si besoin -->
+    <div class="col-span-12 flex justify-center items-center py-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full max-w-4xl">
+        <ion-card class="flex items-center justify-center p-4 shadow-md">
+          <ion-img
+            src="assets/airtelmoney.png"
+            alt="Airtel"
+            class="w-50 h-50 object-contain"
+          ></ion-img>
+        </ion-card>
+
+        <ion-card class="flex items-center justify-center p-4 shadow-md">
+          <ion-img
+            src="assets/mobilemoney.jpg"
+            alt="Moov"
+            class="w-50 h-50 object-contain"
+          ></ion-img>
+        </ion-card>
+
+        <!-- Tu peux continuer à ajouter d'autres options de paiement ici -->
       </div>
     </div>
   </div>
+
 
 </ion-content>
 

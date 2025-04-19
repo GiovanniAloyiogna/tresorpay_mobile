@@ -36,17 +36,20 @@
           </div>
 
           <button
-            pButton
-            type="submit"
-            label="Confirmer"
-            style="
-              background-color: var(--blue-color);
-              color: white;
-              border: none;
-            "
-            class="w-full p-button-rounded p-button-warning p-button-sm bg-blue-color mb-4"
-            [disabled]="!inputOtpValue || inputOtpValue.length < 6"
-          ></button>
+              pButton
+              type="submit"
+              label="VALIDER"
+              style="
+                background-color: #019b5b;
+                font-weight: bold;
+                color: white;
+                border: none;
+              "
+              class="w-40 p-button-rounded p-button-warning p-button-sm mb-4"
+              [disabled]="!inputOtpValue || inputOtpValue.length < 6"
+          >
+
+          </button>
         </form>
 
         <div class="mt-4 text-sm text-center text-gray-500">
