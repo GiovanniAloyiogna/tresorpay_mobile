@@ -29,46 +29,105 @@
     <form class="w-full max-w-md bg-white rounded-lg p-6 space-y-4">
       <!-- Établissement -->
       <div class="form-group">
-        <label for="etablissement" class="block text-sm font-medium text-gray-700">Etablissement</label>
-        <input type="number" id="etablissement" name="etablissement" placeholder="Etablissement" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        <label
+          for="etablissement"
+          class="block text-sm font-medium text-gray-700"
+          >Etablissement</label
+        >
+        <input
+          type="number"
+          id="etablissement"
+          name="etablissement"
+          placeholder="Etablissement"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
       </div>
 
       <!-- Motif de paiement -->
       <div class="form-group">
-        <label for="motif" class="block text-sm font-medium text-gray-700">Motif de paiement</label>
-        <p-select name="motif" [(ngModel)]="dropdownValue" [options]="dropdownValues" optionLabel="name" placeholder="Motif de paiement" class="w-full mt-1"></p-select>
+        <label for="motif" class="block text-sm font-medium text-gray-700"
+          >Motif de paiement</label
+        >
+        <p-select
+          name="motif"
+          [(ngModel)]="dropdownValue"
+          [options]="dropdownValues"
+          optionLabel="name"
+          placeholder="Motif de paiement"
+          class="w-full mt-1"
+        ></p-select>
       </div>
 
       <!-- Montant -->
       <div class="form-group">
-        <label for="montant" class="block text-sm font-medium text-gray-700">Montant</label>
-        <input type="number" id="montant" name="montant" placeholder="Montant à payer" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        <label for="montant" class="block text-sm font-medium text-gray-700"
+          >Montant</label
+        >
+        <input
+          type="number"
+          id="montant"
+          name="montant"
+          placeholder="Montant à payer"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
       </div>
 
       <!-- Initiateur -->
       <div class="form-group">
-        <label for="initiateur" class="block text-sm font-medium text-gray-700">Initiateur</label>
-        <input type="text" id="initiateur" name="initiateur" placeholder="Nom de l'initiateur" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        <label for="initiateur" class="block text-sm font-medium text-gray-700"
+          >Initiateur</label
+        >
+        <input
+          type="text"
+          id="initiateur"
+          name="initiateur"
+          placeholder="Nom de l'initiateur"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
       </div>
 
       <!-- Bénéficiaire -->
       <div class="form-group">
-        <label for="beneficiaire" class="block text-sm font-medium text-gray-700">Bénéficiaire</label>
-        <input type="text" id="beneficiaire" name="beneficiaire" placeholder="Nom du bénéficiaire" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        <label
+          for="beneficiaire"
+          class="block text-sm font-medium text-gray-700"
+          >Bénéficiaire</label
+        >
+        <input
+          type="text"
+          id="beneficiaire"
+          name="beneficiaire"
+          placeholder="Nom du bénéficiaire"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
       </div>
 
       <!-- Boutons -->
       <div class="flex items-center justify-between pt-4">
-        <button pButton type="button" style="background-color: #a8aaaa; border: none; color: white" class="w-36 p-button-rounded text-white px-4 py-2 rounded-md text-sm" (click)="goBackToForm()">Précédent</button>
-        <button pButton type="button" style="background-color: #234477; border: none; color: white" class="w-36 p-button-rounded bg-blue-600 text-white px-4 py-2 rounded-md text-sm" (click)="goToPaymentMethods()">Suivant</button>
+        <button
+          pButton
+          type="button"
+          style="background-color: #a8aaaa; border: none; color: white"
+          class="w-36 p-button-rounded text-white px-4 py-2 rounded-md text-sm"
+          (click)="goBackToForm()"
+        >
+          Précédent
+        </button>
+        <button
+          pButton
+          type="button"
+          style="background-color: #234477; border: none; color: white"
+          class="w-36 p-button-rounded bg-blue-600 text-white px-4 py-2 rounded-md text-sm"
+          (click)="goToPaymentMethods()"
+        >
+          Suivant
+        </button>
       </div>
     </form>
   </div>
 
   <!-- PAYMENT METHOD SECTION -->
-  <!-- PAYMENT METHOD SECTION -->
   <div class="grid grid-cols-12 gap-8" *ngIf="!showForm">
-
     <ion-card color="primary" class="col-span-12 h-12.5">
       <ion-card-content class="text-center">
         <ion-label class="text-lg font-bold">MOYENS DE PAIEMENTS</ion-label>
@@ -76,28 +135,33 @@
     </ion-card>
 
     <div class="col-span-12 flex justify-center items-center py-4">
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full max-w-4xl">
-        <ion-card class="flex items-center justify-center p-4 shadow-md">
+      <div
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full max-w-4xl"
+      >
+        <ion-card
+          class="flex items-center justify-center p-2 shadow-md w-32 h-32"
+          (click)="redirectToPayment('/payment-option', 'Airtel')"
+        >
           <ion-img
             src="assets/airtelmoney.png"
             alt="Airtel"
-            class="w-50 h-50 object-contain"
+            class="w-full h-full object-contain"
           ></ion-img>
         </ion-card>
 
-        <ion-card class="flex items-center justify-center p-4 shadow-md">
+        <ion-card
+          class="flex items-center justify-center p-2 shadow-md w-32 h-32"
+          (click)="redirectToPayment('/payment-option', 'Moov')"
+        >
           <ion-img
             src="assets/mobilemoney.jpg"
             alt="Moov"
-            class="w-50 h-50 object-contain"
+            class="w-full h-full object-contain"
           ></ion-img>
         </ion-card>
 
-        <!-- Tu peux continuer à ajouter d'autres options de paiement ici -->
+        <!-- Autres méthodes de paiement -->
       </div>
     </div>
   </div>
-
-
 </ion-content>
-

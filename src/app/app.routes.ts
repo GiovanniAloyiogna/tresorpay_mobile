@@ -66,7 +66,11 @@ export const routes: Routes = [
   {
     path: 'paymentmeduims',
     loadComponent: () => import('./paymentmeduims/paymentmeduims.page').then( m => m.PaymentmeduimsPage)
+  },  {
+    path: 'payment-option',
+    loadComponent: () => import('./payment-option/payment-option.page').then( m => m.PaymentOptionPage)
   },
+
 
 
 ];

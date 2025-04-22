@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import {
   IonText,
   IonSelect,
@@ -37,6 +39,8 @@ import {
   alarmOutline,
   mapOutline,
   locateOutline,
+  arrowBackCircle,
+  checkmarkCircleOutline,
 } from 'ionicons/icons';
 
 import { ButtonModule } from 'primeng/button';
@@ -45,14 +49,13 @@ import { Select } from 'primeng/select';
 import { MultiSelect } from 'primeng/multiselect';
 import { Drawer } from 'primeng/drawer';
 import { Avatar } from 'primeng/avatar';
-import { NgIf, NgOptimizedImage } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Dropdown } from 'primeng/dropdown';
+import { NgIf, NgOptimizedImage } from '@angular/common';
 
 @Component({
-  selector: 'app-sectorform',
-  templateUrl: './sectorform.page.html',
-  styleUrls: ['./sectorform.page.scss'],
+  selector: 'app-payment-option',
+  templateUrl: './payment-option.page.html',
+  styleUrls: ['./payment-option.page.scss'],
   standalone: true,
   imports: [
     IonContent,
@@ -82,9 +85,8 @@ import { Dropdown } from 'primeng/dropdown';
     IonIcon,
     NgOptimizedImage,
     FormsModule,
-    NgIf,
-
     ReactiveFormsModule,
+    NgIf,
     IonCardTitle,
     IonCardSubtitle,
     IonCard,
@@ -93,26 +95,17 @@ import { Dropdown } from 'primeng/dropdown';
     IonImg,
   ],
 })
-export class SectorformPage implements OnInit {
-  floatValue: any = null;
-  selectButtonValue: any = null;
-  dropdownValue: any = null;
-  listboxValue: any = null;
-  autoValue: any[] | undefined;
+export class PaymentOptionPage implements OnInit {
+  loginForm!: FormGroup;
   showForm: boolean = true;
   visible: boolean = false;
+  method: string = ''; 
 
-  dropdownValues = [
-    { name: 'Inscription', code: 'NY' },
-    { name: 'Divers', code: 'RM' },
-    { name: 'Frais scolaire', code: 'LDN' },
-  ];
-
-  toggleValue: boolean = false;
-  treeSelectNodes: any[] = [];
-  selectedNode: any = null;
-
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private route: ActivatedRoute 
+  ) {
     addIcons({
       add,
       funnelOutline,
@@ -121,39 +114,56 @@ export class SectorformPage implements OnInit {
       alarmOutline,
       mapOutline,
       locateOutline,
+      arrowBackCircle,
+      checkmarkCircleOutline,
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    // Lire la méthode depuis les paramètres d’URL
+    this.route.queryParams.subscribe((params) => {
+      this.method = params['method'] || 'Méthode inconnue';
+    });
 
-  redirectTo(url: string): void {
-    this.router
-      .navigate([url])
-      .then(() => {
-        console.log('Navigation has finished');
-      })
-      .catch((err) => {
-        console.error(`Failed to navigate to ${url}: ${err}`);
-      });
+    this.loginForm = this.fb.group({
+      phoneNumber: [
+        '',
+        [Validators.required, Validators.pattern('^\\d{8,15}$')],
+      ],
+    });
+  }
+
+  onSubmitNumber(): void {
+    if (this.loginForm.valid) {
+      const phone = this.loginForm.value.phoneNumber;
+
+      this.router
+        .navigate(['/confirmation-paiement'], {
+          queryParams: {
+            phone: phone,
+            method: this.method.toLowerCase(), // facultatif
+          },
+        })
+        .then(() => {
+          console.log('Redirection réussie vers la confirmation.');
+        })
+        .catch((err) => {
+          console.error('Erreur de redirection :', err);
+        });
+    } else {
+      console.warn('Formulaire invalide');
+      this.loginForm.markAllAsTouched();
+    }
   }
 
   closeCallback($event: MouseEvent) {
     this.visible = false;
   }
 
-  onSubmit() {
-    console.log('Form submitted with values:', {
-      floatValue: this.floatValue,
-      selectButtonValue: this.selectButtonValue,
-      dropdownValue: this.dropdownValue,
-      listboxValue: this.listboxValue,
-      autoValue: this.autoValue,
-    });
-  }
-
   openDrawer() {
     this.visible = true;
   }
+
   goToPaymentMethods() {
     this.showForm = false;
   }
@@ -161,6 +171,7 @@ export class SectorformPage implements OnInit {
   goBackToForm() {
     this.showForm = true;
   }
+
   redirectToPayment(url: string, method: string): void {
     this.router
       .navigate([url], { queryParams: { method } })
