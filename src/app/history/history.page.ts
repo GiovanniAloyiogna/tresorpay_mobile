@@ -22,11 +22,14 @@ import {
   IonList,
   IonItem,
   IonFooter,
-  IonGrid
+  IonGrid,
+  NavController      // ← ajouter NavController ici
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { arrowBack } from 'ionicons/icons';
+import {arrowBack, arrowBackOutline} from 'ionicons/icons';
 import { Router } from '@angular/router';
+import { MultiSelect } from 'primeng/multiselect';
+import {SelectItem} from "primeng/api";
 
 interface Transaction {
   date: string;
@@ -52,7 +55,6 @@ interface Transaction {
     IonButtons,
     IonMenuButton,
     IonButton,
-     IonToolbar,
     IonRow,
     IonCol,
     IonSegment,
@@ -64,70 +66,54 @@ interface Transaction {
     IonFooter,
     IonGrid,
     CommonModule,
-    FormsModule
+    FormsModule,
+    MultiSelect
   ]
 })
 export class HistoryPage implements OnInit {
-  transactions: Transaction[] = [
-    { date: '20-10-2025', description: 'Frais scolaire', amount: 904.0, variation: -1.80 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-04-2025', description: 'Inscription', amount: 1893.0, variation: -3.20 }
+
+  // 1) La liste statique de secteurs
+  sectors: SelectItem[] = [
+    { label: 'Tous', value: 'all' },
+    { label: 'Santé', value: 'sante' },
+    { label: 'Éducation', value: 'education' },
+    { label: 'Transport', value: 'transport' },
+    { label: 'Télécom', value: 'telecom' },
+    // … ajoutez-en autant que nécessaire …
   ];
 
-  filteredTransactions: Transaction[] = [];
-  searchTerm: string = '';
-  currentSegment: string = 'tous';
+  // 2) Le(s) secteur(s) sélectionné(s)
+  selectedSectors: any[] = [];
 
-  constructor(private router: Router) {
-    addIcons({ arrowBack });
+
+  transactions: Transaction[] = [
+    { date: '20-10-2025', description: 'Frais scolaire', amount: 904.0, variation: +1.80 },
+    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
+    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
+    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
+    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
+    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
+    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
+    // … autres entrées …
+  ];
+  filteredTransactions: Transaction[] = [];
+  searchTerm = '';
+  currentSegment = 'tous';
+
+  constructor(
+    private router: Router,
+    private navCtrl: NavController    // ← injection ici
+  ) {
+    addIcons({ arrowBack, arrowBackOutline });
   }
 
   ngOnInit() {
     this.filteredTransactions = this.transactions;
   }
 
-  onSearchChange(event: any) {
-    this.searchTerm = event.detail.value;
-    this.filterTransactions();
-  }
+  // … vos autres méthodes …
 
-  onSegmentChanged(event: any) {
-    this.currentSegment = event.detail.value;
-    this.filterTransactions();
-  }
-
-  filterTransactions() {
-    let filtered = this.transactions;
-    if (this.currentSegment === 'inscriptions') {
-      filtered = filtered.filter(t => t.description.toLowerCase() === 'inscription');
-    }
-    if (this.searchTerm && this.searchTerm.trim().length > 0) {
-      const searchLower = this.searchTerm.toLowerCase();
-      filtered = filtered.filter(t =>
-        t.description.toLowerCase().includes(searchLower) ||
-        t.date.toLowerCase().includes(searchLower)
-      );
-    }
-    this.filteredTransactions = filtered;
-  }
-
-  openFilter() {
-    console.log('Ouverture du filtre...');
-  }
-
-  goHome() {
-    console.log('Navigation vers Accueil...');
-    this.router.navigate(['/home']);
-  }
-
-  goHistory() {
-    console.log('Navigation vers Historique...');
-    this.router.navigate(['/history']);
+  goBack() {
+    this.navCtrl.back();
   }
 }

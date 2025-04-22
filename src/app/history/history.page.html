@@ -1,44 +1,86 @@
-<ion-header >
-  <ion-toolbar>
-    <!-- Bouton de menu -->
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
+<ion-content [fullscreen]="true">
+  <!-- HEADER -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <!-- Bouton du menu -->
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <!-- Logo dans la toolbar -->
+      <div class="text-center">
+        <span>TRANSACTIONS</span>
+      </div>
+    </ion-toolbar>
+  </ion-header>
 
-    <!-- Logo -->
-    <div class="header-logo">
-      <img src="../../assets/logo-tresorpay.png" alt="TresorPay Logo" class="toolbar-logo" />
+  <!-- CONTENU PRINCIPAL -->
+  <!-- SECTION ACCUEIL -->
+  <div class="welcome-row flex items-center">
+    <!-- Bouton retour -->
+    <ion-button fill="clear" size="small" (click)="goBack()">
+      <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #fae12f"></ion-icon>
+    </ion-button>
+
+    <!-- Texte de bienvenue -->
+    <div class="welcome-text">
+      <strong>BIENVENUE SUR</strong>
     </div>
 
-    <!-- Bouton de filtre (optionnel) -->
-    <ion-buttons slot="end">
-      <ion-button fill="clear" (click)="openFilter()">
-        <ion-icon slot="icon-only" name="options-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+    <!-- Logo -->
+    <img
+      src="../../assets/logo-tresorpay.png"
+      alt="Logo TresorPay"
+      class="welcome-logo ml-2"
+    />
+  </div>
 
-<ion-content>
-  <!-- En-tête de la page, titre "Transactions" -->
-  <div class="page-breadcrumb">
-    <div class="header-title">
-      <h3>Transactions</h3>
+
+
+  <!-- ******************************************************-->
+  <!-- Input multi -->
+  <div class="card flex flex-col gap-4">
+    <div class="font-semibold text-xl text-red-50">
+      ------------------------------------------------
+    </div>
+
+    <!-- Multiselect secteurs -->
+    <p-multiSelect
+      [options]="sectors"
+      [(ngModel)]="selectedSectors"
+      placeholder="Rechercher un secteur..."
+      optionLabel="label"
+      optionValue="value"
+      display="chip"
+      [filter]="true"
+      class="ml-5 mr-5"
+    >
+      <!-- Option dans la liste -->
+      <ng-template pTemplate="item" let-sector>
+        <div class="flex items-center">
+        <span class="mr-2">
+          <!-- icône ou drapeau, si besoin -->
+        </span>
+          <div>{{ sector.label }}</div>
+        </div>
+      </ng-template>
+
+      <!-- Chip sélectionné -->
+      <ng-template pTemplate="selectedItems" let-items>
+        <div *ngFor="let sector of items"
+             class="inline-flex items-center py-1 px-2 bg-primary text-primary-contrast rounded-border mr-2">
+          {{ sector.label }}
+        </div>
+      </ng-template>
+    </p-multiSelect>
+
+    <div class="font-semibold text-xl text-red-50">
+      ------------------------------------------------
     </div>
   </div>
 
-  <!-- Barre de recherche -->
-  <ion-searchbar placeholder="Recherche..." (ionInput)="onSearchChange($event)"></ion-searchbar>
+  <!-- ******************************************************-->
+  <!-- End input multi -->
 
-  <!-- Segment pour filtrer entre "Tous" et "Inscriptions" -->
-  <ion-segment value="tous" (ionChange)="onSegmentChanged($event)">
-    <ion-segment-button value="tous">
-      <ion-label>Tous</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="inscriptions">
-      <ion-label>Inscriptions</ion-label>
-    </ion-segment-button>
-  </ion-segment>
 
   <!-- Liste des transactions -->
   <ion-list>
@@ -62,29 +104,5 @@
   </ion-list>
 
 </ion-content>
-
-<!-- Footer avec la couleur bleue et les icônes mises à jour -->
-<ion-footer>
-  <ion-toolbar style="color: white;">
-    <ion-grid>
-      <ion-row class="ion-justify-content-around">
-        <!-- Bouton Accueil -->
-        <ion-col size="6" class="ion-text-center">
-          <ion-button fill="clear">
-            <ion-icon name="home-outline"></ion-icon>
-          </ion-button>
-          <div style="color: rgb(19, 77, 185);">Accueil</div>
-        </ion-col>
-        <!-- Bouton Historique -->
-        <ion-col size="6" class="ion-text-center">
-          <ion-button fill="clear">
-            <ion-icon name="alarm-outline"></ion-icon>
-          </ion-button>
-          <div style="color: rgb(13, 56, 197);">Historique</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-footer>
 
 
