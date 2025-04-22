@@ -67,6 +67,19 @@ export const routes: Routes = [
     path: 'paymentmeduims',
     loadComponent: () => import('./paymentmeduims/paymentmeduims.page').then( m => m.PaymentmeduimsPage)
   },
+  {
+    path: 'facture',
+    loadComponent: () => import('./facture/facture.page').then( m => m.FacturePage)
+  },  {
+    path: 'detail-transactions',
+    loadComponent: () => import('./detail-transactions/detail-transactions.page').then( m => m.DetailTransactionsPage)
+  },
+  {
+    path: 'validation-paiement',
+    loadComponent: () => import('./validation-paiement/validation-paiement.page').then( m => m.ValidationPaiementPage)
+  },
+
+
 
 
 ];

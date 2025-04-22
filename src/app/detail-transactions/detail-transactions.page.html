@@ -1,0 +1,97 @@
+<ion-content [fullscreen]="true">
+
+  <!-- HEADER -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <!-- Bouton du menu -->
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <!-- Titre -->
+      <div class="text-center">
+        <span>DETAIL</span>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- SECTION ACCUEIL -->
+  <div class="welcome-row flex items-center">
+    <!-- Bouton retour -->
+    <ion-button fill="clear" size="small" (click)="goBack()">
+      <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #fae12f"></ion-icon>
+    </ion-button>
+
+    <!-- Texte de bienvenue -->
+    <div class="welcome-text">
+      <strong>BIENVENUE SUR</strong>
+    </div>
+
+    <!-- Logo -->
+    <img
+      src="../../assets/logo-tresorpay.png"
+      alt="Logo TresorPay"
+      class="welcome-logo ml-2"
+    />
+
+  </div>
+
+  <!-- Bandeau TRANSACTIONS -->
+  <div class="transactions-band">
+    <div class="text-xl text-green-500 font-bold">
+      ---------------------------------------
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div class="detail-content">
+
+    <!-- Icône facture -->
+    <div class="icon-container">
+      <ion-icon name="receipt-outline"></ion-icon>
+    </div>
+
+    <!-- Grille des détails -->
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" class="label">ÉTABLISSEMENT</ion-col>
+        <ion-col size="6" class="value">UNIVERSITE OMAR BONGO ONDIMBA</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class="label">BÉNÉFICIAIRE</ion-col>
+        <ion-col size="6" class="value">ONDO NGUEMA</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class="label">INITIATEUR</ion-col>
+        <ion-col size="6" class="value">Alain KASSA‑BAYONNE</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class="label">MODE DE PAIEMENT</ion-col>
+        <ion-col size="6" class="value">ARTEL MONEY</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class="label">DATE</ion-col>
+        <ion-col size="6" class="value">08-04-2025</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class="label">COMPTE CRÉDITEUR</ion-col>
+        <ion-col size="6" class="value">077898709</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Séparateur -->
+    <div class="divider"></div>
+
+    <!-- Montant -->
+    <div class="amount-row">
+      <span>Montant</span>
+      <strong>10000 F</strong>
+    </div>
+
+    <!-- Bouton Valider -->
+    <ion-button expand="block" class="validate-button">
+      VALIDER
+    </ion-button>
+
+  </div>
+
+</ion-content>

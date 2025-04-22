@@ -72,8 +72,8 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      nom: ['', [Validators.required, Validators.minLength(6)]],
-      prenom: ['', [Validators.required, Validators.minLength(6)]],
+      nom: ['', [Validators.required]],
+      prenom: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^[0-9]*$')]],
@@ -112,7 +112,9 @@ export class RegisterPage implements OnInit {
 
       this.http.post(`${environment.apiUrl}/compte/register`, registrationData).subscribe({
         next: (response) => {
-          console.log(response);
+
+          console.log("res:"+response);
+
           this.loading = false;
           this.router.navigate(['/login']);
         },

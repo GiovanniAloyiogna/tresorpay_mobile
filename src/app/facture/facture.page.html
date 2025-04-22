@@ -1,0 +1,49 @@
+<ion-content [fullscreen]="true">
+
+<!-- HEADER -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!-- Bouton du menu -->
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <!-- Logo dans la toolbar -->
+    <div class="text-center">
+      <span>FACTURE</span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<!-- CONTENU PRINCIPAL -->
+<!-- SECTION ACCUEIL -->
+<div class="welcome-row flex items-center">
+  <!-- Bouton retour -->
+  <ion-button fill="clear" size="small" (click)="goBack()">
+    <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #fae12f"></ion-icon>
+  </ion-button>
+
+  <!-- Texte de bienvenue -->
+  <div class="welcome-text">
+    <strong>BIENVENUE SUR</strong>
+  </div>
+
+  <!-- Logo -->
+  <img
+    src="../../assets/logo-tresorpay.png"
+    alt="Logo TresorPay"
+    class="welcome-logo ml-2"
+  />
+  <div class="text-xl text-blue-500 font-bold">
+    -------------------------------------------
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</ion-content>
