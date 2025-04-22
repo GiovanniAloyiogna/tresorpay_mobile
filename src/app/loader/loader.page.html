@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true" class="flex items-center justify-center">
+  <!-- HEADER -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <div class="text-center">
+        <span>LOADER</span>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- CENTRÉ SUR LA PAGE -->
+  <div
+    class="flex flex-col items-center justify-center w-full h-full text-center p-4"
+  >
+    <ion-icon
+      name="phone-portrait-outline"
+      style="font-size: 8rem; color:  #019b5b; margin-bottom: 3rem;"
+    ></ion-icon>
+
+    <div class="mt-6 text-base">
+      En attente de la saisie du code PIN du compte créditeur en vue de la
+      validation de la transaction...
+    </div>
+
+    <h3 class="mt-4 text-lg font-bold">EN COURS...</h3>
+  </div>
+</ion-content>

@@ -70,6 +70,14 @@ export const routes: Routes = [
     path: 'payment-option',
     loadComponent: () => import('./payment-option/payment-option.page').then( m => m.PaymentOptionPage)
   },
+  {
+    path: 'loader',
+    loadComponent: () => import('./loader/loader.page').then( m => m.LoaderPage)
+  },
+  {
+    path: 'bill',
+    loadComponent: () => import('./bill/bill.page').then( m => m.BillPage)
+  },
 
 
 
