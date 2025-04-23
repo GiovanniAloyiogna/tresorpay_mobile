@@ -45,7 +45,7 @@ import {
   airplaneOutline,
   cashOutline,
   bonfireOutline,
-  flowerOutline, fishOutline, cardOutline, bulbOutline,
+  flowerOutline, fishOutline, cardOutline, bulbOutline, carOutline,
 } from 'ionicons/icons';
 import { ButtonModule } from 'primeng/button';
 import { Drawer } from 'primeng/drawer';
@@ -193,7 +193,7 @@ export class DashboardPage implements OnInit {
 
   constructor(private router: Router) {
     addIcons({ add, funnelOutline, schoolOutline, homeOutline, alarmOutline, medkitOutline, hammerOutline, readerOutline,
-      earthOutline, airplaneOutline, cashOutline, bonfireOutline, flowerOutline, fishOutline, cardOutline, bulbOutline });
+      earthOutline, airplaneOutline, cashOutline, bonfireOutline, flowerOutline, fishOutline, cardOutline, bulbOutline, carOutline });
   }
 
   ngOnInit() {}
