@@ -23,14 +23,21 @@
   <!-- PAYMENT METHOD SECTION -->
   <div class="flex items-center justify-center px-4 mt-10">
     <div class="w-full max-w-md bg-white rounded-lg p-4 ">
-      <ion-label class="block text-left font-semibold text-base mb-6 mt-4 flex items-center gap-2">
-        <ion-icon
-          name="checkmark-circle-outline"
-          class="text-green-600"
-          style="font-size: 1.5rem"
-        ></ion-icon>
-        <span class="text-base">PAIEMENT PAR {{ method }}</span>
-      </ion-label>
+
+      <!-- ******************************************************-->
+      <ion-card color="primary" class="col-span-12 h-12.5">
+        <ion-card-content class="text-center">
+          <ion-label class="block text-left font-semibold text-base mb-2 mt-2 flex items-center gap-2">
+            <ion-icon
+              name="checkmark-circle-outline"
+              class="text-green-600"
+              style="font-size: 1.5rem"
+            ></ion-icon>
+            <span class="text-base">PAIEMENT PAR {{ method }}</span>
+          </ion-label>
+        </ion-card-content>
+      </ion-card>
+      <!-- ******************************************************-->
 
       <form
         [formGroup]="loginForm"

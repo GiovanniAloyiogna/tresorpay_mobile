@@ -27,7 +27,15 @@
 
   <!-- FORM SECTION -->
   <div class="flex items-center justify-center px-2" *ngIf="showForm">
-    <form class="w-full max-w-md bg-white rounded-lg p-6 space-y-4">
+
+    <form class="w-full max-w-md bg-white rounded-lg p-6 space-y-2">
+      <!-- ******************************************************-->
+      <ion-card color="primary" class="col-span-12 h-12.5">
+        <ion-card-content class="text-center">
+          <ion-label class="text-lg font-bold">INITIATION DE LA TRANSACTION</ion-label>
+        </ion-card-content>
+      </ion-card>
+      <!-- ******************************************************-->
       <!-- Établissement -->
       <div class="form-group">
         <label
@@ -128,19 +136,20 @@
   </div>
 
   <!-- PAYMENT METHOD SECTION -->
-  <div class="grid grid-cols-12 gap-8" *ngIf="!showForm">
+  <div class="" *ngIf="!showForm">
+    <!-- Titre -->
     <ion-card color="primary" class="col-span-12 h-12.5">
       <ion-card-content class="text-center">
         <ion-label class="text-lg font-bold">MOYENS DE PAIEMENTS</ion-label>
       </ion-card-content>
     </ion-card>
 
-    <div class="col-span-12 flex justify-center items-center py-4">
-      <div
-        class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 w-full max-w-4xl"
-      >
+    <!-- Grille des moyens de paiement -->
+    <div class="flex justify-center items-center">
+      <div class="grid grid-cols-3 gap-2 w-full max-w-4xl">
+
         <ion-card
-          class="flex items-center justify-center p-2 shadow-amber-50 w-25 h-25"
+          class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
           (click)="redirectToPayment('/payment-option', 'Airtel')"
         >
           <ion-img
@@ -151,28 +160,41 @@
         </ion-card>
 
         <ion-card
-          class="flex items-center justify-center p-2 shadow-amber-50 w-25 h-25"
+          class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
           (click)="redirectToPayment('/payment-option', 'Moov')"
         >
           <ion-img
-            src="assets/mobilemoney.jpg"
+            src="assets/moovmoney.png"
             alt="Moov"
             class="w-full h-full object-contain"
           ></ion-img>
         </ion-card>
+
         <ion-card
-          class="flex items-center justify-center p-2 shadow-amber-50 w-25 h-25"
-          (click)="redirectToPayment('/payment-option', 'Moov')"
+          class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
+          (click)="redirectToPayment('/payment-option', 'ClickPay')"
         >
           <ion-img
-            src="assets/clickpay_logo.png"
+            src="assets/clickpay.png"
             alt="ClickPay"
             class="w-full h-full object-contain"
           ></ion-img>
         </ion-card>
 
-        <!-- Autres méthodes de paiement -->
+        <ion-card
+          class="flex items-center justify-center aspect-square p-2 shadow-lg cursor-pointer"
+          (click)="redirectToPayment('/payment-option', 'VISA')"
+        >
+          <ion-img
+            src="assets/visa.png"
+            alt="VISA"
+            class="w-full h-full object-contain"
+          ></ion-img>
+        </ion-card>
+
       </div>
     </div>
   </div>
+
+
 </ion-content>

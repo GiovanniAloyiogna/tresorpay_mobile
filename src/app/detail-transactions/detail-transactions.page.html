@@ -36,62 +36,69 @@
   </div>
 
   <!-- Bandeau TRANSACTIONS -->
-  <div class="transactions-band">
-    <div class="text-xl text-green-500 font-bold">
-      ---------------------------------------
-    </div>
-  </div>
+  <!-- ******************************************************-->
+  <ion-card class="col-span-12 h-12.5 bg-bluetresor text-white">
+    <ion-card-content class="text-center">
+      <ion-label class="text-lg font-bold">RECAPITULATIF TRANSACTION</ion-label>
+    </ion-card-content>
+  </ion-card>
+  <!-- ******************************************************-->
 
   <!-- CONTENU PRINCIPAL -->
-  <div class="detail-content">
+  <!-- CONTENU PRINCIPAL -->
+  <div class="detail-content p-4">
 
-    <!-- Icône facture -->
-    <div class="icon-container">
-      <ion-icon name="receipt-outline"></ion-icon>
-    </div>
-
-    <!-- Grille des détails -->
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6" class="label">ÉTABLISSEMENT</ion-col>
-        <ion-col size="6" class="value">UNIVERSITE OMAR BONGO ONDIMBA</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6" class="label">BÉNÉFICIAIRE</ion-col>
-        <ion-col size="6" class="value">ONDO NGUEMA</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6" class="label">INITIATEUR</ion-col>
-        <ion-col size="6" class="value">Alain KASSA‑BAYONNE</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6" class="label">MODE DE PAIEMENT</ion-col>
-        <ion-col size="6" class="value">ARTEL MONEY</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6" class="label">DATE</ion-col>
-        <ion-col size="6" class="value">08-04-2025</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6" class="label">COMPTE CRÉDITEUR</ion-col>
-        <ion-col size="6" class="value">077898709</ion-col>
-      </ion-row>
-    </ion-grid>
+    <!-- Tableau des détails avec bordures -->
+    <table class="w-full table-auto border border-gray-300 border-collapse">
+      <tbody class="text-sm">
+      <tr>
+        <th class="p-2 text-left border border-gray-300">ÉTABLISSEMENT</th>
+        <td class="p-2 border border-gray-300">UNIVERSITE OMAR BONGO ONDIMBA</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <th class="p-2 text-left border border-gray-300">BÉNÉFICIAIRE</th>
+        <td class="p-2 border border-gray-300">ONDO NGUEMA</td>
+      </tr>
+      <tr>
+        <th class="p-2 text-left border border-gray-300">INITIATEUR</th>
+        <td class="p-2 border border-gray-300">Alain KASSA-BAYONNE</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <th class="p-2 text-left border border-gray-300">MODE DE PAIEMENT</th>
+        <td class="p-2 border border-gray-300">ARTEL MONEY</td>
+      </tr>
+      <tr>
+        <th class="p-2 text-left border border-gray-300">DATE</th>
+        <td class="p-2 border border-gray-300">08-04-2025</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <th class="p-2 text-left border border-gray-300">COMPTE CRÉDITEUR</th>
+        <td class="p-2 border border-gray-300">077898709</td>
+      </tr>
+      </tbody>
+    </table>
 
     <!-- Séparateur -->
-    <div class="divider"></div>
+    <div class="divider my-4"></div>
 
     <!-- Montant -->
-    <div class="amount-row">
-      <span>Montant</span>
-      <strong>10000 F</strong>
+    <div class="amount-row flex justify-between items-center mb-4">
+      <span class="text-base">Montant</span>
+      <strong class="text-xl">10000 F</strong>
     </div>
 
     <!-- Bouton Valider -->
-    <ion-button expand="block" class="validate-button" (click)="redirectTo('loader')">
-      VALIDER
-    </ion-button>
+    <div class="w-full flex items-center justify-center content-center">
+      <button pButton  label="VALIDER"
+              (click)="redirectTo('loader')"
+              class="w-40 p-button-rounded p-button-warning p-button-sm bg-greentresor"
+      >
+
+      </button>
+    </div>
 
   </div>
+
+
 
 </ion-content>
