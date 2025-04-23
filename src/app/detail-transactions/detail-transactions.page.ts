@@ -37,4 +37,15 @@ export class DetailTransactionsPage implements OnInit {
   goBack() {
     this.navCtrl.back();
   }
+
+  redirectTo(url: string) {
+    this.router
+      .navigate([url])
+      .then(() => {
+        console.log('Navigation terminée avec méthode :');
+      })
+      .catch((err) => {
+        console.error(`Échec de la navigation vers ${url} :`, err);
+      });
+  }
 }
