@@ -30,6 +30,8 @@ import {
   IonAccordionGroup,
   IonAccordion,
   IonBadge,
+  IonCard,
+  IonCardContent,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -45,10 +47,12 @@ import {
   airplaneOutline,
   cashOutline,
   bonfireOutline,
-  flowerOutline, fishOutline, cardOutline, bulbOutline,
+  flowerOutline,
+  fishOutline,
+  cardOutline,
+  bulbOutline,
   syncOutline,
   phonePortraitOutline,
-
 } from 'ionicons/icons';
 import { ButtonModule } from 'primeng/button';
 import { Drawer } from 'primeng/drawer';
@@ -60,7 +64,6 @@ import { MultiSelect } from 'primeng/multiselect';
 import { TreeNode } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-loader',
@@ -122,7 +125,9 @@ import { Router } from '@angular/router';
     Select,
     TreeSelect,
     MultiSelect,
-
+    IonCard,
+    IonCardContent,
+    IonButton,
   ],
 })
 export class LoaderPage implements OnInit {
@@ -195,14 +200,38 @@ export class LoaderPage implements OnInit {
   selectedNode: any = null;
 
   constructor(private router: Router) {
-    addIcons({ add, funnelOutline, schoolOutline, homeOutline, alarmOutline, medkitOutline, hammerOutline, readerOutline,
-      earthOutline, airplaneOutline, cashOutline,phonePortraitOutline, syncOutline, bonfireOutline, flowerOutline, fishOutline, cardOutline, bulbOutline });
+    addIcons({
+      add,
+      funnelOutline,
+      schoolOutline,
+      homeOutline,
+      alarmOutline,
+      medkitOutline,
+      hammerOutline,
+      readerOutline,
+      earthOutline,
+      airplaneOutline,
+      cashOutline,
+      phonePortraitOutline,
+      syncOutline,
+      bonfireOutline,
+      flowerOutline,
+      fishOutline,
+      cardOutline,
+      bulbOutline,
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    setTimeout(() => {
+      this.router.navigate(['/receipt']);
+    }, 3000);
+  }
 
   closeCallback($event: MouseEvent) {}
   redirectTo(url: string, sector: string): void {
-    this.router.navigate([url]).then(r => console.log("navigation has finished"));
+    this.router
+      .navigate([url])
+      .then((r) => console.log('navigation has finished'));
   }
 }

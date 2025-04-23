@@ -87,6 +87,10 @@ export const routes: Routes = [
   {
     path: 'validationpaiement',
     loadComponent: () => import('./validation-paiement/validation-paiement.page').then( m => m.ValidationPaiementPage)
+  },  {
+    path: 'receipt',
+    loadComponent: () => import('./receipt/receipt.page').then( m => m.ReceiptPage)
   },
+
 
 ];
