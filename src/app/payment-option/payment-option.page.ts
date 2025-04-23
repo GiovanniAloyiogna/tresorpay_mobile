@@ -141,7 +141,7 @@ export class PaymentOptionPage implements OnInit {
         .navigate(['/detailpaiement'], {
           queryParams: {
             phone: phone,
-            method: this.method.toLowerCase(), // facultatif
+            method: this.method?.toUpperCase(), 
           },
         })
         .then(() => {

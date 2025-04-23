@@ -12,7 +12,7 @@
   <!-- CONTENU PRINCIPAL -->
   <div class="welcome-row mt-5">
     <div class="welcome-text">
-      <strong>BIENVENUE SUR</strong>
+      <strong>EDUCATION</strong>
     </div>
     <img
       src="../../assets/logo-tresorpay.png"
@@ -20,17 +20,26 @@
       class="welcome-logo"
     />
   </div>
+   <!-- ******************************************************-->
+   <ion-card color="primary" class="col-span-12 h-12.5">
+    <ion-card-content class="text-center">
+      <ion-label class="text-lg font-bold">PAIEMENT PAR {{ method }}</ion-label>
+    </ion-card-content>
+  </ion-card>
+  <!-- ******************************************************-->
   <!-- PAYMENT METHOD SECTION -->
   <div class="flex items-center justify-center px-4 mt-10">
-    <div class="w-full max-w-md bg-white rounded-lg p-4 ">
-      <ion-label class="block text-left font-semibold text-base mb-6 mt-4 flex items-center gap-2">
+    <div class="w-full max-w-md bg-white rounded-lg p-4">
+      <!-- <ion-label
+        class="block text-left font-semibold text-base mb-6 mt-4 flex items-center gap-2"
+      >
         <ion-icon
           name="checkmark-circle-outline"
           class="text-green-600"
           style="font-size: 1.5rem"
         ></ion-icon>
         <span class="text-base">PAIEMENT PAR {{ method }}</span>
-      </ion-label>
+      </ion-label> -->
 
       <form
         [formGroup]="loginForm"
@@ -69,8 +78,7 @@
             type="submit"
             class="bg-blue-600 text-white px-6 py-2 rounded-md"
             [disabled]="loginForm.invalid"
-            style="background-color: var(--blue-color);"
-
+            style="background-color: var(--blue-color)"
           >
             Continuer
           </button>
@@ -78,5 +86,4 @@
       </form>
     </div>
   </div>
-
 </ion-content>
