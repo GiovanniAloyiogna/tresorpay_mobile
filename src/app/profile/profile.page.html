@@ -15,7 +15,7 @@
       <ion-icon
         slot="icon-only"
         name="arrow-back-outline"
-        style="color: #fae12f"
+        class="text-bluetresor"
       ></ion-icon>
     </ion-button>
 
@@ -33,7 +33,7 @@
   </div>
 
   <!-- Profile Section -->
-  <div class="flex flex-col items-center px-6 py-6 space-y-4">
+  <div class="flex flex-col items-center px-6 -pt-5 space-y-2 pb-5">
     <!-- Profile Avatar -->
     <div class="relative">
       <img
@@ -59,75 +59,93 @@
       <h2 class="text-xl font-semibold text-blue-900">
         {{ user.prenom }} {{ user.nom }}
       </h2>
-      <p class="text-gray-500" style="font-size: 0.7rem">
-        {{ user.email }}
-        <ion-icon name="pencil-outline" style="font-size: 1.2rem"></ion-icon>
-      </p>
     </div>
 
+
     <!-- Form Card -->
-    <ion-card class="w-full rounded-2xl shadow-xl">
-      <ion-card-content class="space-y-5">
-        <!-- Name -->
-        <div>
-          <ion-label class="block text-sm text-gray-700 mb-1">Nom</ion-label>
-          <ion-input
+    <ion-card class="w-full rounded-2xl shadow-xl mb-5 ">
+      <ion-card-content class="space-y-3">
+        <!-- Formulaire -->
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="text-left">
+          <input
+            id="prenom"
             type="text"
-            [(ngModel)]="user.nom"
-            class="rounded-md border border-gray-300 px-3 py-2 bg-white"
-            placeholder="Entrez votre nom"
-          ></ion-input>
-        </div>
-
-        <!-- Surname -->
-        <div>
-          <ion-label class="block text-sm text-gray-700 mb-1">Prénom</ion-label>
-          <ion-input
+            formControlName="prenom"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
+            placeholder="Entrez votre prénom*"
+          />
+          <div class="text-sm text-red-600 mb-4" *ngIf="profileForm.get('prenom')?.touched && profileForm.get('prenom')?.invalid">
+            Le prénom est requis.
+          </div>
+          <input
+            id="nom"
             type="text"
-            [(ngModel)]="user.prenom"
-            class="rounded-md border border-gray-300 px-3 py-2 bg-white"
-            placeholder="Entrez votre prénom"
-          ></ion-input>
-        </div>
+            formControlName="nom"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
+            placeholder="Entrez votre nom*"
+          />
+          <div class="text-sm text-red-600 mb-4" *ngIf="profileForm.get('nom')?.touched && profileForm.get('nom')?.invalid">
+            Le nom est requis.
+          </div>
 
-        <!-- New Password -->
-        <div>
-          <ion-label class="block text-sm text-gray-700 mb-1"
-            >Nouveau mot de passe</ion-label
-          >
-          <ion-input
+
+
+          <input
+            id="phone"
+            type="number"
+            formControlName="phoneNumber"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
+            placeholder="Entrez votre numéro de téléphone"
+          />
+          <div class="text-sm text-red-600 mb-4" *ngIf="profileForm.get('phoneNumber')?.invalid && profileForm.get('phoneNumber')?.touched">
+            Numéro invalide.
+          </div>
+
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
+            placeholder="Entrez votre email*"
+          />
+          <div class="text-sm text-red-600 mb-4" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">
+            Email invalide.
+          </div>
+
+          <input
+            id="password"
             type="password"
-            [(ngModel)]="user.newPassword"
-            class="rounded-md border border-gray-300 px-3 py-2 bg-white"
-            placeholder="••••••••"
-          ></ion-input>
-        </div>
+            formControlName="password"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
+            placeholder="Entrez votre mot de passe"
+          />
+          <div class="text-sm text-red-600 mb-4" *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched">
+            Minimum 6 caractères.
+          </div>
 
-        <!-- Confirm Password -->
-        <div>
-          <ion-label class="block text-sm text-gray-700 mb-1"
-            >Confirmer le mot de passe</ion-label
-          >
-          <ion-input
+          <input
+            id="confirmPassword"
             type="password"
-            [(ngModel)]="user.confirmPassword"
-            class="rounded-md border border-gray-300 px-3 py-2 bg-white"
-            placeholder="••••••••"
-          ></ion-input>
-        </div>
+            formControlName="confirmPassword"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
+            placeholder="Confirmer votre mot de passe"
+          />
+          <div class="text-sm text-red-600 mb-4"
+               *ngIf="profileForm.hasError('passwordsMismatch') && profileForm.get('confirmPassword')?.touched">
+            Les mots de passe ne correspondent pas.
+          </div>
 
-        <!-- Save Button -->
-        <div class="flex justify-center">
-          <ion-button
-            expand="block"
-            shape="round"
-            color="primary"
-            class="mt-4 w-40"
-            (click)="updateProfile()"
-          >
-            Enregistrer
-          </ion-button>
-        </div>
+          <div class="w-full flex items-center justify-center gap-2 mt-2">
+
+            <button pButton type="submit"
+                    style="background-color: var(--blue-color); color: white; border: none;"
+                    class="w-40 p-button-rounded p-button-warning p-button-sm bg-blue-color"
+            >
+              SAUVEGARDER
+            </button>
+          </div>
+        </form>
+
       </ion-card-content>
     </ion-card>
   </div>
