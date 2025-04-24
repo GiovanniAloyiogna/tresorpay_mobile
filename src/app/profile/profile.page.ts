@@ -47,9 +47,9 @@ export class ProfilePage implements OnInit {
     this.navCtrl.back();
   }
 
-  // Update profile function
+
   updateProfile() {
-    // Check if passwords match
+    
     if (this.user.newPassword !== this.user.confirmPassword) {
       alert('Les mots de passe ne correspondent pas.');
       return;
