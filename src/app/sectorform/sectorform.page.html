@@ -14,6 +14,10 @@
 
   <!-- CONTENU PRINCIPAL -->
   <div class="welcome-row">
+    <!-- Bouton retour -->
+    <ion-button fill="clear" size="small" (click)="goBack()">
+      <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #214579"></ion-icon>
+    </ion-button>
     <div class="welcome-text">
       <strong>EDUCATION</strong>
     </div>
@@ -23,19 +27,19 @@
       class="welcome-logo"
     />
   </div>
-
+  <!-- ******************************************************-->
+  <ion-card color="primary" class="col-span-12 h-12.5" *ngIf="showForm">
+    <ion-card-content class="text-center">
+      <ion-label class="text-lg font-bold">INITIATION TRANSACTION</ion-label>
+    </ion-card-content>
+  </ion-card>
+  <!-- ******************************************************-->
 
   <!-- FORM SECTION -->
   <div class="flex items-center justify-center px-2" *ngIf="showForm">
 
     <form class="w-full max-w-md bg-white rounded-lg p-6 space-y-2">
-      <!-- ******************************************************-->
-      <ion-card color="primary" class="col-span-12 h-12.5">
-        <ion-card-content class="text-center">
-          <ion-label class="text-lg font-bold">INITIATION TRANSACTION</ion-label>
-        </ion-card-content>
-      </ion-card>
-      <!-- ******************************************************-->
+
       <!-- Établissement -->
       <div class="form-group">
         <label
@@ -77,7 +81,7 @@
           type="number"
           id="montant"
           name="montant"
-          placeholder="10.000"
+          placeholder="10 000"
           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
       </div>
@@ -151,7 +155,7 @@
 
         <ion-card
           class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
-          (click)="redirectToPayment('/payment-option', 'Airtel')"
+          (click)="redirectToPayment('/payment-option', 'AIRTELMONEY')"
         >
           <ion-img
             src="assets/airtelmoney.png"
@@ -162,7 +166,7 @@
 
         <ion-card
           class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
-          (click)="redirectToPayment('/payment-option', 'Moov')"
+          (click)="redirectToPayment('/payment-option', 'MOOVMONEY')"
         >
           <ion-img
             src="assets/moovmoney.png"

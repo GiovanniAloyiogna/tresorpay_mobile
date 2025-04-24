@@ -18,7 +18,7 @@
   <div class="welcome-row flex items-center">
     <!-- Bouton retour -->
     <ion-button fill="clear" size="small" (click)="goBack()">
-      <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #fae12f"></ion-icon>
+      <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #214579"></ion-icon>
     </ion-button>
 
     <!-- Texte de bienvenue -->
@@ -52,12 +52,20 @@
     <table class="w-full table-auto border border-gray-300 border-collapse">
       <tbody class="text-sm">
       <tr>
+        <th class="p-2 text-left border border-gray-300">SECTEUR</th>
+        <td class="p-2 border border-gray-300">EDUCATION</td>
+      </tr>
+      <tr>
         <th class="p-2 text-left border border-gray-300">ÉTABLISSEMENT</th>
-        <td class="p-2 border border-gray-300">UNIVERSITE OMAR BONGO ONDIMBA</td>
+        <td class="p-2 border border-gray-300">UNIVERSITE OMAR BONGO</td>
+      </tr>
+      <tr>
+        <th class="p-2 text-left border border-gray-300">MOTIF PAIEMENT</th>
+        <td class="p-2 border border-gray-300">FRAIS INSCRIPTION</td>
       </tr>
       <tr class="bg-gray-50">
         <th class="p-2 text-left border border-gray-300">BÉNÉFICIAIRE</th>
-        <td class="p-2 border border-gray-300">ONDO NGUEMA</td>
+        <td class="p-2 border border-gray-300">Jean-Mark ONDO NGUEMA</td>
       </tr>
       <tr>
         <th class="p-2 text-left border border-gray-300">INITIATEUR</th>
@@ -65,11 +73,11 @@
       </tr>
       <tr class="bg-gray-50">
         <th class="p-2 text-left border border-gray-300">MODE DE PAIEMENT</th>
-        <td class="p-2 border border-gray-300">ARTEL MONEY</td>
+        <td class="p-2 border border-gray-300">AIRTEL MONEY</td>
       </tr>
       <tr>
         <th class="p-2 text-left border border-gray-300">DATE</th>
-        <td class="p-2 border border-gray-300">08-04-2025</td>
+        <td class="p-2 border border-gray-300">08/04/2025</td>
       </tr>
       <tr class="bg-gray-50">
         <th class="p-2 text-left border border-gray-300">COMPTE CRÉDITEUR</th>
@@ -83,12 +91,19 @@
 
     <!-- Montant -->
     <div class="amount-row flex justify-between items-center mb-4">
-      <span class="text-base">Montant</span>
-      <strong class="text-xl">10000 F</strong>
+      <span class="text-base">MONTANT</span>
+      <strong class="text-xl">10 000 FCFA</strong>
     </div>
 
     <!-- Bouton Valider -->
-    <div class="w-full flex items-center justify-center content-center">
+    <div class="w-full flex items-center justify-around content-center">
+      <button pButton  label="PRECEDENT"
+              (click)="goBackToForm()"
+              style="background-color: #a8aaaa; border: none; color: white"
+              class="w-40 p-button-rounded p-button-warning p-button-sm"
+      >
+
+      </button>
       <button pButton  label="VALIDER"
               (click)="redirectTo('loader')"
               class="w-40 p-button-rounded p-button-warning p-button-sm bg-greentresor"

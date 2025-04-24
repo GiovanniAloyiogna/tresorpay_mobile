@@ -27,7 +27,7 @@ import {
   IonCard,
   IonCardHeader,
   IonCardContent,
-  IonImg,
+  IonImg, NavController,
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
@@ -40,7 +40,7 @@ import {
   mapOutline,
   locateOutline,
   arrowBackCircle,
-  checkmarkCircleOutline,
+  checkmarkCircleOutline, arrowBack, arrowBackOutline,
 } from 'ionicons/icons';
 
 import { ButtonModule } from 'primeng/button';
@@ -104,7 +104,8 @@ export class PaymentOptionPage implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private navCtrl: NavController    // ← injection ici
   ) {
     addIcons({
       add,
@@ -115,7 +116,7 @@ export class PaymentOptionPage implements OnInit {
       mapOutline,
       locateOutline,
       arrowBackCircle,
-      checkmarkCircleOutline,
+      checkmarkCircleOutline,arrowBack, arrowBackOutline
     });
   }
 
@@ -141,7 +142,7 @@ export class PaymentOptionPage implements OnInit {
         .navigate(['/detailpaiement'], {
           queryParams: {
             phone: phone,
-            method: this.method?.toUpperCase(), 
+            method: this.method?.toUpperCase(),
           },
         })
         .then(() => {
@@ -168,9 +169,6 @@ export class PaymentOptionPage implements OnInit {
     this.showForm = false;
   }
 
-  goBackToForm() {
-    this.showForm = true;
-  }
 
   redirectToPayment(url: string, method: string): void {
     this.router
@@ -193,4 +191,13 @@ export class PaymentOptionPage implements OnInit {
         console.error(`Échec de la navigation vers ${url} :`, err);
       });
   }
+
+  goBack() {
+    this.navCtrl.back();
+  }
+
+  goBackToForm() {
+    this.navCtrl.back();
+  }
+
 }

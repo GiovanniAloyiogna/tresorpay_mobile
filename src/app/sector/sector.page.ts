@@ -2,34 +2,34 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
-    IonText,
-    IonSelect,
-    IonSelectOption,
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonIcon,
-    IonToolbar,
-    IonButtons,
-    IonMenuButton,
-    IonButton,
-    IonTabBar,
-    IonTabButton,
-    IonTabs,
-    IonRow,
-    IonCol,
-    IonSegment,
-    IonSegmentButton,
-    IonLabel,
-    IonSearchbar,
-    IonList,
-    IonItem,
-    IonFooter,
-    IonGrid,
-    IonMenu,
-    IonAccordionGroup,
-    IonAccordion,
-    IonBadge, IonCard, IonCardContent,
+  IonText,
+  IonSelect,
+  IonSelectOption,
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonIcon,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonButton,
+  IonTabBar,
+  IonTabButton,
+  IonTabs,
+  IonRow,
+  IonCol,
+  IonSegment,
+  IonSegmentButton,
+  IonLabel,
+  IonSearchbar,
+  IonList,
+  IonItem,
+  IonFooter,
+  IonGrid,
+  IonMenu,
+  IonAccordionGroup,
+  IonAccordion,
+  IonBadge, IonCard, IonCardContent, NavController,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -39,7 +39,7 @@ import {
   homeOutline,
   alarmOutline,
   mapOutline,
-  locateOutline,
+  locateOutline, arrowBack, arrowBackOutline,
 } from 'ionicons/icons';
 import { ButtonModule } from 'primeng/button';
 import { Drawer } from 'primeng/drawer';
@@ -187,8 +187,11 @@ export class SectorPage implements OnInit {
 
   selectedNode: any = null;
 
-  constructor(private router: Router) {
-    addIcons({ add, funnelOutline, locateOutline, schoolOutline, homeOutline, alarmOutline });
+  constructor(
+    private router: Router,
+    private navCtrl: NavController    // ← injection ici
+) {
+    addIcons({ add, funnelOutline, locateOutline, schoolOutline, homeOutline, alarmOutline, arrowBack, arrowBackOutline });
   }
 
   ngOnInit() {}
@@ -196,6 +199,10 @@ export class SectorPage implements OnInit {
   closeCallback($event: MouseEvent) {}
   redirectTo(url: string): void {
     this.router.navigate([url]).then(r => console.log("navigation has finishe"));
+  }
+
+  goBack() {
+    this.navCtrl.back();
   }
 
 }
