@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true" class="bg-gray-100">
+  <!-- HEADER -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="text-center">PROFIL</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Main Profile Section -->
+  <div class="p-4 space-y-6">
+    <!-- Go Back + Title -->
+    <div class="flex items-center justify-between">
+      <ion-button fill="clear" size="small" (click)="goBack()">
+        <ion-icon name="arrow-back-outline" slot="icon-only" class="text-blue-900"></ion-icon>
+      </ion-button>
+      <h2 class="text-lg font-bold text-blue-900">VOTRE PROFIL</h2>
+      <img src="../../assets/logo-tresorpay.png" alt="Logo TresorPay" class="h-10" />
+    </div>
+
+    <!-- Profile Form -->
+    <ion-card class="rounded-2xl shadow-lg">
+      <ion-card-content class="space-y-4">
+        <ion-item lines="full">
+          <ion-label position="floating">Nom</ion-label>
+          <ion-input type="text" [(ngModel)]="user.nom" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Prénom</ion-label>
+          <ion-input type="text" [(ngModel)]="user.prenom" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="user.email" disabled></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Nouveau mot de passe</ion-label>
+          <ion-input type="password" [(ngModel)]="user.newPassword"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Confirmer mot de passe</ion-label>
+          <ion-input type="password" [(ngModel)]="user.confirmPassword"></ion-input>
+        </ion-item>
+
+        <!-- Submit Button -->
+        <ion-button expand="block" color="primary" class="mt-4 rounded-xl" (click)="updateProfile()">
+          Mettre à jour le profil
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
