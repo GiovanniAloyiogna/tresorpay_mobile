@@ -5,12 +5,12 @@ import { IonApp, IonSplitPane, IonMenu,IonHeader,IonTab, IonTabButton,  IonConte
 import { addIcons } from 'ionicons';
 import {
   mailOutline,
-  mailSharp, settingsOutline, gridOutline,homeOutline,logOutOutline,
+  mailSharp, settingsOutline, gridOutline, homeOutline, logOutOutline,
   swapHorizontalOutline, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp,
   archiveOutline, archiveSharp, trashOutline,
   trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, alarmOutline,
   personOutline, notificationsOutline, callOutline,
-  logOutSharp, documentOutline, informationCircleOutline, helpOutline
+  logOutSharp, documentOutline, informationCircleOutline, helpOutline, walletOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -42,6 +42,6 @@ export class AppComponent {
       paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline,
       trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, alarmOutline,
       personOutline, notificationsOutline, callOutline,
-      logOutSharp, documentOutline, informationCircleOutline, helpOutline});
+      logOutSharp, documentOutline, informationCircleOutline, helpOutline, walletOutline});
   }
 }
