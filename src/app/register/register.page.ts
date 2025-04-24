@@ -14,7 +14,7 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
-  IonSpinner,
+  IonSpinner, NavController,
 } from '@ionic/angular/standalone';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
@@ -67,7 +67,8 @@ export class RegisterPage implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private http: HttpClient
+    private http: HttpClient,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {
@@ -127,5 +128,8 @@ export class RegisterPage implements OnInit {
       console.log('Form is invalid');
       this.registerForm.markAllAsTouched();
     }
+  }
+  goBack() {
+    this.navCtrl.back();
   }
 }
