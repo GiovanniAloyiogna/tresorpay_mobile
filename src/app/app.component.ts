@@ -1,7 +1,30 @@
 
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { IonApp, IonSplitPane, IonMenu,IonHeader,IonTab, IonTabButton,  IonContent, IonToolbar, IonTabBar, IonTitle,IonTabs, IonAvatar,IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink } from '@ionic/angular/standalone';
+import {
+  IonApp,
+  IonSplitPane,
+  IonMenu,
+  IonHeader,
+  IonTab,
+  IonTabButton,
+  IonContent,
+  IonToolbar,
+  IonTabBar,
+  IonTitle,
+  IonTabs,
+  IonAvatar,
+  IonList,
+  IonListHeader,
+  IonNote,
+  IonMenuToggle,
+  IonItem,
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonRouterLink,
+  NavController
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
   mailOutline,

@@ -2,26 +2,19 @@
   <div class="relative flex justify-center items-center h-full px-4">
     <div class="w-full lg:w-5/12 text-center flex justify-center items-center">
       <div class="z-50 w-full lg:w-8/12 px-6" style="max-width: 400px">
-        <!-- Logo --><br /><br />
-        <div class="w-full flex items-center justify-center mb-6">
+        <!-- Logo -->
+        <div class="w-full flex items-center justify-center mb-6 ">
           <img src="../../assets/logo-tresorpay.png" alt="Logo" class="w-4/5" />
-        </div><br />
-
+        </div>
         <!-- Titre -->
-        <div class="text-3xl font-light mb-2 text-primary-500">Connexion</div><br />
-
+        <div class="text-xl font-bold mb-2 text-bluetresor">Création Compte</div><br />
         <!-- Formulaire -->
         <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="text-left">
-          <label
-            for="nom"
-            class="block mb-2 text-surface-600 dark:text-surface-400"
-          >Nom</label
-          >
           <input
             id="nom"
             type="text"
             formControlName="nom"
-            class="w-full px-4 py-2 mb-2 border border-gray-300 rounded-md"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
             placeholder="Entrez votre nom"
           />
           <div
@@ -31,16 +24,11 @@
             <p *ngIf="registerForm.get('nom')?.hasError('required')">Nom requis</p>
             <p *ngIf="registerForm.get('nom')?.hasError('nom')">Format invalide</p>
           </div>
-          <label
-            for="prenom"
-            class="block mb-2 text-surface-600 dark:text-surface-400"
-          >Prenom</label
-          >
           <input
             id="prenom"
             type="text"
             formControlName="prenom"
-            class="w-full px-4 py-2 mb-2 border border-gray-300 rounded-md"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
             placeholder="Entrez votre prenom"
           />
           <div
@@ -50,17 +38,11 @@
             <p *ngIf="registerForm.get('prenom')?.hasError('required')">Prenom requis</p>
             <p *ngIf="registerForm.get('prenom')?.hasError('prenom')">Format invalide</p>
           </div>
-          <!-- Email -->
-          <label
-            for="phone"
-            class="block mb-2 text-surface-600 dark:text-surface-400"
-          >Téléphone</label
-          >
           <input
             id="phone"
             type="number"
             formControlName="phoneNumber"
-            class="w-full px-4 py-2 mb-2 border border-gray-300 rounded-md"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
             placeholder="Entrez votre numéro de téléphone"
           />
           <div
@@ -70,17 +52,11 @@
             <p *ngIf="registerForm.get('phone')?.hasError('required')">Numéro de téléphone requis</p>
             <p *ngIf="registerForm.get('phone')?.hasError('phone')">Format invalide</p>
           </div>
-
-          <label
-            for="email"
-            class="block mb-2 text-surface-600 dark:text-surface-400"
-          >Adresse Mail</label
-          >
           <input
             id="email"
             type="text"
             formControlName="email"
-            class="w-full px-4 py-2 mb-2 border border-gray-300 rounded-md"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
             placeholder="Entrez votre email"
           />
           <div
@@ -89,19 +65,12 @@
           >
             <p *ngIf="registerForm.get('email')?.hasError('email')">Format invalide</p>
           </div>
-
-          <!-- Mot de passe -->
-          <label
-            for="password"
-            class="block mt-4 mb-2 text-surface-600 dark:text-surface-400"
-          >Mot de passe</label
-          >
           <input
             id="password"
             type="password"
             formControlName="password"
             (input)="onPasswordInput($event)"
-            class="w-full px-4 py-2 mb-2 border border-gray-300 rounded-md"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
             placeholder="Entrez votre mot de passe"
           />
           <div
@@ -112,18 +81,12 @@
             <p *ngIf="registerForm.get('password')?.hasError('minlength')">Minimum 6 caractères</p>
             <p *ngIf="registerForm.get('password')?.hasError('pattern')">Seuls les chiffres sont autorisés</p>
           </div>
-
-          <label
-            for="confirmPassword"
-            class="block mt-4 mb-2 text-surface-600 dark:text-surface-400"
-          >Confirmer Mot de passe</label
-          >
           <input
             id="confirmPassword"
             type="password"
             formControlName="confirmPassword"
             (input)="onConfirmPasswordInput($event)"
-            class="w-full px-4 py-2 mb-2 border border-gray-300 rounded-md"
+            class="w-full px-4 mb-4 border border-gray-300 rounded-md"
             placeholder="Confirmer votre mot de passe"
           />
           <div
@@ -134,7 +97,6 @@
             <p *ngIf="registerForm.get('confirmPassword')?.hasError('minlength')">Minimum 6 caractères</p>
             <p *ngIf="registerForm.get('confirmPassword')?.hasError('pattern')">Seuls les chiffres sont autorisés</p>
           </div>
-
           <!-- Password mismatch error -->
           <div
             *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmPassword')?.touched"
@@ -142,21 +104,22 @@
           >
             <p>Les mots de passe ne correspondent pas</p>
           </div>
-
           <!-- Bouton connexion -->
-          <div class="w-full flex items-center justify-center content-center">
-            <button pButton type="submit" label="S'INSCRIRE"
-              style="background-color: var(--blue-color); color: white; border: none;"
-              class="w-40 p-button-rounded p-button-warning p-button-sm bg-blue-color"
-              [disabled]="loading"
+           <div class="w-full flex items-center justify-center gap-2 mt-3 content-center">
+            <button pButton  label="RETOUR"
+                    (click)="goBack()"
+                    style="background-color: #a8aaaa; border: none; color: white"
+                    class="w-24 p-button-rounded p-button-warning p-button-sm mr-1"
             >
-
+            </button>
+            <button pButton type="submit" label="CREER"
+                    style="background-color: #214579; border: none; color: white"
+                    class="w-24 p-button-rounded p-button-warning p-button-sm mr-1"
+                    [disabled]="loading"
+            >
             </button>
           </div>
         </form>
-
-       
-        
       </div>
     </div>
   </div>
