@@ -49,4 +49,8 @@ export class DetailTransactionsPage implements OnInit {
         console.error(`Échec de la navigation vers ${url} :`, err);
       });
   }
+
+  goBackToForm() {
+    this.navCtrl.back();
+  }
 }

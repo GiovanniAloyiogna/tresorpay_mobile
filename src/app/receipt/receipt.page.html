@@ -21,16 +21,6 @@
     />
   </div>
 
-  <!-- TITRE -->
-  <ion-card
-    color="light"
-    class="mt-4"
-    style="background-color: #234477; color: white"
-  >
-    <ion-card-content class="text-center">
-      <h2 style="margin: 0; font-weight: bold">REÇU DE PAIEMENT</h2>
-    </ion-card-content>
-  </ion-card>
   <div class="flex justify-center gap-4 mt-2">
     <ion-button color="primary" fill="outline" size="small">
       <ion-icon name="download-outline" slot="start"></ion-icon>
@@ -41,19 +31,47 @@
       Partager
     </ion-button>
   </div>
+
+  <!-- TITRE -->
+  <ion-card
+    color="light"
+    class="mt-4"
+    style="background-color: #234477; color: white"
+  >
+    <ion-card-content class="text-center">
+      <h2 style="margin: 0; font-weight: bold">REÇU DE PAIEMENT</h2>
+    </ion-card-content>
+  </ion-card>
+
   <!-- TABLEAU DES DÉTAILS -->
   <div class="ion-padding" style="background-image: url('../../assets/logo_dgcpt_floutte.png'); background-repeat: no-repeat; background-position: center; background-size: 15rem;">
     <table
       style="width: 100%; border-collapse: collapse; font-size: 0.9rem"
       border="1"
     >
-      
+
+      <tr>
+        <th style="text-align: left; padding: 6px; border: 0.5px solid black">
+          SECTEUR
+        </th>
+        <td style="padding: 6px; border: 0.5px solid black">
+          EDUCATION
+        </td>
+      </tr>
       <tr>
         <th style="text-align: left; padding: 6px; border: 0.5px solid black">
           ÉTABLISSEMENT
         </th>
         <td style="padding: 6px; border: 0.5px solid black">
           UNIVERSITÉ OMAR BONGO
+        </td>
+      </tr>
+      <tr>
+        <th style="text-align: left; padding: 6px; border: 0.5px solid black">
+          MOTIF PAIEMENT
+        </th>
+        <td style="padding: 6px; border: 0.5px solid black">
+          FRAIS INSCRIPTION
         </td>
       </tr>
       <tr>
@@ -80,7 +98,7 @@
         <th style="text-align: left; padding: 6px; border: 0.5px solid black">
           DATE
         </th>
-        <td style="padding: 6px; border: 1px solid black">08-04-2025</td>
+        <td style="padding: 6px; border: 0.5px solid black">08/04/2025</td>
       </tr>
       <tr>
         <th style="text-align: left; padding: 6px; border: 0.5px solid black">
@@ -93,20 +111,20 @@
 
   <!-- MONTANT -->
   <div class="text-center ion-padding">
-    <div style="font-size: 1.1rem">Montant Payé</div>
+    <div style="font-size: 1.1rem">MONTANT PAYÉ</div>
     <div style="font-size: 1.3rem; font-weight: bold">10 000 FCFA</div>
   </div>
 
   <!-- FOOTER -->
   <ion-footer class="ion-padding">
-    <div
-      class="flex justify-around align-items-center"
-      style="font-size: small"
-    >
-      <p>+241 11666111</p>
-      <br />
+    <!-- Bouton Valider -->
+    <div class="w-full flex items-center justify-center content-center">
+      <button pButton  label="TERMINER"
+              (click)="redirectTo('dashboard')"
+              class="w-40 p-button-rounded p-button-warning p-button-sm bg-greentresor"
+      >
 
-      <a href="https://tresorpay.ga" target="_blank">Rue Alfred MARCHE</a>
+      </button>
     </div>
   </ion-footer>
 </ion-content>

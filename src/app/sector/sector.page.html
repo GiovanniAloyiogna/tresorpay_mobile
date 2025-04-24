@@ -13,9 +13,14 @@
     </ion-toolbar>
   </ion-header>
 
+
   <!-- CONTENU PRINCIPAL -->
   <!-- CONTENU PRINCIPAL -->
   <div class="welcome-row">
+    <!-- Bouton retour -->
+    <ion-button fill="clear" size="small" (click)="goBack()">
+      <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #214579"></ion-icon>
+    </ion-button>
     <div class="welcome-text">
       <strong>EDUCATION</strong>
     </div>
@@ -79,6 +84,7 @@
 
   <!-- WIDGET GRID -->
   <div class="scrollable-content mx-auto p-3 d-flex flex-column">
+    <p-divider type="solid" />
     <div class="flex items-center justify-between w-full p-3 flex-column">
       <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
         <!-- Image -->
@@ -117,6 +123,7 @@
         <div class="flex-grow"></div>
       </div>
     </div>
+    <p-divider type="solid" />
   </div>
 </ion-content>
 

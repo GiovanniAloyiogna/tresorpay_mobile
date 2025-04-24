@@ -11,6 +11,9 @@
   </ion-header>
   <!-- CONTENU PRINCIPAL -->
   <div class="welcome-row mt-5">
+    <ion-button fill="clear" size="small" (click)="goBack()">
+      <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #214579"></ion-icon>
+    </ion-button>
     <div class="welcome-text">
       <strong>EDUCATION</strong>
     </div>
@@ -57,7 +60,7 @@
           type="text"
           formControlName="phoneNumber"
           class="w-full px-4 py-2 mb-2 border border-gray-300 rounded-md"
-          placeholder="Entrez votre numéro"
+          placeholder="Entrez numéro compte créditeur"
         />
 
         <div
@@ -72,15 +75,24 @@
           </p>
         </div>
 
-        <!-- Bouton continuer -->
-        <div class="w-full flex items-center justify-center mt-4">
+        <!-- Bouton Valider -->
+        <div class="w-full flex items-center justify-around content-center mt-10">
+          <button pButton  label="PRECEDENT"
+                  (click)="goBackToForm()"
+                  style="background-color: #a8aaaa; border: none; color: white"
+                  class="w-40 p-button-rounded p-button-warning p-button-sm mr-1"
+          >
+
+          </button>
           <button
             type="submit"
-            class="bg-blue-600 text-white px-6 py-2 rounded-md"
-            [disabled]="loginForm.invalid"
-            style="background-color: var(--blue-color)"
+            pButton  label="CONTINUER"
+
+                  [disabled]="loginForm.invalid"
+                  style="background-color: var(--blue-color)"
+                  class="w-40 p-button-rounded p-button-warning p-button-sm bg-greentresor ml-1"
           >
-            Continuer
+
           </button>
         </div>
       </form>

@@ -25,7 +25,7 @@ import {
   IonCard,
   IonCardHeader,
   IonCardContent,
-  IonImg,
+  IonImg, NavController,
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
@@ -36,7 +36,7 @@ import {
   homeOutline,
   alarmOutline,
   mapOutline,
-  locateOutline,
+  locateOutline, arrowBack, arrowBackOutline,
 } from 'ionicons/icons';
 
 import { ButtonModule } from 'primeng/button';
@@ -103,16 +103,22 @@ export class SectorformPage implements OnInit {
   visible: boolean = false;
 
   dropdownValues = [
-    { name: 'Inscription', code: 'NY' },
-    { name: 'Divers', code: 'RM' },
-    { name: 'Frais scolaire', code: 'LDN' },
+    { name: 'Inscription initiale', code: 'INS' },
+    { name: 'Réinscription',       code: 'REIN' },
+    { name: 'Frais de scolarité',  code: 'SCOL' },
+    { name: 'Droits d’examen',      code: 'EXAM' },
+    { name: 'Cantine universitaire', code: 'CANT' },
+    { name: 'Logement universitaire', code: 'LOGE' },
   ];
 
   toggleValue: boolean = false;
   treeSelectNodes: any[] = [];
   selectedNode: any = null;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private navCtrl: NavController    // ← injection ici
+    ) {
     addIcons({
       add,
       funnelOutline,
@@ -121,6 +127,7 @@ export class SectorformPage implements OnInit {
       alarmOutline,
       mapOutline,
       locateOutline,
+      arrowBack, arrowBackOutline
     });
   }
 
@@ -159,7 +166,7 @@ export class SectorformPage implements OnInit {
   }
 
   goBackToForm() {
-    this.showForm = true;
+    this.navCtrl.back();
   }
   redirectToPayment(url: string, method: string): void {
     this.router
@@ -170,5 +177,9 @@ export class SectorformPage implements OnInit {
       .catch((err) => {
         console.error(`Échec de la navigation vers ${url} :`, err);
       });
+  }
+
+  goBack() {
+    this.navCtrl.back();
   }
 }
