@@ -87,13 +87,18 @@ export const routes: Routes = [
   {
     path: 'validationpaiement',
     loadComponent: () => import('./validation-paiement/validation-paiement.page').then( m => m.ValidationPaiementPage)
-  },  {
+  },
+  {
     path: 'receipt',
     loadComponent: () => import('./receipt/receipt.page').then( m => m.ReceiptPage)
   },
   {
     path: 'profile',
     loadComponent: () => import('./profile/profile.page').then( m => m.ProfilePage)
+  },
+  {
+    path: 'apropos',
+    loadComponent: () => import('./pages/apropos/apropos.page').then( m => m.AproposPage)
   },
 
 

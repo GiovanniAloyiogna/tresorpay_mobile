@@ -6,7 +6,7 @@
         <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
       <!-- Logo dans la toolbar -->
-      <div class="text-center">
+      <div class="text-center -ml-16">
         <span>EDUCATION</span>
       </div>
     </ion-toolbar>
@@ -18,9 +18,6 @@
     <ion-button fill="clear" size="small" (click)="goBack()">
       <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #214579"></ion-icon>
     </ion-button>
-    <div class="welcome-text">
-      <strong>EDUCATION</strong>
-    </div>
     <img
       src="../../assets/logo-tresorpay.png"
       alt="Logo TresorPay"
@@ -63,11 +60,12 @@
           >Motif de paiement</label
         >
         <p-select
+          id="motif"
           name="motif"
           [(ngModel)]="dropdownValue"
           [options]="dropdownValues"
           optionLabel="name"
-          placeholder="Motif de paiement"
+          placeholder="FRAIS INSCRIPTION"
           class="w-full mt-1"
         ></p-select>
       </div>
@@ -111,7 +109,7 @@
           type="text"
           id="beneficiaire"
           name="beneficiaire"
-          placeholder="ONDO NGUEMA"
+          placeholder="Jean-Mark ONDO NGUEMA"
           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
       </div>

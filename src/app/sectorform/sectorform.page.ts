@@ -103,12 +103,12 @@ export class SectorformPage implements OnInit {
   visible: boolean = false;
 
   dropdownValues = [
-    { name: 'Inscription initiale', code: 'INS' },
-    { name: 'Réinscription',       code: 'REIN' },
-    { name: 'Frais de scolarité',  code: 'SCOL' },
-    { name: 'Droits d’examen',      code: 'EXAM' },
-    { name: 'Cantine universitaire', code: 'CANT' },
-    { name: 'Logement universitaire', code: 'LOGE' },
+    { name: 'FRAIS INSCRIPTION', code: 'INS' },
+    { name: 'FRAIS REINSCRIPTION',       code: 'REIN' },
+    { name: 'FRAIS SCOLARITE',  code: 'SCOL' },
+    { name: 'FRAIS DROITS EXAMEN',      code: 'EXAM' },
+    { name: 'FRAIS CANTINE', code: 'CANT' },
+    { name: 'FRAIS CAMPUS', code: 'LOGE' },
   ];
 
   toggleValue: boolean = false;

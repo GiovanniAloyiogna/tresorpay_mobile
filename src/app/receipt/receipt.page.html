@@ -5,31 +5,27 @@
       <ion-buttons slot="start">
         <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
-      <ion-title class="text-center">REÇU DE PAIEMENT</ion-title>
+      <ion-title class="text-center -ml-16">EDUCATION</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <!-- LOGO ET IDENTITÉ -->
   <div class="welcome-row mt-5">
     <div class="welcome-text">
-      <strong>EDUCATION</strong>
+      <div class="flex justify-center gap-2 -ml-24">
+        <ion-button fill="outline" size="small">
+          <ion-icon name="download-sharp" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button  fill="outline" size="small">
+          <ion-icon name="share-social-sharp" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
     </div>
     <img
       src="../../assets/logo-tresorpay.png"
       alt="Logo TresorPay"
       class="welcome-logo"
     />
-  </div>
-
-  <div class="flex justify-center gap-4 mt-2">
-    <ion-button color="primary" fill="outline" size="small">
-      <ion-icon name="download-outline" slot="start"></ion-icon>
-      Télécharger
-    </ion-button>
-    <ion-button color="secondary" fill="outline" size="small">
-      <ion-icon name="share-social-outline" slot="start"></ion-icon>
-      Partager
-    </ion-button>
   </div>
 
   <!-- TITRE -->
@@ -44,12 +40,18 @@
   </ion-card>
 
   <!-- TABLEAU DES DÉTAILS -->
-  <div class="ion-padding" style="background-image: url('../../assets/logo_dgcpt_floutte.png'); background-repeat: no-repeat; background-position: center; background-size: 15rem;">
+  <div class="ion-padding" style="background-image: url('../../assets/logo_dgcpt_floutte.png'); background-repeat: no-repeat; background-position: center; background-size: 20rem;">
     <table
-      style="width: 100%; border-collapse: collapse; font-size: 0.9rem"
+      style="width: 100%; border-collapse: collapse; font-size: 0.75rem"
       border="1"
     >
 
+      <tr>
+        <th style="text-align: left; padding: 6px; border: 0.5px solid black">
+          ID TRANSACTION
+        </th>
+        <td style="padding: 6px; border: 0.5px solid black">IDXXSSR7865245832</td>
+      </tr>
       <tr>
         <th style="text-align: left; padding: 6px; border: 0.5px solid black">
           SECTEUR
@@ -78,7 +80,7 @@
         <th style="text-align: left; padding: 6px; border: 0.5px solid black">
           BÉNÉFICIAIRE
         </th>
-        <td style="padding: 6px; border: 0.5px solid black">ONDO NGUEMA</td>
+        <td style="padding: 6px; border: 0.5px solid black">Jean-Mark ONDO NGUEMA</td>
       </tr>
       <tr>
         <th style="text-align: left; padding: 6px; border: 0.5px solid black">
@@ -96,15 +98,21 @@
       </tr>
       <tr>
         <th style="text-align: left; padding: 6px; border: 0.5px solid black">
-          DATE
-        </th>
-        <td style="padding: 6px; border: 0.5px solid black">08/04/2025</td>
-      </tr>
-      <tr>
-        <th style="text-align: left; padding: 6px; border: 0.5px solid black">
           COMPTE CRÉDITEUR
         </th>
         <td style="padding: 6px; border: 0.5px solid black">077898709</td>
+      </tr>
+      <tr>
+        <th style="text-align: left; padding: 6px; border: 0.5px solid black">
+          REF TRANS. MOMO
+        </th>
+        <td style="padding: 6px; border: 0.5px solid black">IDXXSSR7865245832</td>
+      </tr>
+      <tr>
+        <th style="text-align: left; padding: 6px; border: 0.5px solid black">
+          DATE TRANSACTION
+        </th>
+        <td style="padding: 6px; border: 0.5px solid black">08/04/2025</td>
       </tr>
     </table>
   </div>

@@ -1,0 +1,59 @@
+:root {
+  --background-color: #234477; /* La couleur bleue souhaitée */
+}
+
+ion-footer {
+  background-color: var(--background-color);
+}
+
+/* Vos autres styles */
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbar-logo {
+  height: 35px;
+}
+
+.page-breadcrumb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  margin-top: 8px;
+
+  .header-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+
+ion-searchbar {
+  margin: 8px 16px;
+}
+
+ion-segment {
+  margin: 0 16px;
+}
+
+ion-list {
+  margin-top: 8px;
+}
+
+.positive-text {
+  color: var(--ion-color-success, green);
+  font-weight: bold;
+}
+
+.negative-text {
+  color: var(--ion-color-danger, red);
+  font-weight: bold;
+}
+
+
+
+/*==============================================*/
+
+

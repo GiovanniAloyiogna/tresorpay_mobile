@@ -39,7 +39,7 @@ import {
   homeOutline,
   alarmOutline,
   mapOutline,
-  locateOutline, arrowBack, arrowBackOutline,
+  locateOutline, arrowBack, arrowBackOutline, navigateOutline, locationSharp,
 } from 'ionicons/icons';
 import { ButtonModule } from 'primeng/button';
 import { Drawer } from 'primeng/drawer';
@@ -191,7 +191,7 @@ export class SectorPage implements OnInit {
     private router: Router,
     private navCtrl: NavController    // ← injection ici
 ) {
-    addIcons({ add, funnelOutline, locateOutline, schoolOutline, homeOutline, alarmOutline, arrowBack, arrowBackOutline });
+    addIcons({ add, funnelOutline, locateOutline, schoolOutline, homeOutline, alarmOutline, arrowBack, arrowBackOutline, navigateOutline, locationSharp });
   }
 
   ngOnInit() {}

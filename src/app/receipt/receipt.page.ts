@@ -17,7 +17,15 @@ import {
 
 } from '@ionic/angular/standalone';
 import {Router} from "@angular/router";
-import {arrowBack, arrowBackOutline, downloadOutline, receiptOutline, shareOutline, shareSocialOutline} from "ionicons/icons";
+import {
+  arrowBack,
+  arrowBackCircleOutline,
+  arrowBackOutline,
+  downloadOutline, downloadSharp,
+  receiptOutline,
+  shareOutline,
+  shareSocialOutline, shareSocialSharp
+} from "ionicons/icons";
 import {addIcons} from "ionicons";
 import {ButtonDirective} from "primeng/button";
 
@@ -36,7 +44,7 @@ export class ReceiptPage implements OnInit {
     private router: Router,
     private navCtrl: NavController
   ) {
-    addIcons({ arrowBack, arrowBackOutline, receiptOutline, downloadOutline, shareSocialOutline});
+    addIcons({ arrowBack, arrowBackOutline, receiptOutline, downloadOutline, shareSocialOutline, arrowBackCircleOutline, downloadSharp, shareSocialSharp});
   }
 
   ngOnInit() {

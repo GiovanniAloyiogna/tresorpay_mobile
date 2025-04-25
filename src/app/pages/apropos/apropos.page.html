@@ -1,0 +1,50 @@
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>A PROPOS</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="welcome-row">
+    <!-- Bouton retour -->
+    <ion-button fill="clear" size="small" (click)="goBack()">
+      <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #214579"></ion-icon>
+    </ion-button>
+    <img
+      src="assets/logo-tresorpay.png"
+      alt="Logo TresorPay"
+      class="welcome-logo"
+    />
+  </div>
+
+  <ion-card color="primary" class="col-span-12 h-12.5">
+    <ion-card-content class="text-center">
+      <ion-label class="text-lg font-bold uppercase">A Propos de TrésorPay</ion-label>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-content class="ion-padding mb-3">
+    <div class="ion-text-justify">
+      <p class="mb-3">
+        « <span class="text-greentresor font-bold">Tresor</span><span class="text-yellowtresor">Pay</span> » est une Plateforme innovante de paiements Mobiles Money et Mobiles Banking, conçue pour simplifier et sécuriser vos paiements.
+      </p>
+      <p class="mb-3">
+        <span class="text-greentresor font-bold">Tresor</span><span class="text-yellowtresor">Pay</span> permet aux différents contribuables et autres usagers en République Gabonaise de pouvoir effectuer leurs paiements au Trésor Public.
+      </p>
+      <p class="mb-3">
+        <span class="text-greentresor font-bold">Tresor</span><span class="text-yellowtresor">Pay</span> s’inscrit dans une démarche de modernisation des services financiers en offrant une expérience utilisateur fluide, intuitive et conviviale, tout en assurant la confidentialité de vos données.
+      </p>
+      <p class="mb-3">
+        La Plateforme <span class="text-greentresor font-bold">Tresor</span><span class="text-yellowtresor">Pay</span> a été conçue et développée par la Direction des Systèmes d’Information (<span class="font-semibold">DSI</span>) de la Direction Générale de la Comptabilité Publique et du Trésor (<span class="text-bluetresor">DGCPT</span>).
+      </p>
+      <p class="mb-3 mt-6 font-bold text-right">
+        Copyright © | DGCPT - Mai 2025.
+      </p>
+    </div>
+
+    <ion-button (click)="scrollToTop()" class="ion-float-right">
+      <ion-icon name="arrow-up-outline"></ion-icon>
+    </ion-button>
+  </ion-content>
