@@ -99,22 +99,23 @@ export class LoginotpPage implements OnInit, AfterViewInit {
 
   onConfirmOtp() {
     const code = this.inputOtpValue;
-
+  
     if (code && code.length === 6) {
-      const isSuccess = this.authService.validateOtpAndLogin(code);
-
-      if (isSuccess) {
-        // Reset OTP fields before redirection
-        this.inputOtpValue = ''; // Clear OTP value
-        this.otpForm.reset(); // Reset the form controls
-
-        this.router.navigate(['/firstscreen']); // Redirect to dashboard
-      } else {
-        console.log('Code OTP invalide');
-      }
+      this.authService.validateOtpAndLogin(code).subscribe((isSuccess) => {
+        if (isSuccess) {
+          
+          this.inputOtpValue = ''; 
+          this.otpForm.reset(); 
+  
+          this.router.navigate(['/firstscreen']); 
+        } else {
+          console.log('Code OTP invalide');
+          
+        }
+      });
     }
   }
-
+  
   startCountdown(duration: number) {
     let timeLeft = duration;
 
