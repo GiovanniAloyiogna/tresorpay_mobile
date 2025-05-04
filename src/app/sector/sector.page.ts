@@ -219,8 +219,21 @@ export class SectorPage implements OnInit {
     }
   }
 
+  formatImage(image: any){
+    
+    
+    if(image == null || image == undefined){
+      return '/assets/airtelmoney.png';
+    }
+    else{
+      //console.log('data:image/png;base64,' + image);
+      return 'data:image/jpeg;base64,' + image;
+    }
+      
+  }
+
   closeCallback($event: MouseEvent) {}
-  redirectTo(url: string, slug: string): void {
+  redirectTo(url: string, slug?: string): void {
     this.router.navigate([url, slug]).then(r => console.log("navigation has finishe"));
   }
 

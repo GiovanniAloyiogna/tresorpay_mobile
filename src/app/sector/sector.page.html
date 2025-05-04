@@ -86,7 +86,8 @@
     <div class="flex items-center justify-between w-full p-0 flex-column">
       <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform', etablissement.slug)">
         <!-- Image -->
-        <img src="../../assets/logo-uob.png" alt="avalon-layout" width="52" />
+        <!-- <img src="../../assets/logo-uob.png"  /> -->
+        <img class="photo-id" alt="avalon-layout" width="52" [src]="formatImage(etablissement.photo)">
 
         <!-- First block -->
         <div class="flex flex-col">
