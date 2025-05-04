@@ -81,15 +81,16 @@
 
   <!-- WIDGET GRID -->
   <div class="scrollable-content mx-auto p-3 -mt-4 d-flex flex-column">
+    @for (etablissement of etablissements; track etablissement.id) {
     <p-divider type="solid" />
     <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
+      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform', etablissement.slug)">
         <!-- Image -->
         <img src="../../assets/logo-uob.png" alt="avalon-layout" width="52" />
 
         <!-- First block -->
         <div class="flex flex-col">
-          <span class="text-xs font-medium">UNIVERSITE OMAR BONGO (UOB)</span>
+          <span class="text-xs font-medium">{{etablissement.libelle}}</span>
           <span class="text-gray-500 text-sm"
             ><ion-icon name="location-sharp"></ion-icon> Libreville</span
           >
@@ -99,173 +100,8 @@
         <div class="flex-grow"></div>
       </div>
     </div>
-    <p-divider type="solid" />
-    <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full">
-        <!-- Image -->
-        <img src="../../assets/logo-luss.png" alt="avalon-layout" width="52" />
-
-        <!-- First block -->
-        <div class="flex flex-col">
-          <span class="text-xs font-medium"
-            >UNIVERSITE SCIENCES DE LA SANTE (USS)</span
-          >
-
-          <span class="text-gray-500 text-sm">
-            <ion-icon name="location-sharp"></ion-icon>Owendo
-          </span
-          >
-        </div>
-
-        <!-- Spacer -->
-        <div class="flex-grow"></div>
-      </div>
-    </div>
-    <p-divider type="solid" />
-    <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
-        <!-- Image -->
-        <img src="../../assets/logo-ustm.png" alt="avalon-layout" width="52" />
-
-        <!-- First block -->
-        <div class="flex flex-col">
-          <span class="text-xs font-medium">UNIVERSITE DE SCIENCES ET TECHNIQUES DE MASUKU (USTM)</span>
-          <span class="text-gray-500 text-sm"
-          ><ion-icon name="location-sharp"></ion-icon> Franceville</span
-          >
-        </div>
-
-        <!-- Spacer -->
-        <div class="flex-grow"></div>
-      </div>
-    </div>
-    <p-divider type="solid" />
-    <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
-        <!-- Image -->
-        <img src="../../assets/logo-ito.png" alt="avalon-layout" width="52" />
-
-        <!-- First block -->
-        <div class="flex flex-col">
-          <span class="text-xs font-medium">INSTITUT DE TECHNOLOGIES D'OWENDO (ITO)</span>
-          <span class="text-gray-500 text-sm"
-          ><ion-icon name="location-sharp"></ion-icon> Owendo</span
-          >
-        </div>
-
-        <!-- Spacer -->
-        <div class="flex-grow"></div>
-      </div>
-    </div>
-    <p-divider type="solid" />
-    <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
-        <!-- Image -->
-        <img src="../../assets/logo-ist.png" alt="avalon-layout" width="52" />
-
-        <!-- First block -->
-        <div class="flex flex-col">
-          <span class="text-xs font-medium">INSTITUT SUPERIEUR DE TECHNOLOGIES (IST)</span>
-          <span class="text-gray-500 text-sm"
-          ><ion-icon name="location-sharp"></ion-icon> Libreville</span
-          >
-        </div>
-
-        <!-- Spacer -->
-        <div class="flex-grow"></div>
-      </div>
-    </div>
-    <p-divider type="solid" />
-    <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
-        <!-- Image -->
-        <img src="../../assets/logo-insg.png" alt="avalon-layout" width="52" />
-
-        <!-- First block -->
-        <div class="flex flex-col">
-          <span class="text-xs font-medium">INSTITUT NATIONAL DE SCIENCES DE GESTION (INSG)</span>
-          <span class="text-gray-500 text-sm"
-          ><ion-icon name="location-sharp"></ion-icon> Libreville</span
-          >
-        </div>
-
-        <!-- Spacer -->
-        <div class="flex-grow"></div>
-      </div>
-    </div>
-    <p-divider type="solid" />
-    <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
-        <!-- Image -->
-        <img src="../../assets/logo-insab.png" alt="avalon-layout" width="52" />
-
-        <!-- First block -->
-        <div class="flex flex-col">
-          <span class="text-xs font-medium">INSTITUT NATIONAL SUPERIEUR D'AGRONOMIE ET BIOTHCHNOLOGIES (INSAB)</span>
-          <span class="text-gray-500 text-sm"
-          ><ion-icon name="location-sharp"></ion-icon> Franceville</span
-          >
-        </div>
-
-        <!-- Spacer -->
-        <div class="flex-grow"></div>
-      </div>
-    </div>
-    <p-divider type="solid" />
-    <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
-        <!-- Image -->
-        <img src="../../assets/logo-inptic.png" alt="avalon-layout" width="52" />
-
-        <!-- First block -->
-        <div class="flex flex-col">
-          <span class="text-xs font-medium">INSTITUT NATIONAL DE LA POSTE DES TECHNOLOGIES DE L'INFORMATIONS ET DE LA COMMUNICATION (INPTIC)</span>
-          <span class="text-gray-500 text-sm"
-          ><ion-icon name="location-sharp"></ion-icon> Libreville</span
-          >
-        </div>
-
-        <!-- Spacer -->
-        <div class="flex-grow"></div>
-      </div>
-    </div>
-    <p-divider type="solid" />
-    <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
-        <!-- Image -->
-        <img src="../../assets/logo-ena.png" alt="avalon-layout" width="52" />
-
-        <!-- First block -->
-        <div class="flex flex-col">
-          <span class="text-xs font-medium">ECOLE NATIONALE D'ADMINISTRATION (ENA)</span>
-          <span class="text-gray-500 text-sm"
-          ><ion-icon name="location-sharp"></ion-icon> Libreville</span
-          >
-        </div>
-
-        <!-- Spacer -->
-        <div class="flex-grow"></div>
-      </div>
-    </div>
-    <p-divider type="solid" />
-    <div class="flex items-center justify-between w-full p-0 flex-column">
-      <div class="flex items-center gap-4 w-full"  (click)="redirectTo('sectorform')">
-        <!-- Image -->
-        <img ngSrc="../../assets/logo-epca.png" alt="avalon-layout" width="52" height="52"/>
-
-        <!-- First block -->
-        <div class="flex flex-col">
-          <span class="text-xs font-medium">ECOLE DE PREPARATION AUX CARRIERES ADMINISTRATIVES (EPCA)</span>
-          <span class="text-gray-500 text-sm"
-          ><ion-icon name="location-sharp"></ion-icon> Libreville</span
-          >
-        </div>
-
-        <!-- Spacer -->
-        <div class="flex-grow"></div>
-      </div>
-    </div>
-    <p-divider type="solid" />
+  }
+   
   </div>
 </ion-content>
 

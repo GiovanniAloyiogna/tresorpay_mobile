@@ -52,7 +52,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'sectorform',
+    path: 'sectorform/:slug',
     loadComponent: () => import('./sectorform/sectorform.page').then( m => m.SectorformPage)
   },
   {

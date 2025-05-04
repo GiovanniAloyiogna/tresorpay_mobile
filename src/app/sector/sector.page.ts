@@ -53,6 +53,7 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Divider} from "primeng/divider";
 import { ApiService } from '../services/api.service';
+import { ParamData } from '../Model/model';
 
 @Component({
   selector: 'app-sector',
@@ -188,6 +189,7 @@ export class SectorPage implements OnInit {
   treeSelectNodes!: TreeNode[];
 
   selectedNode: any = null;
+  etablissements: ParamData[] = [];
 
   constructor(
     private router: Router,
@@ -201,12 +203,11 @@ export class SectorPage implements OnInit {
   ngOnInit() {
     this.slug = this.route.snapshot.paramMap.get('slug') || '';
     try {
-      this.apiService.getAllParamByParentSlug(this.slug).subscribe(
+      this.apiService.getAllParamEnfantBySlugParent(this.slug).subscribe(
         {
           next: (data) => {
-            //this.secteurs = data.contenu;
-            console.log(data);
-            
+            this.etablissements = data.contenu;
+
           },
           error: (err) => {
             console.error('Failed to load countries:', err);
@@ -219,8 +220,8 @@ export class SectorPage implements OnInit {
   }
 
   closeCallback($event: MouseEvent) {}
-  redirectTo(url: string): void {
-    this.router.navigate([url]).then(r => console.log("navigation has finishe"));
+  redirectTo(url: string, slug: string): void {
+    this.router.navigate([url, slug]).then(r => console.log("navigation has finishe"));
   }
 
   goBack() {
