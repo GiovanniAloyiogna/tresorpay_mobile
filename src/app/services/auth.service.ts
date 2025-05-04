@@ -50,9 +50,9 @@ export class AuthService {
   }
   validateOtpAndLogin(code: string): Observable<boolean> {
     const payload = {
-      username: localStorage.getItem('pendingOtpUser'),
+      username: JSON.parse(localStorage.getItem('pendingOtpUser') || '""'),
       secret: code,
-      url: '/authentications/check-otp',
+      url: 'authentications/check-otp',
     };
   
     return new Observable<boolean>((observer) => {

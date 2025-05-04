@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   IonText,
   IonSelect,
@@ -48,6 +48,7 @@ import { Avatar } from 'primeng/avatar';
 import { NgIf, NgOptimizedImage } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Dropdown } from 'primeng/dropdown';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-sectorform',
@@ -101,6 +102,7 @@ export class SectorformPage implements OnInit {
   autoValue: any[] | undefined;
   showForm: boolean = true;
   visible: boolean = false;
+  slug: string = '';
 
   dropdownValues = [
     { name: 'FRAIS INSCRIPTION', code: 'INS' },
@@ -117,7 +119,9 @@ export class SectorformPage implements OnInit {
 
   constructor(
     private router: Router,
-    private navCtrl: NavController    // ← injection ici
+    private navCtrl: NavController,
+    private route: ActivatedRoute,
+    private apiService: ApiService     // ← injection ici
     ) {
     addIcons({
       add,
@@ -131,7 +135,24 @@ export class SectorformPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.slug = this.route.snapshot.paramMap.get('slug') || '';
+    try {
+      /*this.apiService.getAllParamEnfantBySlugParent(this.slug).subscribe(
+        {
+          next: (data) => {
+            this.etablissements = data.contenu;
+
+          },
+          error: (err) => {
+            console.error('Failed to load countries:', err);
+          }
+        }
+      )*/
+    } catch (error: any) {
+      //await this.presentAlert('Error during login');
+    }
+  }
 
   redirectTo(url: string): void {
     this.router

@@ -3,4 +3,5 @@ export interface ParamData{
     code?: string,
     libelle?: string,
     slug?: string,
+    nbChildren?: number
 }

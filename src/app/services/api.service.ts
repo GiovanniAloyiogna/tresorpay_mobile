@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class ApiService {
   private apiUrl = environment.apiUrl;
   private apiGetAllSecteur = environment.apiUrl+'params-datas/liste-all-secteur';
-  private apiGetBySlug = environment.apiUrl+'params-datas/get-by-slug';
+  private apiGetByParamEnfant = environment.apiUrl+'params-datas/get-params-enfants';
 
   constructor(private http: HttpClient) {}
 
@@ -21,8 +21,8 @@ export class ApiService {
     return this.http.get(this.apiGetAllSecteur);
   }
 
-  getAllParamByParentSlug(slug: string): Observable<any> {
-    const url = `${this.apiGetBySlug}/${slug}`;
+  getAllParamEnfantBySlugParent(slug: string): Observable<any> {
+    const url = `${this.apiGetByParamEnfant}/${slug}`;
     return this.http.get(url);
   }
 
