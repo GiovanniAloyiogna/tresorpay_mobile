@@ -33,36 +33,28 @@
       ------------------------------------------------
     </div>
     <p-multiselect
-      [options]=""
+      [options]="secteurs"
       placeholder="Rechercher secteur..."
-      optionLabel="name"
+      optionLabel="libelle"
       display="chip"
       [filter]="true"
       class="ml-5 mr-5"
     >
-      <ng-template #selecteditems let-countries>
-        @for (country of countries; track country.code) {
-        <div
-          class="inline-flex items-center py-1 px-2 bg-primary text-primary-contrast rounded-border mr-2"
-        >
-          <span
-            [class]="'mr-2 flag flag-' + country.code.toLowerCase()"
-            style="width: 18px; height: 12px"
-          ></span>
-          <div>{{ country.name }}</div>
-        </div>
-        }
-      </ng-template>
-      <ng-template #item let-country>
-        <div class="flex items-center">
-          <span
-            [class]="'mr-2 flag flag-' + country.code.toLowerCase()"
-            style="width: 18px; height: 12px"
-          ></span>
-          <div>{{ country.name }}</div>
-        </div>
-      </ng-template>
-    </p-multiselect>
+  <ng-template #selecteditems let-selectedSecteurs>
+    @for (secteur of secteurs; track secteur.id) {
+      <div class="inline-flex items-center py-1 px-2 bg-primary text-primary-contrast rounded-border mr-2">
+        <div>{{ secteur.libelle }}</div>
+      </div>
+    }
+  </ng-template>
+
+  <ng-template #item let-secteur>
+    <div class="flex items-center">
+      <div>{{ secteur.libelle }}</div>
+    </div>
+  </ng-template>
+</p-multiselect>
+
     <div class="font-semibold text-xl text-red-50">
       ------------------------------------------------
     </div>
@@ -76,140 +68,19 @@
     <div class="grid grid-cols-12 gap-4">
 
       <!-- ÉDUCATION -->
-      <div class="col-span-4 text-2xl" (click)="redirectTo('sector', 'education')">
+      @for (secteur of secteurs; track secteur.id) {
+      <div class="col-span-4 text-2xl" (click)="redirectTo('sector', secteur.slug)">
         <div class="dashboard-card">
-          <div class="dashboard-card-title font-bold">EDUCATION</div>
+          <div class="dashboard-card-title font-bold">{{secteur.libelle}}</div>
           <div class="dashboard-card-value">
             <span>150</span>
             <ion-icon name="school-outline" size="large"></ion-icon>
           </div>
         </div>
       </div>
+    }
 
-      <!-- SANTÉ -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title font-bold">SANTÉ</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <ion-icon name="medkit-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-      <!-- FINANCE -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">JUSTICE</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-             <ion-icon name="hammer-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- FONCIER (5) -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">FONCIER</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-             <ion-icon name="earth-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-      <!-- TOURISME (6) -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">TOURISME</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-             <ion-icon name="airplane-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAXES -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">INDUSTRIE</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <ion-icon name="bulb-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAXES -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">CULTURE</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <ion-icon name="bonfire-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- TAXES -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">ARTISANAT</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <ion-icon name="flower-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-      <!-- AMANDES (3) -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">AMENDES</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <ion-icon name="reader-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- TAXES -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">ALIMENTATION</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <ion-icon name="fish-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAXES -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">TRANSPORTS</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <ion-icon name="car-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- TAXES -->
-      <div class="col-span-4 md:col-span-4 lg:col-span-4">
-        <div class="dashboard-card">
-          <div class="dashboard-card-title">AUTRES TAXES...</div>
-          <div class="dashboard-card-value">
-            <span>150</span>
-            <ion-icon name="card-outline" size="large"></ion-icon>
-          </div>
-        </div>
-      </div>
+      
 
 
       <!-- EDUCATION (2) -->

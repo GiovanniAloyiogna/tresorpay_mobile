@@ -8,11 +8,22 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
   private apiUrl = environment.apiUrl;
+  private apiGetAllSecteur = environment.apiUrl+'params-datas/liste-all-secteur';
+  private apiGetBySlug = environment.apiUrl+'params-datas/get-by-slug';
 
   constructor(private http: HttpClient) {}
 
   getData(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get('path');
+  }
+
+  getAllSecteurs(): Observable<any> {
+    return this.http.get(this.apiGetAllSecteur);
+  }
+
+  getAllParamByParentSlug(slug: string): Observable<any> {
+    const url = `${this.apiGetBySlug}/${slug}`;
+    return this.http.get(url);
   }
 
   postData(data: any): Observable<any> {
