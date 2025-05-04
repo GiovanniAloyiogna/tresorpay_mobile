@@ -32,7 +32,7 @@ export class AuthService {
           if (response.status) {
             localStorage.setItem(
               'pendingOtpUser',
-              JSON.stringify(response.contenu)
+              JSON.stringify(userData.phoneNumber)
             );
             observer.next(true);
           } else {
@@ -48,25 +48,97 @@ export class AuthService {
       );
     });
   }
-
-  validateOtpAndLogin(code: string): boolean {
-    const correctCode = '123456';
-    const storedUser = localStorage.getItem('pendingOtpUser');
-
-    if (code === correctCode && storedUser) {
-      const user = JSON.parse(storedUser);
-      this.isAuthenticated.next(true);
-      this.currentUser.next(user);
-
-      localStorage.setItem('isAuthenticated', 'true');
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      localStorage.removeItem('pendingOtpUser');
-
-      return true;
-    }
-
-    return false;
+  validateOtpAndLogin(code: string): Observable<boolean> {
+    const payload = {
+      username: localStorage.getItem('pendingOtpUser'),
+      secret: code,
+      url: '/authentications/check-otp',
+    };
+  
+    return new Observable<boolean>((observer) => {
+      this.apiService.postData(payload).subscribe(
+        
+        
+        (response) => {
+          console.log('hello', payload);
+          if (response.status) {
+            const userToken = response.contenu?.Token;
+            this.isAuthenticated.next(true);
+            this.currentUser.next(response.contenu.user);
+  
+            localStorage.setItem('isAuthenticated', 'true');
+            localStorage.setItem('currentUser', JSON.stringify(response.contenu.user));
+            localStorage.removeItem('pendingOtpUser');
+  
+            observer.next(true); 
+          } else {
+            observer.next(false); 
+          }
+          observer.complete(); 
+        },
+        (error) => {
+          console.error('Erreur API', error);
+          observer.next(false);
+          observer.complete();
+        }
+      );
+    });
   }
+  
+  // validateOtpAndLogin(code: string): Observable<boolean> {
+  //   const payload = {
+  //     username: localStorage.getItem('pendingOtpUser'),
+  //     secret: code,
+  //     url: '/authentications/check-otp',
+  //   };
+
+  //   return new Observable<boolean>((observer) => {
+  //     this.apiService.postData(payload).subscribe(
+  //       (response) => {
+  //         // Suppose que ton API répond avec succès et retourne des infos
+  //         if (response.status) {
+  //           let userToken=response.contenu?.Token
+  //           this.isAuthenticated.next(true);
+  //           this.currentUser.next(response.contenu.user);
+      
+  //           localStorage.setItem('isAuthenticated', 'true');
+  //           localStorage.setItem('currentUser', JSON.stringify(response.contenu.user));
+  //           localStorage.removeItem('pendingOtpUser');
+      
+  //           return true;
+  //           observer.next(true);
+  //         } else {
+  //           observer.next(false);
+  //         }
+  //         observer.complete();
+  //       },
+  //       (error) => {
+  //         console.error('Erreur API', error);
+  //         observer.next(false);
+  //         observer.complete();
+  //       }
+  //     );
+  //   });
+  //   // const correctCode = '123456';
+  //   // const storedUser = localStorage.getItem('pendingOtpUser');
+
+  //   // if (code === correctCode && storedUser) {
+  //   //   const user = JSON.parse(storedUser);
+  //     // this.isAuthenticated.next(true);
+  //     // this.currentUser.next(user);
+
+  //     // localStorage.setItem('isAuthenticated', 'true');
+  //     // localStorage.setItem('currentUser', JSON.stringify(user));
+  //     // localStorage.removeItem('pendingOtpUser');
+
+  //     // return true;
+  //   // }
+
+  //   // return false;
+
+
+    
+  // }
 
   isLoggedIn() {
     return this.isAuthenticated.asObservable();
