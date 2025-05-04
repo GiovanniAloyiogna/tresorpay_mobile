@@ -22,7 +22,7 @@ export class AuthService {
     const payload = {
       username: userData.phoneNumber,
       password: userData.password,
-      url: '/authentications/authenticate',
+      url: 'authentications/authenticate',
     };
 
     return new Observable<boolean>((observer) => {

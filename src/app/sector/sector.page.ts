@@ -50,8 +50,9 @@ import { TreeSelect } from 'primeng/treeselect';
 import { MultiSelect } from 'primeng/multiselect';
 import { TreeNode } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Divider} from "primeng/divider";
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-sector',
@@ -120,6 +121,7 @@ import {Divider} from "primeng/divider";
 })
 export class SectorPage implements OnInit {
   visible = false;
+  slug: string = '';
 
   floatValue: any = null;
 
@@ -189,12 +191,32 @@ export class SectorPage implements OnInit {
 
   constructor(
     private router: Router,
-    private navCtrl: NavController    // ← injection ici
+    private navCtrl: NavController,
+    private route: ActivatedRoute,
+    private apiService: ApiService    // ← injection ici
 ) {
     addIcons({ add, funnelOutline, locateOutline, schoolOutline, homeOutline, alarmOutline, arrowBack, arrowBackOutline, navigateOutline, locationSharp });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.slug = this.route.snapshot.paramMap.get('slug') || '';
+    try {
+      this.apiService.getAllParamByParentSlug(this.slug).subscribe(
+        {
+          next: (data) => {
+            //this.secteurs = data.contenu;
+            console.log(data);
+            
+          },
+          error: (err) => {
+            console.error('Failed to load countries:', err);
+          }
+        }
+      )
+    } catch (error: any) {
+      //await this.presentAlert('Error during login');
+    }
+  }
 
   closeCallback($event: MouseEvent) {}
   redirectTo(url: string): void {

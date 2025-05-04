@@ -57,6 +57,8 @@ import { MultiSelect } from 'primeng/multiselect';
 import { TreeNode } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
+import { ParamData } from '../Model/model';
 
 
 @Component({
@@ -124,6 +126,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardPage implements OnInit {
   visible = false;
+  secteurs: ParamData[] = [];
 
   floatValue: any = null;
 
@@ -191,15 +194,34 @@ export class DashboardPage implements OnInit {
 
   selectedNode: any = null;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private apiService: ApiService
+  ) {
     addIcons({ add, funnelOutline, schoolOutline, homeOutline, alarmOutline, medkitOutline, hammerOutline, readerOutline,
       earthOutline, airplaneOutline, cashOutline, bonfireOutline, flowerOutline, fishOutline, cardOutline, bulbOutline, carOutline });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    try {
+      this.apiService.getAllSecteurs().subscribe(
+        {
+          next: (data) => {
+            this.secteurs = data.contenu;
+            //console.log(this.secteurs);
+            
+          },
+          error: (err) => {
+            console.error('Failed to load countries:', err);
+          }
+        }
+      )
+    } catch (error: any) {
+      //await this.presentAlert('Error during login');
+    }
+  }
 
   closeCallback($event: MouseEvent) {}
-  redirectTo(url: string, sector: string): void {
-    this.router.navigate([url]).then(r => console.log("navigation has finished"));
+  redirectTo(url: string, slug?: string): void {
+    this.router.navigate([url, slug]).then(r => console.log("navigation has finished"));
   }
 }
