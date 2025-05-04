@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://172.17.80.202:8002/api/tresorpay' // Replace with your development API URL
+  apiUrl: 'http://172.17.80.202:8025/api/v1',
+
+  // apiUrl: 'http://172.17.80.202:8002/api/tresorpay' // Replace with your development API URL
 };
 
 /*

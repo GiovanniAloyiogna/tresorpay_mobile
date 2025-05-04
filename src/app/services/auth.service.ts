@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,18 +13,40 @@ export class AuthService {
     this.getCurrentUserFromStorage()
   );
 
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
-  checkUserAndSendOtp(userData: { phoneNumber: string; password: string }): boolean {
-    const fakeUser = { phone: '123456', mdp: 'azerty' };
+  checkUserAndSendOtp(userData: {
+    phoneNumber: string;
+    password: string;
+  }): Observable<boolean> {
+    const payload = {
+      username: userData.phoneNumber,
+      password: userData.password,
+      url: '/authentications/authenticate',
+    };
 
-    if (userData.phoneNumber === fakeUser.phone && userData.password === fakeUser.mdp) {
-      console.log('COMPARAISON = TRUE');
-      localStorage.setItem('pendingOtpUser', JSON.stringify(fakeUser));
-      return true;
-    } else {
-      return false;
-    }
+    return new Observable<boolean>((observer) => {
+      this.apiService.postData(payload).subscribe(
+        (response) => {
+          // Suppose que ton API répond avec succès et retourne des infos
+          if (response.status) {
+            localStorage.setItem(
+              'pendingOtpUser',
+              JSON.stringify(response.contenu)
+            );
+            observer.next(true);
+          } else {
+            observer.next(false);
+          }
+          observer.complete();
+        },
+        (error) => {
+          console.error('Erreur API', error);
+          observer.next(false);
+          observer.complete();
+        }
+      );
+    });
   }
 
   validateOtpAndLogin(code: string): boolean {

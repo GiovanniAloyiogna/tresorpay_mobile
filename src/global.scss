@@ -212,6 +212,13 @@ body {
   line-height: 1.2rem;
 }
 
+/* error-modal.component.scss */
+.error-message {
+  padding: 20px;
+  text-align: center;
+  color: red;
+  font-size: 18px;
+}
 
 
 .dashboard-card-value {

@@ -1,14 +1,19 @@
-<ion-content class="bg-primary-contrast text-primary login-background" fullscreen>
+<ion-content
+  class="bg-primary-contrast text-primary login-background"
+  fullscreen
+>
   <div class="relative flex justify-center items-center h-full px-4">
     <div class="w-full lg:w-5/12 text-center flex justify-center items-center">
       <div class="z-50 w-full lg:w-8/12 px-6" style="max-width: 400px">
         <!-- Logo --><br /><br />
         <div class="w-full flex items-center justify-center mb-6">
           <img src="../../assets/logo-tresorpay.png" alt="Logo" class="w-4/5" />
-        </div><br />
+        </div>
+        <br />
 
         <!-- Titre -->
-        <div class="text-3xl font-light mb-2 text-primary-500">Connexion</div><br />
+        <div class="text-3xl font-light mb-2 text-primary-500">Connexion</div>
+        <br />
 
         <!-- Formulaire -->
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="text-left">
@@ -16,7 +21,7 @@
           <label
             for="phone"
             class="block mb-2 text-surface-600 dark:text-surface-400"
-          >Téléphone</label
+            >Téléphone</label
           >
           <input
             id="phone"
@@ -29,15 +34,19 @@
             *ngIf="loginForm.get('phone')?.touched && loginForm.get('phone')?.invalid"
             class="text-sm text-red-600 mb-4"
           >
-            <p *ngIf="loginForm.get('phone')?.hasError('required')">Numéro de téléphone requis</p>
-            <p *ngIf="loginForm.get('phone')?.hasError('phone')">Format invalide</p>
+            <p *ngIf="loginForm.get('phone')?.hasError('required')">
+              Numéro de téléphone requis
+            </p>
+            <p *ngIf="loginForm.get('phone')?.hasError('phone')">
+              Format invalide
+            </p>
           </div>
 
           <!-- Mot de passe -->
           <label
             for="password"
             class="block mt-4 mb-2 text-surface-600 dark:text-surface-400"
-          >Mot de passe</label
+            >Mot de passe</label
           >
           <input
             id="password"
@@ -50,8 +59,12 @@
             *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
             class="text-sm text-red-600 mb-4"
           >
-            <p *ngIf="loginForm.get('password')?.hasError('required')">Mot de passe requis</p>
-            <p *ngIf="loginForm.get('password')?.hasError('minlength')">Minimum 6 caractères</p>
+            <p *ngIf="loginForm.get('password')?.hasError('required')">
+              Mot de passe requis
+            </p>
+            <p *ngIf="loginForm.get('password')?.hasError('minlength')">
+              Minimum 6 caractères
+            </p>
           </div>
 
           <!-- Mot de passe oublié -->
@@ -59,23 +72,32 @@
             <a href="#" class="text-gray-500 hover:underline text-sm">
               Mot de passe oublié ?
             </a>
-          </div><br />
+          </div>
+          <br />
 
           <!-- Bouton connexion -->
           <div class="w-full flex items-center justify-center content-center">
-            <button pButton type="submit" label="SE CONNECTER"
-              style="background-color: var(--blue-color); color: white; border: none;"
-              class="w-40 p-button-rounded p-button-warning p-button-sm bg-blue-color"
+            <button
+              pButton
+              type="submit"
+              label="SE CONNECTER"
+              style="
+                background-color: var(--blue-color);
+                color: white;
+                border: none;
+              "
               [disabled]="loading"
-            >
-
-            </button>
+            ></button>
           </div>
         </form>
 
         <!-- Lien inscription -->
         <div class="mt-8 text-sm text-center text-gray-500">
-          <span class="text-yellow-400 font-semibold cursor-pointer hover:underline" routerLink="/register">Vous n'avez pas de compte ?</span>
+          <span
+            class="text-yellow-400 font-semibold cursor-pointer hover:underline"
+            routerLink="/register"
+            >Vous n'avez pas de compte ?</span
+          >
         </div>
       </div>
     </div>

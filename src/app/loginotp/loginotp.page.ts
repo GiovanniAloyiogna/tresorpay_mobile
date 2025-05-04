@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -19,7 +25,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { InputOtpModule } from 'primeng/inputotp';
-import {ButtonDirective} from "primeng/button";
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
   selector: 'app-loginotp',
@@ -68,10 +74,14 @@ export class LoginotpPage implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-       setTimeout(() => {
+    setTimeout(() => {
       const firstInput: HTMLElement | null =
         this.otpInputRef?.nativeElement?.querySelector('input');
-        console.log("inputs",this.otpInputRef?.nativeElement, this.otpInputRef?.nativeElement?.querySelector('input'))
+      console.log(
+        'inputs',
+        this.otpInputRef?.nativeElement,
+        this.otpInputRef?.nativeElement?.querySelector('input')
+      );
 
       if (firstInput) {
         firstInput.focus();
@@ -91,15 +101,14 @@ export class LoginotpPage implements OnInit, AfterViewInit {
     const code = this.inputOtpValue;
 
     if (code && code.length === 6) {
-
       const isSuccess = this.authService.validateOtpAndLogin(code);
 
       if (isSuccess) {
         // Reset OTP fields before redirection
-        this.inputOtpValue = '';  // Clear OTP value
+        this.inputOtpValue = ''; // Clear OTP value
         this.otpForm.reset(); // Reset the form controls
 
-        this.router.navigate(['/firstscreen']);  // Redirect to dashboard
+        this.router.navigate(['/firstscreen']); // Redirect to dashboard
       } else {
         console.log('Code OTP invalide');
       }
