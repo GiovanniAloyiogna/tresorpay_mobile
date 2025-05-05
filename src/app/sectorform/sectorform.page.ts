@@ -233,15 +233,16 @@ export class SectorformPage implements OnInit {
     this.navCtrl.back();
   }
 
-  redirectToPayment(url: string, libelle?: string): void {
+  redirectToPayment(url: string, libelle?: string, slug?: string): void {
     const formData = {
       etablissement: this.etablissement?.libelle,
       motif: this.motifPaiement?.libelle,
       montant: this.montant,
       initiateur: this.initiateur,
       beneficiaire: this.beneficiaire,
-      etablissementslug: this.slug,
-      compteslug: this.compteslug,
+      etablissementSlug: this.slug,
+      compteInitiateurSlug: this.compteslug,
+      modePaiementSlug: slug,
     };
 
     // this.router.navigate(['/payment-option'], {

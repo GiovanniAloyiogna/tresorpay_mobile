@@ -158,7 +158,7 @@
         @for (modePaiement of modesPaiement; track modePaiement.id) {
           <ion-card
             class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
-            (click)="redirectToPayment('/payment-option', modePaiement.libelle)"
+            (click)="redirectToPayment('/payment-option', modePaiement.libelle, modePaiement.slug)"
           >
             <ion-img
             [src]='formatImage(modePaiement.photo)'
