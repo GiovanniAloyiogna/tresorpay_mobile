@@ -156,11 +156,10 @@
             (click)="redirectToPayment('/payment-option', modePaiement.libelle)"
           >
             <ion-img
-            src="assets/airtelmoney.png"
-            alt="Airtel"
+            [src]='formatImage(modePaiement.photo)'
+            [alt]='modePaiement.libelle'
             class="w-full h-full object-contain"
          ></ion-img>
-            <span>{{modePaiement.libelle}}</span>
           </ion-card>
         }
 
