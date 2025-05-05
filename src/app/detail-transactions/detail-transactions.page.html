@@ -1,5 +1,4 @@
 <ion-content [fullscreen]="true">
-
   <!-- HEADER -->
   <ion-header>
     <ion-toolbar color="primary">
@@ -18,13 +17,15 @@
   <div class="welcome-row flex items-center">
     <!-- Bouton retour -->
     <ion-button fill="clear" size="small" (click)="goBack()">
-      <ion-icon slot="icon-only" name="arrow-back-outline" style="color: #214579"></ion-icon>
+      <ion-icon
+        slot="icon-only"
+        name="arrow-back-outline"
+        style="color: #214579"
+      ></ion-icon>
     </ion-button>
 
     <!-- Texte de bienvenue -->
-    <div class="welcome-text">
-
-    </div>
+    <div class="welcome-text"></div>
 
     <!-- Logo -->
     <img
@@ -32,7 +33,6 @@
       alt="Logo TresorPay"
       class="welcome-logo ml-2"
     />
-
   </div>
 
   <!-- Bandeau TRANSACTIONS -->
@@ -47,42 +47,41 @@
   <!-- CONTENU PRINCIPAL -->
   <!-- CONTENU PRINCIPAL -->
   <div class="detail-content p-4">
-
     <!-- Tableau des détails avec bordures -->
     <table class="w-full table-auto border border-gray-300 border-collapse">
       <tbody class="text-sm">
-      <tr class="bg-gray-50">
-        <th class="p-2 text-left border border-gray-300">SECTEUR</th>
-        <td class="p-2 border border-gray-300">EDUCATION</td>
-      </tr>
-      <tr>
-        <th class="p-2 text-left border border-gray-300">ÉTABLISSEMENT</th>
-        <td class="p-2 border border-gray-300">{{formData.etablissement}}</td>
-      </tr>
-      <tr class="bg-gray-50">
-        <th class="p-2 text-left border border-gray-300">MOTIF PAIEMENT</th>
-        <td class="p-2 border border-gray-300">{{formData.motif}}</td>
-      </tr>
-      <tr>
-        <th class="p-2 text-left border border-gray-300">BÉNÉFICIAIRE</th>
-        <td class="p-2 border border-gray-300">{{formData.beneficiaire}}</td>
-      </tr>
-      <tr class="bg-gray-50">
-        <th class="p-2 text-left border border-gray-300">INITIATEUR</th>
-        <td class="p-2 border border-gray-300">{{formData.initiateur}}</td>
-      </tr>
-      <tr>
-        <th class="p-2 text-left border border-gray-300">MODE DE PAIEMENT</th>
-        <td class="p-2 border border-gray-300">{{formData.Moyenpaiement}}</td>
-      </tr>
-      <tr class="bg-gray-50">
-        <th class="p-2 text-left border border-gray-300">COMPTE CRÉDITEUR</th>
-        <td class="p-2 border border-gray-300">{{formData.comptePayeur}}</td>
-      </tr>
-      <tr>
-        <th class="p-2 text-left border border-gray-300">DATE TRANSACTION</th>
-        <td class="p-2 border border-gray-300">08/04/2025</td>
-      </tr>
+        <tr class="bg-gray-50">
+          <th class="p-2 text-left border border-gray-300">SECTEUR</th>
+          <td class="p-2 border border-gray-300">EDUCATION</td>
+        </tr>
+        <tr>
+          <th class="p-2 text-left border border-gray-300">ÉTABLISSEMENT</th>
+          <td class="p-2 border border-gray-300">{{formData.etablissement}}</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <th class="p-2 text-left border border-gray-300">MOTIF PAIEMENT</th>
+          <td class="p-2 border border-gray-300">{{formData.motif}}</td>
+        </tr>
+        <tr>
+          <th class="p-2 text-left border border-gray-300">BÉNÉFICIAIRE</th>
+          <td class="p-2 border border-gray-300">{{formData.beneficiaire}}</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <th class="p-2 text-left border border-gray-300">INITIATEUR</th>
+          <td class="p-2 border border-gray-300">{{formData.initiateur}}</td>
+        </tr>
+        <tr>
+          <th class="p-2 text-left border border-gray-300">MODE DE PAIEMENT</th>
+          <td class="p-2 border border-gray-300">{{formData.Moyenpaiement}}</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <th class="p-2 text-left border border-gray-300">COMPTE CRÉDITEUR</th>
+          <td class="p-2 border border-gray-300">{{formData.comptePayeur}}</td>
+        </tr>
+        <tr>
+          <th class="p-2 text-left border border-gray-300">DATE TRANSACTION</th>
+          <td class="p-2 border border-gray-300">08/04/2025</td>
+        </tr>
       </tbody>
     </table>
 
@@ -97,23 +96,19 @@
 
     <!-- Bouton Valider -->
     <div class="w-full flex items-center justify-around content-center">
-      <button pButton  label="PRECEDENT"
-              (click)="goBackToForm()"
-              style="background-color: #a8aaaa; border: none; color: white"
-              class="w-40 p-button-rounded p-button-warning p-button-sm"
-      >
-
-      </button>
-      <button pButton  label="VALIDER"
-              (click)="redirectTo('loader')"
-              class="w-40 p-button-rounded p-button-warning p-button-sm bg-greentresor"
-      >
-
-      </button>
+      <button
+        pButton
+        label="PRECEDENT"
+        (click)="goBackToForm()"
+        style="background-color: #a8aaaa; border: none; color: white"
+        class="w-40 p-button-rounded p-button-warning p-button-sm"
+      ></button>
+      <button
+        pButton
+        label="VALIDER"
+        (click)="validateTransactionData()"
+        class="w-40 p-button-rounded p-button-warning p-button-sm bg-greentresor"
+      ></button>
     </div>
-
   </div>
-
-
-
 </ion-content>

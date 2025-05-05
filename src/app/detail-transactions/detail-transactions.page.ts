@@ -2,32 +2,59 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
-    IonButton,
-    IonButtons, IonCard, IonCardContent, IonCol,
-    IonContent, IonGrid,
-    IonHeader,
-    IonIcon, IonLabel,
-    IonMenuButton, IonRow,
-    IonTitle,
-    IonToolbar, NavController
+  IonButton,
+  IonButtons,
+  IonCard,
+  IonCardContent,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader,
+  IonIcon,
+  IonLabel,
+  IonMenuButton,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+  NavController,
 } from '@ionic/angular/standalone';
-import {Router} from "@angular/router";
-import {arrowBack, arrowBackOutline, receiptOutline} from "ionicons/icons";
-import {addIcons} from "ionicons";
-import {ButtonDirective} from "primeng/button";
+import { Router } from '@angular/router';
+import { arrowBack, arrowBackOutline, receiptOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
+import { ButtonDirective } from 'primeng/button';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-detail-transactions',
   templateUrl: './detail-transactions.page.html',
   styleUrls: ['./detail-transactions.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonButtons, IonIcon, IonMenuButton, IonGrid, IonRow, IonCol, IonCard, IonCardContent, IonLabel, ButtonDirective]
+  imports: [
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    CommonModule,
+    FormsModule,
+    IonButton,
+    IonButtons,
+    IonIcon,
+    IonMenuButton,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonCard,
+    IonCardContent,
+    IonLabel,
+    ButtonDirective,
+  ],
 })
 export class DetailTransactionsPage implements OnInit {
-  formData:any;
+  formData: any;
   constructor(
     private router: Router,
-    private navCtrl: NavController    
+    private navCtrl: NavController,
+    private authService: AuthService
   ) {
     addIcons({ arrowBack, arrowBackOutline, receiptOutline });
   }
@@ -35,9 +62,9 @@ export class DetailTransactionsPage implements OnInit {
   ngOnInit() {
     const nav = this.router.getCurrentNavigation();
     const data = nav?.extras.state;
-  
+
     if (data) {
-      this.formData=data
+      this.formData = data;
     }
   }
 
@@ -58,5 +85,14 @@ export class DetailTransactionsPage implements OnInit {
 
   goBackToForm() {
     this.navCtrl.back();
+  }
+  validateTransactionData() {
+    this.authService.validateTransaction(this.formData).subscribe((success) => {
+      if (success) {
+        this.router.navigate(['/receipt']);
+      } else {
+        console.warn('Transaction failed');
+      }
+    });
   }
 }

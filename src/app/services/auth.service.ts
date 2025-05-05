@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from './api.service';
-
+import { LoadingController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,7 +13,10 @@ export class AuthService {
     this.getCurrentUserFromStorage()
   );
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private loadingController: LoadingController
+  ) {}
 
   checkUserAndSendOtp(userData: {
     phoneNumber: string;
@@ -54,27 +57,28 @@ export class AuthService {
       secret: code,
       url: 'authentications/check-otp',
     };
-  
+
     return new Observable<boolean>((observer) => {
       this.apiService.postData(payload).subscribe(
-        
-        
         (response) => {
           console.log('hello', payload);
           if (response.status) {
             const userToken = response.contenu?.Token;
             this.isAuthenticated.next(true);
             this.currentUser.next(response.contenu.user);
-  
+
             localStorage.setItem('isAuthenticated', 'true');
-            localStorage.setItem('currentUser', JSON.stringify(response.contenu.user));
+            localStorage.setItem(
+              'currentUser',
+              JSON.stringify(response.contenu.user)
+            );
             localStorage.removeItem('pendingOtpUser');
-  
-            observer.next(true); 
+
+            observer.next(true);
           } else {
-            observer.next(false); 
+            observer.next(false);
           }
-          observer.complete(); 
+          observer.complete();
         },
         (error) => {
           console.error('Erreur API', error);
@@ -84,61 +88,35 @@ export class AuthService {
       );
     });
   }
-  
-  // validateOtpAndLogin(code: string): Observable<boolean> {
-  //   const payload = {
-  //     username: localStorage.getItem('pendingOtpUser'),
-  //     secret: code,
-  //     url: '/authentications/check-otp',
-  //   };
 
-  //   return new Observable<boolean>((observer) => {
-  //     this.apiService.postData(payload).subscribe(
-  //       (response) => {
-  //         // Suppose que ton API répond avec succès et retourne des infos
-  //         if (response.status) {
-  //           let userToken=response.contenu?.Token
-  //           this.isAuthenticated.next(true);
-  //           this.currentUser.next(response.contenu.user);
-      
-  //           localStorage.setItem('isAuthenticated', 'true');
-  //           localStorage.setItem('currentUser', JSON.stringify(response.contenu.user));
-  //           localStorage.removeItem('pendingOtpUser');
-      
-  //           return true;
-  //           observer.next(true);
-  //         } else {
-  //           observer.next(false);
-  //         }
-  //         observer.complete();
-  //       },
-  //       (error) => {
-  //         console.error('Erreur API', error);
-  //         observer.next(false);
-  //         observer.complete();
-  //       }
-  //     );
-  //   });
-  //   // const correctCode = '123456';
-  //   // const storedUser = localStorage.getItem('pendingOtpUser');
-
-  //   // if (code === correctCode && storedUser) {
-  //   //   const user = JSON.parse(storedUser);
-  //     // this.isAuthenticated.next(true);
-  //     // this.currentUser.next(user);
-
-  //     // localStorage.setItem('isAuthenticated', 'true');
-  //     // localStorage.setItem('currentUser', JSON.stringify(user));
-  //     // localStorage.removeItem('pendingOtpUser');
-
-  //     // return true;
-  //   // }
-
-  //   // return false;
-
-
+  validateTransaction(data: any): Observable<boolean> {
+    const payload = { ...data, url: '' };
     
-  // }
+    return new Observable<boolean>((observer) => {
+      this.loadingController
+        .create({
+          message: 'Veuillez patienter...',
+          spinner: 'crescent',
+        })
+        .then((loader) => {
+          loader.present();
+
+          this.apiService.postData(payload).subscribe(
+            (response) => {
+              loader.dismiss();
+              observer.next(!!response.status);
+              observer.complete();
+            },
+            (error) => {
+              console.error('Erreur API', error);
+              loader.dismiss();
+              observer.next(false);
+              observer.complete();
+            }
+          );
+        });
+    });
+  }
 
   isLoggedIn() {
     return this.isAuthenticated.asObservable();
