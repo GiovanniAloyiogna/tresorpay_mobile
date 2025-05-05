@@ -49,6 +49,7 @@ import { NgIf, NgOptimizedImage } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Dropdown } from 'primeng/dropdown';
 import { ApiService } from '../services/api.service';
+import { MotifPaiement, ParamData } from '../Model/model';
 
 @Component({
   selector: 'app-sectorform',
@@ -98,11 +99,13 @@ export class SectorformPage implements OnInit {
   floatValue: any = null;
   selectButtonValue: any = null;
   dropdownValue: any = null;
+  motifPaiement: MotifPaiement = {};
   listboxValue: any = null;
   autoValue: any[] | undefined;
   showForm: boolean = true;
   visible: boolean = false;
   slug: string = '';
+  etablissement: ParamData = {};
 
   dropdownValues = [
     { name: 'FRAIS INSCRIPTION', code: 'INS' },
@@ -138,21 +141,23 @@ export class SectorformPage implements OnInit {
   ngOnInit() {
     this.slug = this.route.snapshot.paramMap.get('slug') || '';
     try {
-      /*this.apiService.getAllParamEnfantBySlugParent(this.slug).subscribe(
+      this.apiService.getEtablissementBySlug(this.slug).subscribe(
         {
           next: (data) => {
-            this.etablissements = data.contenu;
+          this.etablissement = data.contenu;
 
           },
           error: (err) => {
             console.error('Failed to load countries:', err);
           }
         }
-      )*/
+      )
     } catch (error: any) {
       //await this.presentAlert('Error during login');
     }
   }
+
+
 
   redirectTo(url: string): void {
     this.router
