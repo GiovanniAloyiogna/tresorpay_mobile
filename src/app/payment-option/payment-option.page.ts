@@ -152,7 +152,7 @@ export class PaymentOptionPage implements OnInit {
       // Ajouter le téléphone à formData
       this.formData = {
         ...this.formData,
-        phone: phone,
+        comptePayeur: phone,
       };
   
       // Redirection avec formData via l'objet state

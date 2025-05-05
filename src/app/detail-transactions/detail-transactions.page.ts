@@ -27,7 +27,7 @@ export class DetailTransactionsPage implements OnInit {
   formData:any;
   constructor(
     private router: Router,
-    private navCtrl: NavController    // ← injection ici
+    private navCtrl: NavController    
   ) {
     addIcons({ arrowBack, arrowBackOutline, receiptOutline });
   }
