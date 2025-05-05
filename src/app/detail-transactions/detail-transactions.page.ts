@@ -24,7 +24,7 @@ import {ButtonDirective} from "primeng/button";
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonButtons, IonIcon, IonMenuButton, IonGrid, IonRow, IonCol, IonCard, IonCardContent, IonLabel, ButtonDirective]
 })
 export class DetailTransactionsPage implements OnInit {
-
+  formData:any;
   constructor(
     private router: Router,
     private navCtrl: NavController    // ← injection ici
@@ -33,6 +33,12 @@ export class DetailTransactionsPage implements OnInit {
   }
 
   ngOnInit() {
+    const nav = this.router.getCurrentNavigation();
+    const data = nav?.extras.state;
+  
+    if (data) {
+      this.formData=data
+    }
   }
 
   goBack() {

@@ -57,27 +57,27 @@
       </tr>
       <tr>
         <th class="p-2 text-left border border-gray-300">ÉTABLISSEMENT</th>
-        <td class="p-2 border border-gray-300">UNIVERSITE OMAR BONGO</td>
+        <td class="p-2 border border-gray-300">{{formData.etablissement}}</td>
       </tr>
       <tr class="bg-gray-50">
         <th class="p-2 text-left border border-gray-300">MOTIF PAIEMENT</th>
-        <td class="p-2 border border-gray-300">FRAIS INSCRIPTION</td>
+        <td class="p-2 border border-gray-300">{{formData.motif}}</td>
       </tr>
       <tr>
         <th class="p-2 text-left border border-gray-300">BÉNÉFICIAIRE</th>
-        <td class="p-2 border border-gray-300">Jean-Mark ONDO NGUEMA</td>
+        <td class="p-2 border border-gray-300">{{formData.beneficiaire}}</td>
       </tr>
       <tr class="bg-gray-50">
         <th class="p-2 text-left border border-gray-300">INITIATEUR</th>
-        <td class="p-2 border border-gray-300">Alain KASSA-BAYONNE</td>
+        <td class="p-2 border border-gray-300">{{formData.initiateur}}</td>
       </tr>
       <tr>
         <th class="p-2 text-left border border-gray-300">MODE DE PAIEMENT</th>
-        <td class="p-2 border border-gray-300">AIRTEL MONEY</td>
+        <td class="p-2 border border-gray-300">{{formData.Moyenpaiement}}</td>
       </tr>
       <tr class="bg-gray-50">
         <th class="p-2 text-left border border-gray-300">COMPTE CRÉDITEUR</th>
-        <td class="p-2 border border-gray-300">077898709</td>
+        <td class="p-2 border border-gray-300">{{formData.phone}}</td>
       </tr>
       <tr>
         <th class="p-2 text-left border border-gray-300">DATE TRANSACTION</th>
@@ -92,7 +92,7 @@
     <!-- Montant -->
     <div class="amount-row flex justify-between items-center mb-4">
       <span class="text-base">MONTANT</span>
-      <strong class="text-xl">10 000 FCFA</strong>
+      <strong class="text-xl">{{formData.montant}} FCFA</strong>
     </div>
 
     <!-- Bouton Valider -->

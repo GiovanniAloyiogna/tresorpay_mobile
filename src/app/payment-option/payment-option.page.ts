@@ -27,7 +27,8 @@ import {
   IonCard,
   IonCardHeader,
   IonCardContent,
-  IonImg, NavController,
+  IonImg,
+  NavController,
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
@@ -40,7 +41,9 @@ import {
   mapOutline,
   locateOutline,
   arrowBackCircle,
-  checkmarkCircleOutline, arrowBack, arrowBackOutline,
+  checkmarkCircleOutline,
+  arrowBack,
+  arrowBackOutline,
 } from 'ionicons/icons';
 
 import { ButtonModule } from 'primeng/button';
@@ -100,12 +103,12 @@ export class PaymentOptionPage implements OnInit {
   showForm: boolean = true;
   visible: boolean = false;
   libelle: string = '';
-  formData: any;
+  formData: any = {};
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private navCtrl: NavController    // ← injection ici
+    private navCtrl: NavController // ← injection ici
   ) {
     addIcons({
       add,
@@ -116,22 +119,23 @@ export class PaymentOptionPage implements OnInit {
       mapOutline,
       locateOutline,
       arrowBackCircle,
-      checkmarkCircleOutline,arrowBack, arrowBackOutline
+      checkmarkCircleOutline,
+      arrowBack,
+      arrowBackOutline,
     });
   }
 
   ngOnInit(): void {
     const nav = this.router.getCurrentNavigation();
-    this.formData = nav?.extras.state;
+    this.formData = nav?.extras.state || {};
 
-    if (nav?.extras.state) {
-      console.log('right', this.formData)
-      console.log('Giovanni')
-      // Optionally redirect if data is missing
-      // this.router.navigate(['/sectorform']);
-    }
-    
     this.libelle = this.route.snapshot.paramMap.get('libelle') || '';
+
+    // Fusionner les données et ajouter 'Moyen paiement'
+    this.formData = {
+      ...this.formData,
+      Moyenpaiement: this.libelle,
+    };
 
     this.loginForm = this.fb.group({
       phoneNumber: [
@@ -144,16 +148,20 @@ export class PaymentOptionPage implements OnInit {
   onSubmitNumber(): void {
     if (this.loginForm.valid) {
       const phone = this.loginForm.value.phoneNumber;
-
+  
+      // Ajouter le téléphone à formData
+      this.formData = {
+        ...this.formData,
+        phone: phone,
+      };
+  
+      // Redirection avec formData via l'objet state
       this.router
         .navigate(['/detailpaiement'], {
-          queryParams: {
-            phone: phone,
-            method: this.libelle?.toUpperCase(),
-          },
+          state: this.formData,
         })
         .then(() => {
-          console.log('Redirection réussie vers la confirmation.');
+          console.log('Redirection réussie avec formData :', this.formData);
         })
         .catch((err) => {
           console.error('Erreur de redirection :', err);
@@ -163,7 +171,7 @@ export class PaymentOptionPage implements OnInit {
       this.loginForm.markAllAsTouched();
     }
   }
-
+  
   closeCallback($event: MouseEvent) {
     this.visible = false;
   }
@@ -175,7 +183,6 @@ export class PaymentOptionPage implements OnInit {
   goToPaymentMethods() {
     this.showForm = false;
   }
-
 
   redirectToPayment(url: string, method: string): void {
     this.router
@@ -206,5 +213,4 @@ export class PaymentOptionPage implements OnInit {
   goBackToForm() {
     this.navCtrl.back();
   }
-
 }

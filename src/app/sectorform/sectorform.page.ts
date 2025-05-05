@@ -110,7 +110,10 @@ export class SectorformPage implements OnInit {
   slug: string = '';
   etablissement: ParamData = {};
   modesPaiement: ModePaiement[] = [];
-
+  montant: number = 0;
+  initiateur: string = '';
+  beneficiaire: string = '';
+  
   dropdownValues = [
     { name: 'FRAIS INSCRIPTION', code: 'INS' },
     { name: 'FRAIS REINSCRIPTION', code: 'REIN' },
@@ -216,14 +219,11 @@ export class SectorformPage implements OnInit {
 
   redirectToPayment(url: string, libelle?: string): void {
     const formData = {
-      etablissement: this.etablissement?.libelle,
-      motifPaiement: this.motifPaiement?.libelle || '',
-      montant: (document.getElementById('montant') as HTMLInputElement)?.value,
-      initiateur: (document.getElementById('initiateur') as HTMLInputElement)
-        ?.value,
-      beneficiaire: (
-        document.getElementById('beneficiaire') as HTMLInputElement
-      )?.value,
+       etablissement: this.etablissement?.libelle,
+    motif: this.motifPaiement?.libelle,
+    montant: this.montant,
+    initiateur: this.initiateur,
+    beneficiaire: this.beneficiaire,
     };
 
     // this.router.navigate(['/payment-option'], {
