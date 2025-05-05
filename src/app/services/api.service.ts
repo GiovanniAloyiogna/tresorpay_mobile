@@ -10,6 +10,7 @@ export class ApiService {
   private apiUrl = environment.apiUrl;
   private apiGetAllSecteur = environment.apiUrl+'params-datas/liste-all-secteur';
   private apiGetByParamEnfant = environment.apiUrl+'params-datas/get-params-enfants';
+  private apiGetBySlug = environment.apiUrl+'params-datas/get-by-slug';
 
   constructor(private http: HttpClient) {}
 
@@ -23,6 +24,11 @@ export class ApiService {
 
   getAllParamEnfantBySlugParent(slug: string): Observable<any> {
     const url = `${this.apiGetByParamEnfant}/${slug}`;
+    return this.http.get(url);
+  }
+
+  getEtablissementBySlug(slug: string): Observable<any> {
+    const url = `${this.apiGetBySlug}/${slug}`;
     return this.http.get(url);
   }
 

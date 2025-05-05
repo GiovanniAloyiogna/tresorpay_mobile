@@ -45,9 +45,10 @@
           >Etablissement</label
         >
         <input
-          type="number"
+          type="text"
           id="etablissement"
           name="etablissement"
+          [value]="etablissement?.libelle"
           placeholder="UNIVERSITE OMAR BONGO"
           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
           disabled
@@ -62,10 +63,9 @@
         <p-select
           id="motif"
           name="motif"
-          [(ngModel)]="dropdownValue"
-          [options]="dropdownValues"
-          optionLabel="name"
-          placeholder="FRAIS INSCRIPTION"
+          [(ngModel)]="motifPaiement"
+          [options]="etablissement.motifPaiementList"
+          optionLabel="libelle"
           class="w-full mt-1"
         ></p-select>
       </div>
