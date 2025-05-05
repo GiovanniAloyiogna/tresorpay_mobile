@@ -236,6 +236,7 @@ export class SectorformPage implements OnInit {
       montant: this.montant,
       initiateur: this.initiateur,
       beneficiaire: this.beneficiaire,
+      slug:this.slug
     };
 
     // this.router.navigate(['/payment-option'], {
