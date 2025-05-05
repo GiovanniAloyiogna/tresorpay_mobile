@@ -15,3 +15,10 @@ export interface MotifPaiement{
     slug?: string,
     montant?: number,
 }
+
+export interface ModePaiement{
+    id?: number,
+    slug?: string,
+    photo?: string,
+    libelle?: string
+}

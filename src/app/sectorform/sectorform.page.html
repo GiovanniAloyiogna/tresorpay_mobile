@@ -150,50 +150,21 @@
     <!-- Grille des moyens de paiement -->
     <div class="flex justify-center items-center">
       <div class="grid grid-cols-3 gap-2 w-full max-w-4xl">
-
-        <ion-card
-          class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
-          (click)="redirectToPayment('/payment-option', 'AIRTELMONEY')"
-        >
-          <ion-img
+        @for (modePaiement of modesPaiement; track modePaiement.id) {
+          <ion-card
+            class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
+            (click)="redirectToPayment('/payment-option', modePaiement.libelle)"
+          >
+            <ion-img
             src="assets/airtelmoney.png"
             alt="Airtel"
             class="w-full h-full object-contain"
-          ></ion-img>
-        </ion-card>
+         ></ion-img>
+            <span>{{modePaiement.libelle}}</span>
+          </ion-card>
+        }
 
-        <ion-card
-          class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
-          (click)="redirectToPayment('/payment-option', 'MOOVMONEY')"
-        >
-          <ion-img
-            src="assets/moovmoney.png"
-            alt="Moov"
-            class="w-full h-full object-contain"
-          ></ion-img>
-        </ion-card>
-
-        <ion-card
-          class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
-          (click)="redirectToPayment('/payment-option', 'ClickPay')"
-        >
-          <ion-img
-            src="assets/clickpay.png"
-            alt="ClickPay"
-            class="w-full h-full object-contain"
-          ></ion-img>
-        </ion-card>
-
-        <ion-card
-          class="flex items-center justify-center aspect-square p-2 shadow-lg cursor-pointer"
-          (click)="redirectToPayment('/payment-option', 'VISA')"
-        >
-          <ion-img
-            src="assets/visa.png"
-            alt="VISA"
-            class="w-full h-full object-contain"
-          ></ion-img>
-        </ion-card>
+        
 
       </div>
     </div>
