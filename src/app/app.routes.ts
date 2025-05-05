@@ -68,7 +68,7 @@ export const routes: Routes = [
     loadComponent: () => import('./paymentmeduims/paymentmeduims.page').then( m => m.PaymentmeduimsPage)
   },
   {
-    path: 'payment-option',
+    path: 'payment-option/:libelle',
     loadComponent: () => import('./payment-option/payment-option.page').then( m => m.PaymentOptionPage)
   },
   {

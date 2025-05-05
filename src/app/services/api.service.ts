@@ -11,6 +11,7 @@ export class ApiService {
   private apiGetAllSecteur = environment.apiUrl+'params-datas/liste-all-secteur';
   private apiGetByParamEnfant = environment.apiUrl+'params-datas/get-params-enfants';
   private apiGetBySlug = environment.apiUrl+'params-datas/get-by-slug';
+  private apiGetModePaiement = environment.apiUrl+'mode-paiement/liste-all';
 
   constructor(private http: HttpClient) {}
 
@@ -30,6 +31,10 @@ export class ApiService {
   getEtablissementBySlug(slug: string): Observable<any> {
     const url = `${this.apiGetBySlug}/${slug}`;
     return this.http.get(url);
+  }
+
+  getModePaiement(): Observable<any> {
+    return this.http.get(this.apiGetModePaiement);
   }
 
   postData(data: any): Observable<any> {

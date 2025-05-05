@@ -99,7 +99,7 @@ export class PaymentOptionPage implements OnInit {
   loginForm!: FormGroup;
   showForm: boolean = true;
   visible: boolean = false;
-  method: string = '';
+  libelle: string = '';
 
   constructor(
     private router: Router,
@@ -121,10 +121,7 @@ export class PaymentOptionPage implements OnInit {
   }
 
   ngOnInit(): void {
-    // Lire la méthode depuis les paramètres d’URL
-    this.route.queryParams.subscribe((params) => {
-      this.method = params['method'] || 'Méthode inconnue';
-    });
+    this.libelle = this.route.snapshot.paramMap.get('libelle') || '';
 
     this.loginForm = this.fb.group({
       phoneNumber: [
@@ -142,7 +139,7 @@ export class PaymentOptionPage implements OnInit {
         .navigate(['/detailpaiement'], {
           queryParams: {
             phone: phone,
-            method: this.method?.toUpperCase(),
+            method: this.libelle?.toUpperCase(),
           },
         })
         .then(() => {

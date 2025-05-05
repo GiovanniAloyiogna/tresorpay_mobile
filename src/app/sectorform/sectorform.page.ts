@@ -49,7 +49,7 @@ import { NgIf, NgOptimizedImage } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Dropdown } from 'primeng/dropdown';
 import { ApiService } from '../services/api.service';
-import { MotifPaiement, ParamData } from '../Model/model';
+import { ModePaiement, MotifPaiement, ParamData } from '../Model/model';
 
 @Component({
   selector: 'app-sectorform',
@@ -106,6 +106,7 @@ export class SectorformPage implements OnInit {
   visible: boolean = false;
   slug: string = '';
   etablissement: ParamData = {};
+  modesPaiement: ModePaiement[] = [];
 
   dropdownValues = [
     { name: 'FRAIS INSCRIPTION', code: 'INS' },
@@ -145,6 +146,29 @@ export class SectorformPage implements OnInit {
         {
           next: (data) => {
           this.etablissement = data.contenu;
+
+          },
+          error: (err) => {
+            console.error('Failed to load countries:', err);
+          }
+        }
+      );
+
+    this.getModePaiement();
+    } catch (error: any) {
+      //await this.presentAlert('Error during login');
+    }
+  }
+
+  getModePaiement(){
+    try {
+      this.apiService.getModePaiement().subscribe(
+        {
+          next: (data) => {
+          this.modesPaiement = data.contenu;
+
+          console.log(this.modesPaiement);
+          
 
           },
           error: (err) => {
@@ -194,15 +218,11 @@ export class SectorformPage implements OnInit {
   goBackToForm() {
     this.navCtrl.back();
   }
-  redirectToPayment(url: string, method: string): void {
-    this.router
-      .navigate([url], { queryParams: { method } })
-      .then(() => {
-        console.log('Navigation terminée avec méthode :', method);
-      })
-      .catch((err) => {
-        console.error(`Échec de la navigation vers ${url} :`, err);
-      });
+  
+  redirectToPayment(url: string, libelle?: string): void {
+    console.log('libelle:'+libelle);
+    
+    this.router.navigate([url, libelle]).then(r => console.log("navigation has finishe"));
   }
 
   goBack() {
