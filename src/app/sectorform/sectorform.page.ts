@@ -231,11 +231,11 @@ export class SectorformPage implements OnInit {
 
   redirectToPayment(url: string, libelle?: string): void {
     const formData = {
-       etablissement: this.etablissement?.libelle,
-    motif: this.motifPaiement?.libelle,
-    montant: this.montant,
-    initiateur: this.initiateur,
-    beneficiaire: this.beneficiaire,
+      etablissement: this.etablissement?.libelle,
+      motif: this.motifPaiement?.libelle,
+      montant: this.montant,
+      initiateur: this.initiateur,
+      beneficiaire: this.beneficiaire,
     };
 
     // this.router.navigate(['/payment-option'], {
