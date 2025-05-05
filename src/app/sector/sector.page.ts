@@ -54,6 +54,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {Divider} from "primeng/divider";
 import { ApiService } from '../services/api.service';
 import { ParamData } from '../Model/model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sector',
@@ -220,14 +221,13 @@ export class SectorPage implements OnInit {
   }
 
   formatImage(image: any){
-    
-    
+  
     if(image == null || image == undefined){
       return '/assets/user.png';
     }
     else{
       //console.log('data:image/png;base64,' + image);
-      return 'data:image/jpeg;base64,' + image;
+      return environment.apiSourceUrl+image;
     }
       
   }
