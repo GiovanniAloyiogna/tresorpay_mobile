@@ -223,7 +223,7 @@ export class SectorPage implements OnInit {
     
     
     if(image == null || image == undefined){
-      return '/assets/airtelmoney.png';
+      return '/assets/user.png';
     }
     else{
       //console.log('data:image/png;base64,' + image);
