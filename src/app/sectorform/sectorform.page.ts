@@ -115,7 +115,7 @@ export class SectorformPage implements OnInit {
   montant: number = 0;
   initiateur: string = '';
   beneficiaire: string = '';
-  compteslug:string='';
+  compteslug: string = '';
   dropdownValues = [
     { name: 'FRAIS INSCRIPTION', code: 'INS' },
     { name: 'FRAIS REINSCRIPTION', code: 'REIN' },
@@ -151,7 +151,7 @@ export class SectorformPage implements OnInit {
 
   ngOnInit() {
     this.authService.getCurrentUser().subscribe((user) => {
-       this.compteslug=user?.slug;
+      this.compteslug = user?.slug;
     });
 
     this.slug = this.route.snapshot.paramMap.get('slug') || '';
@@ -241,7 +241,7 @@ export class SectorformPage implements OnInit {
       initiateur: this.initiateur,
       beneficiaire: this.beneficiaire,
       etablissementslug: this.slug,
-      compteslug:this.compteslug
+      compteslug: this.compteslug,
     };
 
     // this.router.navigate(['/payment-option'], {
