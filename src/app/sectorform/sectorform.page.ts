@@ -25,7 +25,8 @@ import {
   IonCard,
   IonCardHeader,
   IonCardContent,
-  IonImg, NavController,
+  IonImg,
+  NavController,
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
@@ -36,7 +37,9 @@ import {
   homeOutline,
   alarmOutline,
   mapOutline,
-  locateOutline, arrowBack, arrowBackOutline,
+  locateOutline,
+  arrowBack,
+  arrowBackOutline,
 } from 'ionicons/icons';
 
 import { ButtonModule } from 'primeng/button';
@@ -110,9 +113,9 @@ export class SectorformPage implements OnInit {
 
   dropdownValues = [
     { name: 'FRAIS INSCRIPTION', code: 'INS' },
-    { name: 'FRAIS REINSCRIPTION',       code: 'REIN' },
-    { name: 'FRAIS SCOLARITE',  code: 'SCOL' },
-    { name: 'FRAIS DROITS EXAMEN',      code: 'EXAM' },
+    { name: 'FRAIS REINSCRIPTION', code: 'REIN' },
+    { name: 'FRAIS SCOLARITE', code: 'SCOL' },
+    { name: 'FRAIS DROITS EXAMEN', code: 'EXAM' },
     { name: 'FRAIS CANTINE', code: 'CANT' },
     { name: 'FRAIS CAMPUS', code: 'LOGE' },
   ];
@@ -125,8 +128,8 @@ export class SectorformPage implements OnInit {
     private router: Router,
     private navCtrl: NavController,
     private route: ActivatedRoute,
-    private apiService: ApiService     // ← injection ici
-    ) {
+    private apiService: ApiService // ← injection ici
+  ) {
     addIcons({
       add,
       funnelOutline,
@@ -135,53 +138,45 @@ export class SectorformPage implements OnInit {
       alarmOutline,
       mapOutline,
       locateOutline,
-      arrowBack, arrowBackOutline
+      arrowBack,
+      arrowBackOutline,
     });
   }
 
   ngOnInit() {
     this.slug = this.route.snapshot.paramMap.get('slug') || '';
     try {
-      this.apiService.getEtablissementBySlug(this.slug).subscribe(
-        {
-          next: (data) => {
+      this.apiService.getEtablissementBySlug(this.slug).subscribe({
+        next: (data) => {
           this.etablissement = data.contenu;
+        },
+        error: (err) => {
+          console.error('Failed to load countries:', err);
+        },
+      });
 
-          },
-          error: (err) => {
-            console.error('Failed to load countries:', err);
-          }
-        }
-      );
-
-    this.getModePaiement();
+      this.getModePaiement();
     } catch (error: any) {
       //await this.presentAlert('Error during login');
     }
   }
 
-  getModePaiement(){
+  getModePaiement() {
     try {
-      this.apiService.getModePaiement().subscribe(
-        {
-          next: (data) => {
+      this.apiService.getModePaiement().subscribe({
+        next: (data) => {
           this.modesPaiement = data.contenu;
 
           console.log(this.modesPaiement);
-          
-
-          },
-          error: (err) => {
-            console.error('Failed to load countries:', err);
-          }
-        }
-      )
+        },
+        error: (err) => {
+          console.error('Failed to load countries:', err);
+        },
+      });
     } catch (error: any) {
       //await this.presentAlert('Error during login');
     }
   }
-
-
 
   redirectTo(url: string): void {
     this.router
@@ -218,11 +213,25 @@ export class SectorformPage implements OnInit {
   goBackToForm() {
     this.navCtrl.back();
   }
-  
+
   redirectToPayment(url: string, libelle?: string): void {
-    console.log('libelle:'+libelle);
-    
-    this.router.navigate([url, libelle]).then(r => console.log("navigation has finishe"));
+    const formData = {
+      etablissement: this.etablissement?.libelle,
+      motifPaiement: this.motifPaiement?.libelle || '',
+      montant: (document.getElementById('montant') as HTMLInputElement)?.value,
+      initiateur: (document.getElementById('initiateur') as HTMLInputElement)
+        ?.value,
+      beneficiaire: (
+        document.getElementById('beneficiaire') as HTMLInputElement
+      )?.value,
+    };
+
+    // this.router.navigate(['/payment-option'], {
+    //   state: { formData }
+    // });
+    this.router
+      .navigate([url, libelle], { state: formData })
+      .then((r) => console.log('data', formData));
   }
 
   goBack() {

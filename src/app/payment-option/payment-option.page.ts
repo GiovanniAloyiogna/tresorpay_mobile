@@ -100,7 +100,7 @@ export class PaymentOptionPage implements OnInit {
   showForm: boolean = true;
   visible: boolean = false;
   libelle: string = '';
-
+  formData: any;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -121,6 +121,16 @@ export class PaymentOptionPage implements OnInit {
   }
 
   ngOnInit(): void {
+    const nav = this.router.getCurrentNavigation();
+    this.formData = nav?.extras.state;
+
+    if (nav?.extras.state) {
+      console.log('right', this.formData)
+      console.log('Giovanni')
+      // Optionally redirect if data is missing
+      // this.router.navigate(['/sectorform']);
+    }
+    
     this.libelle = this.route.snapshot.paramMap.get('libelle') || '';
 
     this.loginForm = this.fb.group({
