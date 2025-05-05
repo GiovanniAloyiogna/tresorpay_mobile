@@ -156,17 +156,16 @@
     <div class="flex justify-center items-center">
       <div class="grid grid-cols-3 gap-2 w-full max-w-4xl">
         @for (modePaiement of modesPaiement; track modePaiement.id) {
-        <ion-card
-          class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
-          (click)="redirectToPayment('/payment-option', modePaiement.libelle)"
-        >
-          <ion-img
-            src="assets/airtelmoney.png"
-            alt="Airtel"
+          <ion-card
+            class="flex items-center justify-center aspect-square p-2 shadow-xl cursor-pointer"
+            (click)="redirectToPayment('/payment-option', modePaiement.libelle)"
+          >
+            <ion-img
+            [src]='formatImage(modePaiement.photo)'
+            [alt]='modePaiement.libelle'
             class="w-full h-full object-contain"
-          ></ion-img>
-          <span>{{modePaiement.libelle}}</span>
-        </ion-card>
+         ></ion-img>
+          </ion-card>
         }
       </div>
     </div>

@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'http://localhost:8025/api/',
+  apiUrl: 'http://localhost:8025/api/',
+  apiSourceUrl: 'http://localhost:8025/',
 
-   apiUrl: 'http://172.17.60.96:8025/api/' // Replace with your development API URL
 };
 
 /*

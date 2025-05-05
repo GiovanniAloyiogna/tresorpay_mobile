@@ -53,6 +53,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Dropdown } from 'primeng/dropdown';
 import { ApiService } from '../services/api.service';
 import { ModePaiement, MotifPaiement, ParamData } from '../Model/model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sectorform',
@@ -204,6 +205,17 @@ export class SectorformPage implements OnInit {
       listboxValue: this.listboxValue,
       autoValue: this.autoValue,
     });
+  }
+
+  formatImage(image: any){
+    if(image == null || image == undefined){
+      return '/assets/user.png';
+    }
+    else{
+      //console.log('data:image/png;base64,' + image);
+      return environment.apiSourceUrl+image;
+    }
+      
   }
 
   openDrawer() {
