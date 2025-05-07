@@ -102,19 +102,30 @@ export class AuthService {
         .then((loader) => {
           loader.present();
 
-          this.apiService.postTransaction(data).subscribe(
-            (response) => {
+          this.apiService.postTransaction(data).subscribe({
+            next: (transaction) => {
               loader.dismiss();
-              observer.next(!!response.status);
-              observer.complete();
+
+              if(transaction.contenu.etat === 'SUCCES'){
+                observer.next(!!transaction.contenu.etat);
+                //observer.next(!!value.status);
+                observer.complete();
+
+                console.log("La trasaction e réussi");
+              }
+              else{
+                console.log("La trasaction a echoué")
+              }
+              
             },
-            (error) => {
-              console.error('Erreur API', error);
+            error: (err)=> {
+              console.error('Erreur API', err);
               loader.dismiss();
               observer.next(false);
               observer.complete();
-            }
-          );
+            },
+          })
+
         });
     });
   }
