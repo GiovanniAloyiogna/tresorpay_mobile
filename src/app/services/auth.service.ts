@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { LoadingController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -90,7 +91,7 @@ export class AuthService {
   }
 
   validateTransaction(data: any): Observable<boolean> {
-    const payload = { ...data, url: '' };
+    //const payload = { ...data, url: environment.apiUrl+'transaction/create' };
     
     return new Observable<boolean>((observer) => {
       this.loadingController
@@ -101,7 +102,7 @@ export class AuthService {
         .then((loader) => {
           loader.present();
 
-          this.apiService.postData(payload).subscribe(
+          this.apiService.postTransaction(data).subscribe(
             (response) => {
               loader.dismiss();
               observer.next(!!response.status);

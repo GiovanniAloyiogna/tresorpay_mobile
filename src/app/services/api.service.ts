@@ -12,6 +12,7 @@ export class ApiService {
   private apiGetByParamEnfant = environment.apiUrl+'params-datas/get-params-enfants';
   private apiGetBySlug = environment.apiUrl+'params-datas/get-by-slug';
   private apiGetModePaiement = environment.apiUrl+'mode-paiement/liste-all';
+  private apiPostTransaction = environment.apiUrl+'transaction/create';
 
   constructor(private http: HttpClient) {}
 
@@ -39,5 +40,9 @@ export class ApiService {
 
   postData(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}${data.url}`, data);
+  }
+
+  postTransaction(data: any): Observable<any> {
+    return this.http.post(this.apiPostTransaction, data);
   }
 }
