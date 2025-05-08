@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import {
   IonButton,
   IonButtons,
@@ -89,7 +90,7 @@ export class DetailTransactionsPage implements OnInit {
   validateTransactionData() {
     this.authService.validateTransaction(this.formData).subscribe((success) => {
       if (success) {
-        this.router.navigate(['/receipt']);
+        this.router.navigate(['/dashboard/history']);
       } else {
         console.warn('Transaction failed');
       }

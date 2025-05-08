@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { LoadingController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { AlertController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +17,9 @@ export class AuthService {
 
   constructor(
     private apiService: ApiService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+
+    private alertController: AlertController
   ) {}
 
   checkUserAndSendOtp(userData: {
@@ -92,7 +95,7 @@ export class AuthService {
 
   validateTransaction(data: any): Observable<boolean> {
     //const payload = { ...data, url: environment.apiUrl+'transaction/create' };
-    
+
     return new Observable<boolean>((observer) => {
       this.loadingController
         .create({
@@ -105,27 +108,23 @@ export class AuthService {
           this.apiService.postTransaction(data).subscribe({
             next: (transaction) => {
               loader.dismiss();
-
-              if(transaction.contenu.etat === 'SUCCES'){
+              console.log('transactions', transaction);
+              if (transaction.status) {
                 observer.next(!!transaction.contenu.etat);
                 //observer.next(!!value.status);
                 observer.complete();
-
-                console.log("La trasaction e réussi");
+                this.presentAlert(transaction?.message);
+              } else {
+                this.presentAlert(transaction?.message);
               }
-              else{
-                console.log("La trasaction a echoué")
-              }
-              
             },
-            error: (err)=> {
+            error: (err) => {
               console.error('Erreur API', err);
               loader.dismiss();
               observer.next(false);
               observer.complete();
             },
-          })
-
+          });
         });
     });
   }
@@ -153,5 +152,14 @@ export class AuthService {
   private getCurrentUserFromStorage(): any {
     const user = localStorage.getItem('currentUser');
     return user ? JSON.parse(user) : null;
+  }
+  async presentAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Erreur',
+      message: message,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 }

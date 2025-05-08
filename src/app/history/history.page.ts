@@ -23,19 +23,21 @@ import {
   IonItem,
   IonFooter,
   IonGrid,
-  NavController      // ← ajouter NavController ici
+  NavController, // ← ajouter NavController ici
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import {arrowBack, arrowBackOutline} from 'ionicons/icons';
+import { arrowBack, arrowBackOutline } from 'ionicons/icons';
 import { Router } from '@angular/router';
 import { MultiSelect } from 'primeng/multiselect';
-import {SelectItem} from "primeng/api";
+import { SelectItem } from 'primeng/api';
+import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 
 interface Transaction {
-  date: string;
-  description: string;
-  amount: number;
-  variation: number;
+  dateEffet: Date;
+  motif: string;
+
+  montant: number;
 }
 
 @Component({
@@ -67,11 +69,10 @@ interface Transaction {
     IonGrid,
     CommonModule,
     FormsModule,
-    MultiSelect
-  ]
+    MultiSelect,
+  ],
 })
 export class HistoryPage implements OnInit {
-
   // 1) La liste statique de secteurs
   sectors: SelectItem[] = [
     { label: 'Tous', value: 'all' },
@@ -85,32 +86,85 @@ export class HistoryPage implements OnInit {
   // 2) Le(s) secteur(s) sélectionné(s)
   selectedSectors: any[] = [];
 
-
-  transactions: Transaction[] = [
-    { date: '20-10-2025', description: 'Frais scolaire', amount: 904.0, variation: +1.80 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    { date: '20-02-2025', description: 'Inscription', amount: 321.0, variation: 21.0 },
-    // … autres entrées …
-  ];
+  // transactions: Transaction[] = [
+  //   {
+  //     date: '20-10-2025',
+  //     description: 'Frais scolaire',
+  //     amount: 904.0,
+  //     variation: +1.8,
+  //   },
+  //   {
+  //     date: '20-02-2025',
+  //     description: 'Inscription',
+  //     amount: 321.0,
+  //     variation: 21.0,
+  //   },
+  //   {
+  //     date: '20-02-2025',
+  //     description: 'Inscription',
+  //     amount: 321.0,
+  //     variation: 21.0,
+  //   },
+  //   {
+  //     date: '20-02-2025',
+  //     description: 'Inscription',
+  //     amount: 321.0,
+  //     variation: 21.0,
+  //   },
+  //   {
+  //     date: '20-02-2025',
+  //     description: 'Inscription',
+  //     amount: 321.0,
+  //     variation: 21.0,
+  //   },
+  //   {
+  //     date: '20-02-2025',
+  //     description: 'Inscription',
+  //     amount: 321.0,
+  //     variation: 21.0,
+  //   },
+  //   {
+  //     date: '20-02-2025',
+  //     description: 'Inscription',
+  //     amount: 321.0,
+  //     variation: 21.0,
+  //   },
+  //   // … autres entrées …
+  // ];
   filteredTransactions: Transaction[] = [];
   searchTerm = '';
   currentSegment = 'tous';
-
+  compteslug = '';
+  alltransactions: Transaction[] = [];
   constructor(
     private router: Router,
-    private navCtrl: NavController    // ← injection ici
+    private navCtrl: NavController,
+    private apiService: ApiService,
+    private authService: AuthService // ← injection ici
   ) {
     addIcons({ arrowBack, arrowBackOutline });
   }
 
   ngOnInit() {
-    this.filteredTransactions = this.transactions;
-  }
+    this.authService.getCurrentUser().subscribe((user) => {
+      this.compteslug = user?.slug;
+    });
+    // this.filteredTransactions = this.transactions;
 
+    try {
+      this.apiService.getUserTransactions(this.compteslug).subscribe({
+        next: (data) => {
+          console.log('all data trsf', data.contenu);
+          this.alltransactions = data.contenu;
+        },
+        error: (err) => {
+          console.error('Failed to load countries:', err);
+        },
+      });
+    } catch (error: any) {
+      //await this.presentAlert('Error during login');
+    }
+  }
   // … vos autres méthodes …
 
   goBack() {

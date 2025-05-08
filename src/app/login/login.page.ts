@@ -84,6 +84,7 @@ export class LoginPage implements OnInit {
   }
 
   async presentErrorModal(message: string) {
+    
     const modal = await this.modalController.create({
       component: ErrorModalComponent,
       componentProps: { errorMessage: message },

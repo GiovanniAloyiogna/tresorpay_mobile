@@ -13,7 +13,7 @@ export class ApiService {
   private apiGetBySlug = environment.apiUrl+'params-datas/get-by-slug';
   private apiGetModePaiement = environment.apiUrl+'mode-paiement/liste-all';
   private apiPostTransaction = environment.apiUrl+'transaction/create';
-
+  private apiGetAllTransactions = environment.apiUrl+'transaction/get-by-slug-parent';
   constructor(private http: HttpClient) {}
 
   getData(): Observable<any> {
@@ -31,6 +31,10 @@ export class ApiService {
 
   getEtablissementBySlug(slug: string): Observable<any> {
     const url = `${this.apiGetBySlug}/${slug}`;
+    return this.http.get(url);
+  }
+  getUserTransactions(slug: string): Observable<any> {
+    const url = `${this.apiGetAllTransactions}/${slug}`;
     return this.http.get(url);
   }
 
